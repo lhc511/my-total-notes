@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>aaaaaaaaaaa</title>
+    <style>
+        div {
+            position: absolute;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        span {
+            position: absolute;
+            left: 10px;
+            top: 200px;
+            display: block;
+            width: 150px;
+            height: 150px;
+            background-color: purple;
+        }
+    </style>
+</head>
+
+<body>
+<!--    <div></div>-->
+    <span>夏雨荷</span>
+    <button id="btn500">500</button>
+    <button id="btn800">800</button>
+
+<script>
+    let div1=document.querySelector('div')
+    let span1=document.querySelector('span');
+    let btn500=document.querySelector('#btn500')
+    let btn800=document.querySelector('#btn800');
+    // 缓动动画函数封装obj目标对象 target 目标位置
+    // 思路：
+    // 1. 让盒子每次移动的距离慢慢变小， 速度就会慢慢落下来。
+    // 2. 核心算法：(目标值 - 现在的位置) / 10 做为每次移动的距离 步长
+    // 3. 停止的条件是： 让当前盒子位置等于目标位置就停止定时器
+    function a(obj,target,callback) {   //callback的参数用来传递一个函数
+        clearInterval(obj.timer)
+        obj.timer=setInterval(function (){
+            // 当传进来的值小于现在所在位置，就会往负方向移动，做到往回走
+            let step=(target-obj.offsetLeft)/10
+            step=step>0?Math.ceil(step):Math.floor(step)
+            //设置最小值使结果收敛
+            if (obj.offsetLeft===target){
+                clearInterval(obj.timer)
+                if(callback){callback()}
+            }
+            //此处若对象的左边距小于传来目标距离则执行，但时当已经走到八百像素往五百像素走时(左边距>目标距离)就不满足，不会执行
+            // else {
+            //     obj.style.left=obj.offsetLeft+step+'px'
+            //     console.log(obj.style.left)
+            // }
+            obj.style.left=obj.offsetLeft+step+'px'
+        },30)
+    }
+    btn500.addEventListener('click',function (){a(span1,500,function (){span1.style.backgroundColor='yellow'})})//callbac是在外部定义的一个回调函数
+    btn800.addEventListener('click',function (){a(span1,800,function (){span1.style.backgroundColor='blue'})})
+</script>
+</body>
+</html>

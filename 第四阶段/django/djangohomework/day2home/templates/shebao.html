@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            width:600px;
+            border:none;
+            text-decoration: none;
+        }
+        li{
+            overflow: hidden;
+            width: 100%;
+        }
+        div{
+            text-align: center;
+            width: 200px;
+            height:30px;
+            float: left;
+            border: none;
+        }
+
+        .color_li{
+            background-color:#fff7ff
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li id="title" class="color_li">
+            <div>项目</div>
+            <div>个人缴纳</div>
+            <div>单位缴纳</div>
+        </li>
+
+        <li>
+            <div>养老保险</div>
+             <div>{{ p1 }}元</div>
+            <div>{{ f1 }}元</div>
+        </li>
+
+        {% if is_city == 1 %}
+        <li class="color_li">
+            <div>失业(城镇户口)</div>
+             <div>{{ p21 }}元</div>
+            <div>{{ f21 }}元</div>
+        </li>
+
+        {% elif is_city == 0 %}
+        <li class="color_li">
+            <div>失业(农村户口)</div>
+             <div>{{ p20 }}元</div>
+            <div>{{ f20 }}元</div>
+        </li>
+        {% endif %}
+
+        <li>
+            <div>工伤保险</div>
+             <div>{{ p3 }}元</div>
+            <div>{{ f3 }}元</div>
+        </li>
+
+
+        <li class="color_li">
+            <div>生育保险</div>
+             <div>{{ p4 }}元</div>
+            <div>{{ f4 }}元</div>
+        </li>
+
+        <li>
+            <div>医疗保险</div>
+             <div>{{ p5 }}元</div>
+            <div>{{ f5 }}元</div>
+        </li>
+
+        <li class="color_li">
+            <div>公积金</div>
+            <div>{{ p6 }}元</div>
+            <div>{{ f6 }}元</div>
+        </li>
+
+
+
+        {% if is_city == 1 %}
+         <li>
+            <div>个人缴费综合</div>
+            <div>{{ p_city_sum }}元</div>
+            <div></div>
+         </li>
+
+        {% elif is_city == 0 %}
+         <li>
+            <div>个人缴费综合</div>
+            <div>{{ p_countryside_sum }}元</div>
+            <div></div>
+         </li>
+        {% endif %}
+
+
+    {% if is_city == 1 %}
+     <li class="color_li">
+        <div>公司缴费综合</div>
+        <div>{{ f_city_sum }}元</div>
+        <div></div>
+     </li>
+
+    {% elif is_city == 0 %}
+     <li class="color_li">
+        <div>公司缴费综合</div>
+        <div>{{ f_countryside_sum }}元</div>
+        <div></div>
+     </li>
+    {% endif %}
+
+    {% if is_city == 1 %}
+      <li>
+        <div>纳入国家全部综合</div>
+        <div>{{ city_sum }}元</div>
+        <div></div>
+     </li>
+
+    {% elif is_city == 0 %}
+    <li>
+        <div>纳入国家全部综合</div>
+        <div>{{ countryside_sum }}元</div>
+        <div></div>
+     </li>
+    {% endif %}
+
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <p>this is load_test</p>
+    <button id="btn">show jquery load</button>
+    <div id="show"></div>
+    {% csrf_token %}
+    <script>
+        $(function (){
+            $("#btn").click(function (){
+
+                //$('#show').load('/ajax/load_test_server/ #btn2'
+
+
+                //传参 &:以get形式传参,相当于把第二个参数拼接到第一个参数+?后
+                {#$('#show').load('/ajax/load_test_server/','uname=guoxiaonao&age=18')#}
+
+                //传参,以post形式 js对象传参
+                //$('#show').load('/ajax/load_test_server/',{uname:'guoxiaonao'})
+
+                //触发回调
+                /*$('#show').load('/ajax/load_test_server/',function (){
+                    alert('---i am func')
+                })*/
+
+                //测试load远程页面
+                $('#show').load('https://www.taobao.com')
+            })
+        })
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="throttle节流函数.js"></script>
+</head>
+<body>
+
+    <button id="cancel">取消</button>
+    <input type="text">
+
+    <script>
+    const inputEl =document.querySelector("input")
+    let counter=1
+    const inputChange=function(event) {
+        console.log(`发送了第 ${counter}aa网络请求`,this,event)
+        counter++
+    }
+
+    //直接绑定目标函数引用由于执行机制无法取得内部过程
+    inputEl.oninput=throttle(inputChange,1000,{leading:true,trailing:true})//得到返回函数的引用
+
+
+    // const _throttle = throttle(inputChange, 3000, {
+    //     leading: false,
+    //     trailing: true,
+    //     resultCallback: function (res) {
+    //         console.log("resultCallback:", res)
+    //     }
+    // })
+    // const tempCallback = () => {
+    //     //获取目标函数的过程
+    //     _throttle().then(res => {
+    //         console.log("Promise:", res)
+    //     })
+    // }
+    //
+    // //此处用一个新函数包裹目标函数，获得并执行的是新函数的引用，可以在其内部具体操作目标函数，进而获得返回值
+    // inputEl.oninput = tempCallback
+    //
+    // //、取消功能
+    // const cancelBtn = document.querySelector("#cancel")
+    // cancelBtn.onclick = function() {
+    //     _throttle.cancel()
+    // }
+
+    </script>
+
+</body>
+
+</html>

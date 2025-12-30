@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: pink;
+        }
+    </style>
+    <script src="/移动端/js/fastclick.js"></script>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        <!--    将该段代码引入后click事件就没有延时问题了，click事件正常写就好    -->
+        // ****************************************************************
+        if ('addEventListener' in document) {
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+        }
+        //*************************************************************
+
+        //此处为click事件，此时一九不会有延迟点击了
+        var div = document.querySelector('div');
+        div.addEventListener('click', function() {
+            alert(11);
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+        }
+        img{
+            width: 100%;
+        }
+        #ball{
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 100px;
+            right: 100px;
+        }
+    </style>
+</head>
+<body>
+<!--    <div>-->
+<!--        <img id="img" src="picture/reimu.png" alt="">-->
+<!--    </div>-->
+<!--    <button id="btn">隐藏</button>-->
+
+    <div id="ball"></div>
+    <button id="move">移动</button>
+    <script>
+        //全图逐渐隐藏和显示
+        // $("#btn").on("click",function (){
+        //     if ($("#btn").text()==="隐藏"){
+        //         $("#img").fadeOut(1000,function (){
+        //         $("#btn").html("显示")
+        //         })}
+        //     else {
+        //         $("#img").fadeIn(1000,function (){
+        //         $("#btn").html("隐藏")})
+        //     }
+        // })
+
+        //自定义动画
+        $("#move").on("click",function (){
+            //此处是向距离左边框200px和上边框200px方向上移动
+            // $("#ball").animate({bottom:"200px",right: "60px"})
+
+            $("#ball").fadeIn(2000)
+
+            setTimeout(function (){
+                $("#ball").animate({right:"50px"})
+            },300)
+
+            setTimeout(function (){
+                $("#ball").animate({bottom:"40px"})
+            },500)
+            setTimeout(function (){
+                $("#ball").animate({right:"200px"})
+            },600)
+
+            setTimeout(function (){
+                $("#ball").fadeOut(2000)
+            },601)
+        })
+
+        window.onload=function (){
+            alert("原生")
+        }
+         window.onload=function (){
+            alert("原生2")
+        }
+        $(function (){
+            alert("knjhasijcbihab")
+        })
+
+        $(function (){
+            alert("knjhasijcbihab")
+        })
+
+    </script>
+</body>
+</html>

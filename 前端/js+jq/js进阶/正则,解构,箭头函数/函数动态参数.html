@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //动态参数
+        function getSum(){
+            let sum=0
+            //arguments只存在于函数里面，函数外面无法查查看，同时还是一个伪数组
+            for (let i=0;i<arguments.length;i++){
+                sum+=arguments[i]
+            }
+            return sum
+        }
+        console.log(getSum(1,2,3,4,5))
+
+    </script>
+</body>
+</html>

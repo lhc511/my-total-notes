@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // var str="scvohoviqvqwqdacvvnw";
+    // // 定义一个正则对象
+    // var reg=/a/ig  //i表示忽略大小写 g表示全局，即下一次查找会从上一次查找到的位置开始
+    // // 开始匹配
+    // console.log(reg.test(str));
+    // // 查看下一次匹配的索引位置
+    // console.log(reg.lastIndex)
+    // console.log(reg.test(str));
+
+    var str="aacbefg";
+    var reg=/a/ig;
+    var arr=str.match(reg) //找出字符串中与正则表达式相匹配的结果,并全部存储在数组当中
+    console.log(arr.toString())
+    // 将查询后的a换成i
+    var str2=str.replace(reg,"i");//会返回一个新的字符串并且不影响原先的字符串
+    console.log(str2)
+</script>
+</body>
+</html>

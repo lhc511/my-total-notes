@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+        <li>知否知否，点我应有弹框在手！</li>
+    </ul>
+
+<script>
+    //事件委托，将所有点击li弹出弹框的是委托给父级元素ul，
+    // 当一个 DOM 元素触发事件时，事件会从目标元素开始，逐层向上传递到父元素，直到 document 或 window。
+    let ul=document.querySelector('ul')
+    ul.addEventListener('click',function (e){
+        // alert('知否知否，点我应有弹框在手！')
+        e.target.style.background='pink'
+    })
+
+</script>
+</body>
+</html>

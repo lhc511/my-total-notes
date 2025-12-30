@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+ <button id="btn">show data</button>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>age</th>
+    </tr>
+
+    </thead>
+    <tbody id="show"></tbody>
+</table>
+
+ <script>
+     $(function(){
+         $('#btn').click(function (){
+             $.ajax({
+                 url:'/ajax/jquery_ajax_user_server/',
+                 type:'get',
+                 dataType: 'json',
+                 async:true,
+                 //请求成功后执行的函数
+                 success:function(data){
+                      let html=''
+                     {#遍历返回的所有对象#}
+                     $.each(data,function (i,obj){
+                         html+='<tr>'
+                         html+='<td>'+obj.name+'</td>'
+                         html+='<td>'+obj.age+'</td>'
+                         html+='</tr>'
+                     })
+                     $('#show').html(html)
+                 }
+             })
+         })
+     })
+
+ </script>
+
+</body>
+</html>

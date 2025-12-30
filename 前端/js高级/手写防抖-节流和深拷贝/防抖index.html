@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="防抖函数debounce.js"></script>
+</head>
+<body>
+<button id="cancel">取消</button>
+<input type="text">
+<!--<script src="https://cdn.jsdelivr.net/npm/underscore@1.13.7/underscore-umd-min.js"></script>-->
+    <script>
+    const inputEl =document.querySelector("input")
+    let counter=1
+    const inputChange=function(event) {
+        console.log(`发送了第 ${counter}aa网络请求`,this,event)
+        counter++
+        return 'aaa'
+    }
+    //防抖处理
+    // inputEl.oninput =_.debounce(inputChange,2000)//当频繁触发时最后一次触发经过两秒钟后才执行
+
+    //手写防抖函数
+
+    // inputEl.oninput =debounce(inputChange,2000,true)//当频繁触发时最后一次触发经过两秒钟后才执行
+    // inputEl.oninput =debounce(inputChange,2000)
+    const debounceChange = debounce(inputChange, 3000,false,(res)=>{
+        console.log('拿到真正的函数返回值',res)
+    })
+    //方法二promise返回值
+    const tempCallback = () => {
+        debounceChange().then(res => {
+            console.log("promise:",res)
+        })
+    }
+    inputEl.oninput = tempCallback
+
+    //此处是由事件本身在调用，拿不到调用的过程
+    // inputEl.oninput = debounceChange 赋值的确实是 debounce 返回函数的引用，而且这个引用在事件
+    // 触发后可以直接被调用，这正是JavaScript事件处理的核心机制！
+
+    //方法一:
+    // inputEl.oninput = debounceChange//拿到返回的函数的引用
+    // inputEl.oninput =inputChange//此处中的this指向的是版绑定的元素对象
+
+    //节流处理
+    // inputEl.oninput=_.throttle(inputChange,1000)
+
+    //·取消功能
+    const cancelBtn = document.querySelector("#cancel")
+        cancelBtn.onclick = function() {
+        debounceChange.cancel()
+    }
+    </script>
+</body>
+</html>

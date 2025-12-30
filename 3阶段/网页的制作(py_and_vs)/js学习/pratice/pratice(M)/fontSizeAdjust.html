@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span{
+            padding: 5px;
+            text-decoration: solid 1px #005aa0;
+        }
+
+        #frame{
+            width: 300px;
+            height: 1000px;
+            border:none;
+        }
+        p{
+            word-break: break-word;
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="frame">
+    <div id="adjust">
+        <span id="span1">大</span>
+        <span id="span2">中</span>
+        <span id="span3">小</span>
+    </div>
+
+    <p>ajvcp0iqajvnmpoishvioenahj;buiPDZAHG;iwoerjkfgvaiohbviow;'JGVWei8o9r</p>
+    <p></p>
+</div>
+<script>
+    let fontSize1=document.getElementById("span1")
+    let fontSize2=document.getElementById("span2")
+    let fontSize3=document.getElementById("span3")
+    let p1=document.getElementsByTagName("p")
+    console.log(p1)
+    fontSize1.onclick=function (){
+        p1[0].style.fontSize="15px";
+        fontSize1.style.textDecoration="underline 1px solid red";
+        fontSize2.style.textDecoration="";
+        fontSize3.style.textDecoration="";
+
+    };
+    fontSize2.onclick=function (){
+        p1[0].style.fontSize="30px";
+        fontSize2.style.textDecoration="underline 1px solid red";
+        fontSize1.style.textDecoration="";
+        fontSize3.style.textDecoration="";
+    };
+    fontSize3.onclick=function (){
+        p1[0].style.fontSize="60px";
+        fontSize3.style.textDecoration="underline 1px solid red";
+         fontSize1.style.textDecoration="";
+        fontSize2.style.textDecoration="";
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+mysql> set password for root@localhost = password '123' ; #设置密码
+
+
+safe文件缺失：
+# 创建目录并设置权限（需sudo权限）
+sudo mkdir -p /var/run/mysqld
+sudo chown mysql:mysql /var/run/mysqld  # 关键权限设置
+sudo chmod 755 /var/run/mysqld
+
+# 验证所有权
+ls -ld /var/run/mysqld | awk '{print $3,$4}'  # 应输出"mysql mysql"
+
+
+#无法连接主机地址
+
+$ sudo mysql -u root 
+
+mysql> USE mysql;
+mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '你的密码';
+mysql> FLUSH PRIVILEGES;
+mysql> exit;
+
+$ service mysql restart
+
+在MySQL配置文件 my.cnf 中添加：
+[mysqld]
+validate_password=OFF
+validate_password=OFF #禁用密码策略
+
+
+settings文件的配置:
+'default' : {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mywebdb',  # 数据库名称,需要自己定义
+        'USER': 'root',
+        'PASSWORD': '123456',  # 管理员密码
+        'HOST': '127.0.0.1',
+        'PORT': 3306,
+    }

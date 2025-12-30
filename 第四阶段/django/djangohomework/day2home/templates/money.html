@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <form action="/shebao" method='GET'>
+       <div>
+       <label for="id_base">请输入基数</label><input type="input" name="base" id="id_base">
+       </div>
+
+       <div>
+            <label>请输选择户口</label>
+            <select name="is_city">
+                <option value ="1">城镇户口</option>
+                <option value ="0">农村户口</option>
+            </select>
+        </div>
+
+<!--       <a href="/shebao">-->
+<!--           <input type="submit" value="开始计算">-->
+<!--       </a>-->
+
+       <input type="submit" value="开始计算">
+</form>
+</body>
+</html>

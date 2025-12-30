@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/system.js"></script>
+</head>
+
+<body>
+    <!-- 1.按效果分块切割 -->
+    <!-- 2.导航条的实现 -->
+
+
+    <!-- 第一屏页面元素 -->
+    <div id="layer1">
+        <div class="lleft">
+            <div class="swipe">
+                <img id="imgleft" src="../imgs/l1-6.png" alt="">
+                <img id="img" width="752" height="452" src="images/banner01.jpg" alt="">
+                <img id="imgright" src="../imgs/r1-6.png" alt="">
+            </div>
+        </div>
+        <div class="lright"></div>
+    </div>
+    <script>
+        //页面加载完成事件中，添加导航栏
+        $(function () {
+            //调用导航栏模板，追加到页面中
+            $("body").prepend($(index.nav.html(2)));
+
+            //获取后台数据
+            var boxs = [
+                {
+                    title: 'Linux',
+                    url: 'images/toppic01.jpg',
+                    p: 'Linux升级为p3,安装pip,svn'
+                },
+                {
+                    title: 'Python',
+                    url: 'images/toppic02.jpg',
+                    p: '精通Python编程——深入浅出教程'
+                }]
+            //遍历数组
+            $.each(boxs,function(i,v){
+                 //调用盒子模板，添加图片混合内容
+                $(".lright").append($(index.box.html(v.url,v.title,v.p)))
+            })
+            //保存大图切换的地址数组
+            var arrImg = ["images/banner01.jpg", "images/banner02.jpg", "images/banner03.jpg"]
+            //保存图片数组索引号变量
+            var i = 0;
+            //分别绑定左右切换图片按钮事件
+            $("#imgleft").on("click", function () {
+                //方法二
+                $("#img").fadeOut(1000, function () {
+                    if (i == 0) {
+                        i = arrImg.length - 1;
+                    } else {
+                        i--;
+                    }
+                    $(this).attr("src", arrImg[i]).fadeIn(1000)
+                })
+                //方法一
+                //$("#img").attr("src",arrImg[i]);
+            })
+            //分别绑定左右切换图片按钮事件
+            $("#imgright").on("click", function () {
+                //增加图片索引号
+
+                //如果i大于数组，则返回为0
+
+                //方法一
+                //$("#img").attr("src",arrImg[i]);
+
+                //方法二
+                $("#img").fadeOut(1000, function () {
+                    i++;
+                    if (i > arrImg.length - 1) i = 0;
+                    $(this).attr("src", arrImg[i]).fadeIn(1000);
+                })
+
+
+
+            })
+
+        })
+    </script>
+</body>
+
+</html>

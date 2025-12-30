@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <style>
+            #mob{
+                width: 248px;
+                height: 507px;
+                margin: 0 auto;
+                border: 1px solid red;
+            }
+
+            #exit{
+                background-color: red;
+                position: absolute;
+                right: 0;
+            }
+    </style>
+</head>
+
+<script>
+    function $$(id){
+        return document.getElementById(id)
+    }
+
+    // <!--    该函数与鼠标的点击交互绑定，再点击之后会退出该页面-->
+    fun_exit=function(){
+        ex=document.getElementById("mob")
+
+        ex.style.display="none"
+    }
+
+</script>
+
+<body>
+    <div id="mob">
+        <img src="picture/白井黑子.jpg" alt="">
+        <div onclick="fun_exit()"  id="exit">x关闭</div>
+    </div>
+</body>
+</html>

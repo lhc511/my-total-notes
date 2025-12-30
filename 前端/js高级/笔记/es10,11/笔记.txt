@@ -1,0 +1,28 @@
+ES10 - flat flatMap
+■ flat()方法会按照一个可指定的深度递归遍历数组,并将所有元素与遍历到的子数组中的元素合并为一个新数组返回(即给数组降维)。
+在js中for in 遍历数组只会拿出数组的索引号 用for of 才能拿到元素
+对于对象来说for ... in是用于遍历对象的key
+
+null与undefined的区别
+在JavaScript中，null和undefined都是表示“无”的特殊值，但它们有不同的含义和用途。
+定义和用法
+null表示一个空对象指针，即该变量本应该指向一个对象，但现在没有指向任何对象。例如：
+    var obj = null;
+undefined表示一个未定义的值，即该变量没有被赋值或者被赋值为undefined。例如：
+    var x;
+    console.log(x); // undefined
+在条件判断中，null和undefined都会被转换为false，但在其他方面，它们有一些不同的行为。
+相似性:在JavaScript中，将一个变量赋值为undefined或null，几乎没有区别。它们在if语句中都会被自动转为false
+
+es11：
+■可选链也是ES11中新增一个特性,主要作用是让我们的代码在进行null和undefined判断时更加清晰和简洁。
+在之前我们希望获取JavaScript环境的全局对象,不同的环境获取的方式是不一样的
+    □比如在浏览器中可以通过this、window来获取;
+    □比如在Node中我们需要通过global来获取;
+
+■在ES11之前,虽然很多浏览器支持for ... in来遍历对象类型,但是并没有被ECMA标准化。
+■在ES11中,对其进行了标准化,for ... in是用于遍历对象的key的:
+ES11 其他知识点
+■Dynamic Import:后续ES Module模块化中讲解。
+■Promise.allSettled:后续讲Promise的时候讲解。
+■ import meta:后续ES Module模块化中讲解。

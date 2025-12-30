@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #reg{
+            width: 345px;
+        }
+        /*display: inline-block;  将内联元素转变为块元素以此来控制宽度*/
+        label{
+            display: inline-block;
+            width: 90px;
+            /*border: solid 1px red;*/
+            text-align: left;
+        }
+        .btn{
+            width: 180px;
+            background-color: green;
+            color: white;
+            padding: 13px;
+            outline: None;
+            border: 0;
+            border-radius: 8px;
+        }
+        div{
+            margin: 20px 0;
+        }
+        .pad{
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+<!--简便写法：div#reg-->
+    <div id="reg">
+        <form action="#">
+            <div>
+                <label for="email">^邮箱地址:</label>
+                <input type="text" class="pad" id="email" name="email">
+            </div>
+            
+            <div>
+                <label for="pass">*设置密码:</label>
+                <input type="text" class="pad" id="pass" name="pass">
+            </div>
+            
+            <div>
+                <label>*兴趣标签:</label>
+                <input type="checkbox" id="news" name="news">新闻
+                <input type="checkbox" id="entertainment" name="entertainment">娱乐
+                <input type="checkbox" id="culture" name="culture">文化
+                <input type="checkbox" id="gym" name="gym">体育
+
+            </div>
+                
+                <div>
+                    <label for="code">*验证码:</label>
+                    <input type="text" style="width: 80px" class="pad" id="code" name="code">
+                </div>
+
+                <div>
+                    <label></label>
+                    <input  class="btn" type="submit" value="立即注册">
+                </div>
+
+                <div>
+                    <label></label>
+                    <a href="#">新浪网络使用协议</a>
+                </div>
+        </form>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+    <button id="btn"> 跨域请求</button>
+
+    <script>
+        //跨域预留函数
+        /*function print(data){
+            console.log(typeof(data))
+            console.log('server data is '+ data)
+        }*/
+        /*
+        $(function (){
+            $('#btn').click(function (){
+                //js原生跨越
+                const body=document.getElementsByTagName('body')[0]
+                {#************************************#}
+                {#        相当于创建并添加了一个 <script src="http://localhost:8000/ajax/cross_server/?callback=print"></script>#}
+{#                然后从这个src路径加载资源#}
+                const script=document.createElement('script')
+                script.type='text/javascript'
+                script.src='http://localhost:8000/ajax/cross_server/?callback=print'
+                //将script标签插入到body，添加后加载脚本时自动执行函数
+                body.append(script)
+            {#    *********************************#}
+            })
+
+        })*/
+
+        //jquery跨域
+
+        /*$(function (){
+
+            $('#btn').click(function (){
+                $.ajax({
+                    //jsonp模式只支持get请求
+                    url:"http://localhost:8000/ajax/cross_server_json/?callback=print",
+                    {#url:"http://localhost:8000/ajax/cross_server/?callback=print",#}
+                    type:'get',
+                    dataType:'jsonp',
+                    jsonp: 'callback',//向后端发送的键
+                    jsonpCallback:'print'//向后端发送的值(预留函数的函数名)
+                })
+            })
+        })*/
+            //jquery 跨域
+        $(function (){
+            $('#btn').click(function () {
+                $.ajax({
+                    url: "http://localhost:8000/ajax/cross_server_json/?callback=print",
+                    type: 'get',
+                    //指定是跨域请求后，该方法会自动生成预留函数等其他所需要的的
+                    dataType: 'jsonp',
+                    success: function (data) {
+                        console.log(data)
+                        console.log('this is jquery console')
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+</html>

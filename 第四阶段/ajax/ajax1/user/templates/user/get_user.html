@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <button id="btn">
+        显示所有用户
+    </button>
+    <table border="1">
+        <tr>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>昵称</td>
+        </tr>
+        <tbody id="show"></tbody>
+    </table>
+
+    <script>
+        $(function (){
+            $('#btn').click(function (){
+                const xhr=createXhr()
+                const url='/user/get_user_server/'
+                xhr.open('get',url,true)
+                xhr.onreadystatechange=function (){
+                    if(xhr.readyState===4&&xhr.status===200){
+                        const msg=xhr.responseText
+                        const users=msg.split('|')
+                        let html=''
+                        for(let i=0;i<users.length;+i++){
+                            html+='<tr>'
+                            let info=users[i].split('_')
+                            html+='<td>'+info[0]+'</td>'
+                            html+='<td>'+info[1]+'</td>'
+                            html+='<td>'+info[2]+'</td>'
+                            html+='</tr>'
+                        }
+                        $('#show').html(html)
+                    }
+                }
+                xhr.send(null)
+            })
+        })
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        img{width: 100px}
+
+        ul{
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+        ul>li{
+            border: solid 1px red;
+            float: left;
+        }
+
+        .top{
+            width: 404px;
+            overflow: hidden;
+        }
+        .change{
+            float: right;
+        }
+        .tip{
+            float:left ;
+        }
+    </style>
+
+</head>
+<body>
+<div class="top">
+    <div class="tip">相关书籍</div>
+    <div class="change">换一换</div>
+</div>
+<ul>
+
+</ul>
+
+<script>
+    //保存数据
+    let arrBook=[
+    {url:"pic2/6flower.png",name:"第一张照片",cls:"是六花"},
+    {url:"pic2/39.png",name:"第二张照片",cls:"是三玖"},
+    {url:"pic2/hequanshawu.png",name:"第三张照片",cls:"是和泉纱雾"},
+    {url:"pic2/qianshi.png",name:"第四张照片",cls:"是千失"},]
+    $(".change").on("click",function (){
+        let HTML="";
+        let _tmpArr=creatNum(4)
+        for(let i=0;i<_tmpArr.length;i++){
+            //这一段本身相当于在body中写的页面 只是其中的变化的数据用变量替代
+            HTML+="<li>"
+            HTML+='<img src="'+arrBook[_tmpArr[i]].url+'" alt="">'
+            HTML+='<h3><a href="https://www.bing.com/images/search?q=%e5%b0%8f%e5%b2%9b%e6%b8%b8%e5%85%ad%e8%8a%b1&form=HDRSC3&first=1">'+arrBook[_tmpArr[i]].name+'</a></h3>'
+            HTML+='<p>'+arrBook[_tmpArr[i]].cls+'</p>'
+            HTML+="</li>"
+            console.log(_tmpArr[i])
+            // console.log(HTML);
+
+            //此处是用jq函数中的函数将HTML中的内容做页面展示
+            $("ul").html(HTML)
+        }
+
+    })
+    function creatNum(count){
+        let arrTmp=[]
+        for(let i=0;i<count;i++){
+            let _index=Math.floor(Math.random()*arrBook.length)
+            arrTmp.push(_index)
+        }
+        return arrTmp
+    }
+</script>
+</body>
+</html>

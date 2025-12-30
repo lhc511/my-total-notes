@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        ul{
+            width: 550px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            border: solid 5px #4c4c;
+        }
+        ul>li{
+            border-bottom:solid 1px #cee3df;
+            overflow: hidden;
+        }
+        ul>li>span{
+            border-bottom:solid 1px #cee3df;
+            width: 101px;
+            float: left;
+            padding: 5px 4px;
+            /*display: inline-block;*/
+        }
+    </style>
+</head>
+<body>
+    <ul>
+    <li>
+        <span>product</span>
+        <span>price</span>
+        <span>id code</span>
+        <span>quality</span>
+        <span>exp date</span>
+    </li>
+
+    <li>
+        <span>pro1</span>
+        <span>51 $</span>
+        <span>4587</span>
+        <span>good</span>
+        <span>02/01/2009</span>
+    </li>
+
+    <li>
+        <span>pro1</span>
+        <span>51 $</span>
+        <span>4587</span>
+        <span>good</span>
+        <span>02/01/2009</span>
+    </li>
+
+    <li>
+        <span>pro1</span>
+        <span>51 $</span>
+        <span>4587</span>
+        <span>good</span>
+        <span>02/01/2009</span>
+    </li>
+
+    <li>
+        <span>pro1</span>
+        <span>51 $</span>
+        <span>4587</span>
+        <span>good</span>
+        <span>02/01/2009</span>
+    </li>
+    <li>
+        <span>pro1</span>
+        <span>51 $</span>
+        <span>4587</span>
+        <span>good</span>
+        <span>02/01/2009</span>
+    </li>
+
+    <li>
+        <span>pro1</span>
+        <span>51 $</span>
+        <span>4587</span>
+        <span>good</span>
+        <span>02/01/2009</span>
+    </li>
+</ul>
+    <script>
+        //获取除了第一行以外的行集合
+        $("ul>li:not(li:first)").each(function (index,elem){
+            //将每一项元素转成jq对象()
+            $(elem).on("mouseover",function (){
+                //这里的this指的是elem
+                $(this).css({"background-color":"#aaa","color":"#fff"})
+            }).on("mouseout",function (){
+                $(this).css({"background-color":"#fff","color":"black"})
+            })
+        })
+
+    </script>
+</body>
+</html>

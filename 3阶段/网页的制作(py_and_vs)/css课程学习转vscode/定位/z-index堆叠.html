@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #pic{
+            margin: 0 auto;
+            position: relative;
+            width: 1300px;
+            height: 1300px;
+            border: solid 1px red;
+        }
+        #pic>div:nth-child(1){
+            position: absolute;
+            left: 50px;
+            top: 30px;
+            /*z-index: 3;*/
+        }
+
+        #pic>div:nth-child(1):hover{z-index: 2}
+
+        #pic>div:nth-child(2){
+            position: absolute;
+            left: 150px;
+            top:130px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="pic">
+        <div>
+            <img src="picture/轻音少女-喵.jpg" alt="">
+        </div>
+        
+        <div>
+            <img src="picture/霹雳霹雳.jpg" alt="">
+        </div>
+    </div>
+</body>
+</html>

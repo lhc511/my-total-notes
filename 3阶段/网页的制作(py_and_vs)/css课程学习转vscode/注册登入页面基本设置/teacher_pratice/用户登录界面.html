@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .center{text-align: center;}
+        /*margin: 0 auto;   在整个页面上居中*/
+        #reg{
+            width: 296px;
+            border: solid 1px #ccc;
+            padding: 8px;
+            box-shadow: 5px 5px 25px #005aa0;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="reg">
+        <h3><b>用户注册</b></h3>
+        <form action="#">
+            <div>
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name">
+            </div>
+
+           <div>
+                <label for="pass">密码</label>
+                <input type="password" id="pass" name="pass">
+           </div>
+
+            <div>
+                <label for="marry">婚否</label>
+                <input type="checkbox" id="marry" name="marry">
+            </div>
+
+            <div>
+                <label for="sex1">性别</label>
+                <input type="radio" id="sex1" name="sex">男
+                <label for="sex2">性别</label>
+                <input type="radio" id="sex2" name="sex">女
+            </div>
+
+            <div>
+                <label for="coll">学历</label>
+                <select name="coll" id="coll">
+                    <option value="0">请选择</option>
+                    <option value="1">大学</option>
+                    <option value="2">中学</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="demo">简介</label>
+                <textarea name="demo" id="demo" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="center">
+                <input type="submit" value="提交">
+                <input type="submit" value="重置">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,182 @@
+document.getElementsByClassName("example") 返回所有类名为example的集合
+例:document.getElementsByClassName("example")[0] 选中集合中的第一个元素
+getElementsByTagName("p")也是一个数组
+
+display:
+    display 设置为空字符串，则表示恢复到默认样式或者继承自 CSS 文件定义的状态。
+        例: b=document.getElementsByClassName("content")[0];
+            b.style.display=""
+
+    b.style.display = "none"; 时，
+        该元素及其子元素将被完全隐藏，并且不会占用文档流中的任何空间1。
+
+    b.style.display = "block"
+        js中简单理解成将元素显现出来
+        设置为 "block" 表示该元素将以块级形式呈现，独占一行，并且宽度自动扩展至父容器的整个宽度3。
+        它允许指定高度、宽度以及其他尺寸相关的属性。
+        使用场景：适合用来创建独立占据整行的大区域组件，比如文章段落或导航栏。
+
+/*将鼠标外形改为手掌*/
+        cursor: pointer;
+/*将鼠标外形改为移动*/
+    cursor: move;
+
+onchange:
+    onchange事件在元素的值发生变化时被触发。
+    通过JavaScript代码直接修改元素的value属性onchange事件并不会被触发
+    onchange事件是基于用户交互来设计，而不是基于程序控制的值变化。
+
+当你设置innerText属性时，所有子节点都将被删除，并仅由一个新的文本节点替换。
+这意味着，如果你想保留元素的子节点，你应该谨慎使用这个属性。
+例如，如果你有一个包含多个子元素的段落，并且你设置了innerText，所有的子元素都会被一个单一的文本节点替换。
+
+innerText:只能识别文本    innerHTML:除了文本之外还可以识别html带专有符号
+ element.innerHTML="iovhianvoqv"只有给其重新赋值才能改变 网页 中的内容
+
+{ } 大括号，表示定义一个对象，大部分情况下要有成对的属性和值，或是函数
+例如：var LangShen = {"Name":"Langshen","AGE":"28"};
+
+块级作用域就是一对{}内部，函数作用域是一个函数的内部
+var:会变量提升   而let/const不会
+变量提升:对一个变量的声明会提升导函数顶部，但是对其的赋值操作不会
+new作用:用来创建一个对象，可以继承其相对应的父属性 与python中的class类创建对象相似
+
+new RegExp(pattern, attributes);
+pattern: 表示要匹配的规则，可以是字符串或者现有的正则表达式。
+attributes: 可选参数，指定标志位（flags），如 g (全局)，i (忽略大小写)，m (多行模式) 等。
+
+line-height: 42px;   在height用px为单位的时候可以对文本进行垂直方向上居中
+
+// 使用querySelector选择第一个匹配的元素(此处选择类名为my-class的数组中的第一个元素)
+    const element = document.querySelector('.my-class');
+    console.log(element)
+
+DOM事件（Document Object Model Events）是指浏览器在用户与网页交互时产生的特殊对象，例如点击按钮、输入文本、滚动页面等。
+
+jQuery对象:就是把dom对象事件给包装起来，并且dom事件和jQuery对象都有独立的库函数不能相互调用 给变量前加$就是jQuery对象
+var $variab = jQuery对象；如果获取的是DOM对象，则与习惯普通一样：var variab = DOM对象；这么约定只是便于讲解与区别，实际使用中并不规定。
+例如:dom:document.getElementById(“id”).innerHTML;
+    jQuery:$(“#test”).html()   意思是指：获取ID为test的元素内的html代码。其中html()是jQuery里的方法
+    document.getElementById(“id”).html();该写法错误
+
+    jQuery对象转成DOM对象：[index]和.get(index);
+    (1)jQuery对象是一个数据对象，可以通过[index]的方法，来得到相应的DOM对象。
+    如：var $v =$(“#v”) ; //jQuery对象
+    var v=$v[0];    //DOM对象
+    alert(v.checked)   //检测这个checkbox是否被选中
+    (2)jQuery本身提供，通过.get(index)方法，得到相应的DOM对象
+    如：var $v=$(“#v”);  //jQuery对象
+    var v=$v.get(0);   //DOM对象
+    alert(v.checked)  //检测这个checkbox是否被选中
+
+    DOM对象转成jQuery对象:
+    对于已经是一个DOM对象，只需要用$()把DOM对象包装起来，就可以获得一个jQuery对象了。$(DOM对象)
+    如：var v=document.getElementById(“v”);  //DOM对象
+    var $v=$(v);    //jQuery对象
+
+在 HTML 中，“计算样式”（Computed Style）是指一个元素在浏览器中最终呈现时的样式。这些样式是由浏览器根据以下来源综合计算得出的：
+    用户代理样式表：浏览器的默认样式。
+    外部样式表：通过 <link> 标签引入的 CSS 文件。
+    内联样式表：在 HTML 元素的 style 属性中直接定义的样式。
+    嵌入式样式表：通过 <style> 标签定义的样式。
+    继承：某些 CSS 属性会从父元素继承。
+    优先级和层叠规则：根据 CSS 的优先级规则（如权重、来源、重要性等）决定最终应用的样式。
+    示例代码: const element = document.querySelector('.my-element');
+            const styles = window.getComputedStyle(element);
+            console.log(styles.color); // 输出元素的字体颜色
+            console.log(styles.marginTop); // 输出元素的上外边距
+
+overflow: auto;出现一个拖动栏（文字超出时）只能在左右调节
+overflow: scroll;出现一个拖动栏（文字超出时）可以上下左右调节
+
+CSS的word-break属性用于定义当文字换行时的断字规则。常用的取值有：
+– normal：默认值，根据语言和字母遵守断字规则。
+– break-all：无视语言和字母的断字规则，允许在任意字符间换行。
+
+<input type="radio" id="select1" name="selection1" checked>
+<label for="select1">showImg1</label>
+<input type="radio" id="select2" name="selection2" checked=>
+<label for="select2">showImg2</label>
+
+id.checked=false 给选项框设置初始值
+
+window.history.back()该函数用于返回上一个页面
+
+在HTML中，URL（Uniform Resource Locator）指的是“统一资源定位符”，也称为“网址”。它是一个用于在网络上定位资源的地址
+
+value : 读取或设置表单控件的值 比如说input中的text模式，value就是文本框中输入的值
+属性设置的两种方式:
+    spans[0].setAttribute("title","这是一个首页")
+    spans[0].title="这是一个是一个首页"
+
+spans[0].style.color="green"//中间不用跟标签或者类名直接访问属性就好了
+
+<a href="javascript:void(0);">大</a>   //防止页面跳转(将href设置成 javascript:void(0); )
+
+/*想上移动自身长度的50%*/
+transform: translateY(-50%);
+
+margin: auto;        //在整个浏览器页面中对齐
+
+overflow:hidden 只对元素标签的上一级标签起作用
+width和height实际上设置的是元素内容所占的空间不包括内边距
+
+样式一般在script前面 因为css样式加载比js快所以css样式一般放在js代码前面
+
+!important提升元素属性的权重，使其能够显示   id的权重大于class的权重、
+动画效果:
+    fadeOut(300,~):逐渐消失  在300毫秒内淡出后并执行~的代码
+    fadeIn:逐渐展示
+    slideUp:向上消失
+    slideDown:向下展示
+
+    show：展示(左上角)
+    hide：隐藏(左上角)
+
+animate动画的移动:
+    布局计算冲突
+        当同时设置left和right时，浏览器需动态计算元素宽度。若父容器尺寸或元素宽度未明确定义，可能导致right动画失效。
+        left动画通常更直观，因为浏览器默认从左侧开始布局，而right的计算可能受父容器右侧边界限制。
+    浏览器兼容性问题
+        旧版浏览器（如IE）对right的支持较差。例如，IE可能忽略未明确设置position的right动画5。
+        left因使用更广泛，兼容性更好（如现代浏览器对left的隐式定位处理更宽松）
+
+setTimeout 函数在JavaScript中用于在指定的毫秒数后执行一次指定的函数或代码段。
+
+两个函数一起执行则先执行花3秒的，最终共执行5秒，彼此独立计算不相互影响
+    //从零开始计时在第五秒位移到距离下边界40px处位置
+    setTimeout(function (){
+        $("#ball").animate({bottom:"40px"})
+        },5000)
+
+    //从零开始计时在第五秒位移到距离下边界40px处位置
+    setTimeout(function (){
+        $("#ball").animate({right:"200px"})
+        },3000)
+
+window.onload 是前端 JavaScript 中的一个事件，它会在整个页面（包括所有依赖资源，如图片、样式表、脚本等）完全加载完成后触发。这个事件常用于确保页面所有内容加载完毕后再执行某些操作，比如初始化页面功能或绑定事件。
+
+this:js中是指其复函数当中所获得的变量(可以是id,class,标签等等)
+
+//each函数 功能:遍历选择器获取到的列表集合，得到每一个对象
+//写法:选择器.each(function(index,element))
+    //index表示索引号
+    //element表示原生元素
+    //})
+    例如：$("div").each(function (index,element){})
+    console.log(index):输出每一个div元素在集合中的索引
+
+使用float是没有间距的
+
+Mouseover事件（重点）：鼠标移动到标签之上
+Mouse 鼠标
+Over 在…之上
+Mouseout事件（重点）：鼠标离开标签
+
+focus 是将焦点设置到某个元素，而 blur 是移除元素的焦点。
+
+opacity: 0.5;//设置元素透明度0~1
+
+placeholder占位符：可以在文本框中显示默认值但是不影响输入
+
+box-shadow: 3px 3px 5px #666;//向右向下便宜3px 阴影的模糊半径时5px 颜色是#666
