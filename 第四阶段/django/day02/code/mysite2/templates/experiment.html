@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action='/experiment' method='GET'>
+    <h3>{{ pst }}</h3>
+    <input type='text' name="x" value="{{ x }}">
+    <select name='op'>
+        <option value="add"> +加 </option>
+    </select>
+
+    <input type='text' name="y" value="{{ y }}"> =
+    <span>{{ result }}</span>
+    <div>
+        <input type="submit" value='lalala'>
+    </div>
+    {{ pst2 }}
+</form>
+</body>
+</html>

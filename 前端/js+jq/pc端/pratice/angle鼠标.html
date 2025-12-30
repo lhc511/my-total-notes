@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+          position:absolute;
+        }
+    </style>
+</head>
+<body>
+<img src="/pc端/img/img/angel.gif" alt="舞">
+
+<script>
+    const pic=document.querySelector('img')
+    document.addEventListener('mousemove',function (e){
+        let x=e.pageX //整个浏览器的绝对坐标  clientX 当前浏览器的相对位置
+        let y=e.pageY
+        pic.style.left=x-30+'px'
+        pic.style.top=y-40+'px'
+    })
+</script>
+
+</body>
+</html>

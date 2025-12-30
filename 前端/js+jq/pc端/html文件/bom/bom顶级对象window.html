@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //window.onload函数,当有多个时会冲突(只会执行最后一个)
+        //传统的使用方法
+        // window.onload=function (){
+        //     const b=document.querySelector('button')
+        //     b.addEventListener('click',function (){
+        //     alert('aaaaa')}
+        //     )}
+
+        //新方法
+        window.addEventListener('load',function (){
+            const btn=document.querySelector('button')
+            btn.addEventListener('load',function (){
+            alert('aaaaa')
+        })})
+    </script>
+</head>
+<body>
+    <button>aaa</button>
+    <script>
+        // window.document.querySelector()
+        // var num = 10;   //定义在全局的变量
+        // console.log(num);
+        // console.log(window.num);//作为window的属性方法
+        //
+        // function fn() {       //定义在全局的函数
+        //     console.log(11);
+        // }
+        // fn();
+        // window.fn();
+        // // alert(11);
+        // // window.alert(11)
+        // console.dir(window);
+        // // var name = 10;
+        // console.log(window.name);
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+文档查阅网站:MDN/W3C 推荐WDN
+
+www.runoob.com
+docs.python.org/zh-cn/3/   #软件
+www.pythontab.com
+https://www.jetbrains.com.cn/en-us/pycharm/ #环境
+
+轮播图便捷网站插件:https://www.swiper.com.cn/
+			    www.superslide2.com
+				https://iscrolljs.com/	
+
+https://www.bootcss.com/()中文网站  bootstrap框架网站  https://getbootstrap.com/
+
+jq插件网站:1.http://www.htmleaf.com                    2.https://www.jq22.com/
+
+css文字图标网站  https://icomoon.io/       ->https://icomoon.io/app/#/select/library      ->https://icomoon.io/app/#/select      https://icomoon.io/ultimate#free
+www.iconfont.cn/
+
+把png图片转换为ico图标,这需要借助于第三方转换网站,例如比特虫:http://www.bitbug.net/
+这里给大家推荐一个免费的远程服务器(免费空间)http://free.3v.do/
+
+js中的babel：babeljs.io  ->点击上方的try it out   此处可以将一些新规代码转换成es5的代码
+
+https://promisesaplus.com/
+
+npmjs.com //该网站可以查找npm的包

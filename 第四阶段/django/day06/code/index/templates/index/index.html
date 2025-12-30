@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+<!--  如果 储存在服务端的字典集(request.session)和字典集中的键都存在 ,即双重验证-->
+    {% if request.session and request.session.user %}
+<!--  取user键中的username的值即(用户名)  -->
+    欢迎{{ request.session.user.username }}
+    <a href="/user/logout">退出登陆</a>
+    <a href="/note/mod_password">修改密码</a>
+
+    {% else %}
+    <a href="/user/login">登陆</a>
+    <a href="/user/reg">注册</a>
+    {% endif %}
+
+{% if request.session and request.session.user %}
+<a href="/note/">进入我的云笔记</a>
+{% endif %}
+</body>
+</html>

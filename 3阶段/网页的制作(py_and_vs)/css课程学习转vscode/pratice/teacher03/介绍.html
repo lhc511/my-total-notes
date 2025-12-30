@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #instr{
+            width: 976px;
+            height: 756px;
+            border: solid 1px red;
+            margin: 0 auto;
+        }
+        /*给一个元素中设置overflow:hidden，那么该元素的内容若超出了给定的宽度和高度属性，
+        那么超出的部分将会被隐藏，不占位。*/
+        #instr>div:nth-child(1){
+            width: 265px;
+            height: 265px;
+            margin: 20px auto;
+            border: white 10px solid;
+            overflow: hidden;
+            border-radius:50% ;
+        }
+
+        #instr>div:nth-child(1)>img{
+            width: 100%;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="instr">
+    <div>
+        <img src="头像.jpg" alt="">
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #search{
+            width: 260px;
+            margin: 0 auto;
+        }
+        p>span{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="search">
+        <input type="text" id="key">
+        <button id="btnSearch">查找</button>
+        <p id="p1">
+            ouiqefnieqopgvnioewjoiwjfpojapifqnoivjnOUWGBNVWOIJOWBOIio
+            ouiqefnieqopgvnioewjoiwjfpojapifqnoivjnOUWGBNVWOIJOWBOIio
+        </p>
+
+        <script>
+            function $$(id){
+                return document.getElementById(id)
+            }
+            //获取查询按钮
+            var btnSearch=$$("btnSearch")
+            //获取文本框兑象
+            var key=$$("key")
+            //获取内容对象
+            var p1=$$("p1")
+            btnSearch.onclick=function (){
+                // reg本身是正则表达式的规则
+                let reg=new RegExp(key.value,"ig");//key.value找是文本框内输入的值  此处将其作为规则并忽略大小写
+                //重置新的内容
+                p1.innerHTML=p1.innerHTML.replace(reg, "<span>" + key.value + "</span>");//用后面的替换前面符合规则的
+
+
+            };
+        </script>
+    </div>
+</body>
+</html>

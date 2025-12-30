@@ -1,0 +1,107 @@
+setInterval 的回调函数是普通函数（非箭头函数）定时器回调作为独立函数调用时，this 默认指向全局对象即window
+即使定时器在事件函数内部，定时器函数中的this也不会指向事件，只会指向全局
+定时器会优先等一个设定的时间间隔在进行执行
+对于大多数HTML标准属性（如name, type, value等），使用.attr()就足够了。
+对于那些在DOM元素上作为属性（property）而非HTML标签属性的值（如checked, disabled, selected等），使用.prop()可能更合适。
+attr()：针对HTML文档节点的属性（如<input type="checkbox" checked>中的checked），返回字符串值（如"checked"或undefined）。‌‌
+prop()：针对DOM元素的JavaScript属性（如input.checked），返回布尔值（true/false）并实时反映用户操作状态
+
+jq的data-prop属性选择方法
+// 选择所有带data-prop属性的元素
+$('[data-prop]')
+// 选择data-prop值为"username"的元素（精确匹配）
+$('[data-prop="username"]')
+// 案例1：选择类名为xtx-form-item且带data-prop的元素
+$('.xtx-form-item[data-prop]')
+// 案例2：选择特定值的div元素
+$('div[data-prop="username"]')
+
+const phone=document.querySelector('[name=phone(值-不带引号)]')//选择指定name值的元素
+反引号（`）的作用：
+定义多行字符串：不需要使用\n或字符串连接符，直接换行即可。
+支持字符串插值：通过${}语法嵌入变量或表达式。
+${}的作用：
+嵌入表达式：将表达式的结果转换为字符串并插入到模板字符串中。
+表达式可以是变量、算术运算、函数调用等。
+例如:const product = "手机";
+    const price = 2999;
+    // 变量插入  console.log(`商品：${product}`); // "商品：手机"
+    // 表达式计算  console.log(`折扣价：${price * 0.8}`); // "折扣价：2399.2"
+    // 函数调用  console.log(`日期：${new Date().toLocaleDateString()}`);
+
+如果你想要选择具有特定data-属性的元素，你可以这样做：
+    $('[data-someattribute]')
+这将选择所有具有data-someattribute属性的元素。
+如果你想要选择具有特定值的data-属性，你可以这样做：
+    $('[data-someattribute="value"]')
+这将选择所有其data-someattribute属性值为"value"的元素。
+
+示例：使用jQuery读取或设置data属性
+// 读取具有特定data属性的元素的值
+var value = $('[data-someattribute]').data('someattribute');
+console.log(value); // 输出: "value"（如果存在且为"value"）
+设置数据属性值
+// 设置或更新一个元素的data属性值
+$('[data-someattribute]').data('someattribute', 'new value');    //不改变dom元素
+$('[data-someattribute]').attr('data-someattribute', 'new value');   //改变dom元素
+
+特性	              .data()	           .attr()
+存储位置	          jQuery内部缓存	       DOM属性
+数据类型	          任意类型（保留原类型）    强制转为字符串
+作用元素范围	      所有匹配元素	           仅第一个匹配元素
+是否修改HTML	      否	               是
+性能	              高效（内存操作）	       较低（DOM操作）
+典型用例	          JS内部数据管理	       需HTML/CSS访问的数据
+
+先，我们注意到过滤条件中使用了链式比较：priceDown < parseInt(price) < priceUp。
+在JavaScript中，链式比较并不会像数学中那样同时比较两个条件。实际上，它会从左到右进行求值。
+具体步骤
+先计算 priceDown < parseInt(price)，这个表达式会返回一个布尔值（true或false）。
+然后，将这个布尔值与 priceUp 进行比较（即：(priceDown < parseInt(price)) < priceUp）。
+由于布尔值在比较运算中会被转换为数字（true转为1，false转为0），所以实际上是在判断 0 或 1 是否小于 priceUp。
+
+e是拿到事件。e.target可以拿到事件对象
+带有data-开头的属性，data-属性名，用 dataset.属性名来查找
+
+原型对象的本质：一个普通的JavaScript对象（Object的实例）。
+原型对象的默认结构：
+    有一个constructor属性，指向关联的构造函数。
+    其他属性：没有（初始为空），但我们可以添加。
+console.dir(Person.prototype);
+/* 输出：
+{
+  constructor:  ƒ Person(),  // 指回构造函数
+  __proto__: Object.prototype  // 指向上一级原型
+}
+
+__ proto_是JS非标准属性
+> [[prototype]]和 __proto__ 意义相同
+> 用来装明当前实例对象指向哪个原型对象prototype
+__proto__对象原型里面也有一个constructor属性,指向创建该实例对象的构造函数
+
+// 创建空的 div 元素
+const $newDiv = $('<div>');
+// 创建带内容的段落
+const $paragraph = $('<p>这是新建段落</p>');
+创建带属性的元素
+在第二个参数中传入属性对象：
+const $input = $('<input>', {
+    type: 'text',
+    id: 'username',
+    class: 'form-control',
+    placeholder: '请输入用户名'
+});
+
+$('.modal') 是 jQuery 选择器，它会选择页面上所有具有 modal 类的元素，并返回一个 jQuery 对象。这个对象是一个类数组，包含了所有匹配的元素。
+即使没有匹配的元素，它也会返回一个空的 jQuery 对象（而不是 null 或 undefined）。因此一直为 真
+
+document.querySelector('.modal') 是原生 JavaScript 方法，它会返回文档中第一个匹配 .modal 类的元素（一个 DOM 元素）。如果没有匹配的元素，则返回 null。
+ jQuery 中，选择器返回的是一个类数组对象（jQuery对象）
+for(let i in 嵌套结构名称)：如果嵌套结构为字典 i为键 若是列表：i是索引号
+
+1. 函数内不存在this,沿用上一级的,过程:向外层作用域中,一层一层查找this,直到有this的定义
+2. 不适用  >构造函数,原型函数,字面量对象中函数,dom事件函数
+3. 适用    >需要使用上层this的地方
+
+JavaScript中还允许指定函数中this的指向,有3个方法可以动态指定普通函数中this的指向
+·call()  ·apply()  ·bind()

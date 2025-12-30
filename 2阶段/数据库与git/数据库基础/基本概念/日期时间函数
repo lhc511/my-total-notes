@@ -1,0 +1,29 @@
+date ："YYYY-MM-DD"
+time ："HH:MM:SS"
+datetime ："YYYY-MM-DD HH:MM:SS"
+timestamp ："YYYY-MM-DD HH:MM:SS"
+注意
+1、datetime ：以系统时间存储
+2、timestamp ：以标准时间存储但是查看时转换为系统时区，所以表现形式和datetime相同
+例：create table marathon (id int primary key auto_increment,姓名 varchar(32),报名时间 datetime,成绩 time);
+
+
+now() 返回服务器当前时间,格式对应datetime类型
+curdate() 返回当前日期，格式对应date类型 (只有)年月日（当前时间） 时间填充00:00:00
+curtime() 返回当前时间，格式对应time类型 年月日(填充当前日期) (只有)时分秒年月日（当前时间）
+date(date) 返回指定时间的日期
+time(date) 返回指定时间的时间
+
+时间操作
+查找操作
+    select * from marathon where birthday>='2000-01-01';
+    select * from marathon where birthday>="2000-07-01" and performance<="2:30:00";
+日期时间运算
+
+语法格式
+    time('03:00:00')-interval 30 minute  #必须要用函数time()来生成时间
+    select * from marathon where registration_time > (now()-interval 7 day);
+
+    select * from 表名 where 字段名 运算符 (时间-interval 时间间隔单位);
+时间间隔单位：  hour |  minute |  second |  year |  month |  day
+    select * from marathon where registration_time > (now()-interval 7 day);

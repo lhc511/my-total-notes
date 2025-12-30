@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+    <button id="btn">hhh</button>
+    <div id="show"></div>
+    <script>
+        $(function(){
+        $("#btn").click(function (){
+            const param= {uname:' obj ',age:44}
+            {#const param='uname=sf.zh&age=18'#}
+            {#用get方法传递和获取数据#}
+            {#function里面的data是服务器响应的数据,第二三的逗号之间的数据是传给服务器的数据#}
+            $.get('/ajax/jquery_get_server/',param,function (data){
+                let msg='name is'+data.uname;
+                msg+='age is'+data.age
+                $('#show').html(msg)
+            },'json')
+
+        })
+    })
+    </script>
+
+
+</body>
+</html>

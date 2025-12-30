@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+<button id="btn" onclick="showJson()">showJson</button>
+
+
+<script>
+    function showJson() {
+        /*const obj={
+            'uname':'wanglaoshi',
+            'age':18,
+            'gender':'male'
+        }
+        console.log('name'+obj.uname)
+        console.log('age'+obj.age)
+        console.log('gender'+obj.gender)*/
+
+        //表达多个json对象
+        /*const json_arr = [{
+            'uname': '王老师',
+            'age': '19',
+            'nickname': '老王',
+        },
+            {
+                'uname': '王夫人',
+                'age': '19',
+                'nickname': '王夫人',
+
+            },
+        ]
+        $.each(json_arr,function (i,obj){
+            console.log('index:'+i)
+            console.log('uname:'+obj.uname)
+            console.log('age:'+obj.age)}
+
+
+        /*for (let i = 0; i < json_arr.length; i++) {
+            console.log('name' + json_arr[i].name)
+            console.log('age' + json_arr[i].age)
+        }*/
+
+        //jquery框架的each函数循环多个对象
+        //此处第 一个参数 是 索引第二个 参数 是对象
+
+        /*$(json_arr).each(function (i,obj){
+            console.log('index:'+i)
+            console.log('uname:'+obj.uname)
+            console.log('age:'+obj.age)}*/
+
+
+        const json_str='[{"uname": "lili", "age": 18}, {"uname": "panghu", "age": 20}]'
+        console.log(json_str)
+        {# 将符合格式的字符串转化为json对象 #}
+        const json_obj=JSON.parse(json_str)
+        console.log(json_obj)
+        }
+</script>
+</body>
+</html>

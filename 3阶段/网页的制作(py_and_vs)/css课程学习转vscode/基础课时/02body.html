@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--内联元素：按列走  块元素 按行走
+块元素可以包含内联元素 例如div就是块元素，div可以包含img-->
+<body>
+<!--    <div id="top"></div>      div#top 再按tab键快速生成，下面同理-->
+<div id="top">
+    <img src="https://picx.zhimg.com/v2-13a34ad973b2e54c3aa314f7fbfb6d87_1440w.jpg?source=172ae18b" alt="">
+</div>
+<div id="main">
+    <!--    alt：报错提醒    -->
+    <img src="../picture/img.png"
+         width="252"
+         alt="路径不正确"
+         title="这是谭雅">
+    <img src="../picture/img.png"
+         width="252"
+         alt="路径不正确"
+         title="这是谭雅">
+</div>
+<!--里面的都是块元素，在一行当中分布  <a>用来存放网址-->
+<div id="bottom">
+<!--    点击阿库娅三个字就可以进入该网页(在原网页打开)-->
+    <a href="https://www.google.com/search?sca_esv=524817ecb69216e7&rlz=1C1GCEU_en__1160__1160&q=%E9%98%BF%E5%BA%93%E5%A8%85&udm=2&fbs=ABzOT_AGBMogrnfXHu6GxeqSvos9XSASLdCNmBvs6Xj8xORx7OLI8Qw2o0eaitm-Nl0CS9Y9Vk2YNWDYrSp0kjCBYw-cr_Z2gg5Tl30z9kk4iEklYLIVKQXzfZqJo4uQQHZCPTa2HFP__AL1u37xqy1GB-uRSCQ50UN8SVx4La6cxt7s0ot0UbWDg3Qj1f6fW-F4YZ_I8tHI9Py9ikDGVosMeEkhByJFOA&sa=X&ved=2ahUKEwi3yY_elIWNAxW4klYBHRO0OvMQtKgLegQIEhAB&biw=1707&bih=791&dpr=1.5#vhid=CWr5PA6MYYGeWM&vssid=mosaic">阿库娅</a>
+<!--    在另外一个窗口打开，即新建一个网页-->
+    <a href="https://www.google.com/search?sca_esv=524817ecb69216e7&rlz=1C1GCEU_en__1160__1160&q=%E9%98%BF%E5%BA%93%E5%A8%85&udm=2&fbs=ABzOT_AGBMogrnfXHu6GxeqSvos9XSASLdCNmBvs6Xj8xORx7OLI8Qw2o0eaitm-Nl0CS9Y9Vk2YNWDYrSp0kjCBYw-cr_Z2gg5Tl30z9kk4iEklYLIVKQXzfZqJo4uQQHZCPTa2HFP__AL1u37xqy1GB-uRSCQ50UN8SVx4La6cxt7s0ot0UbWDg3Qj1f6fW-F4YZ_I8tHI9Py9ikDGVosMeEkhByJFOA&sa=X&ved=2ahUKEwi3yY_elIWNAxW4klYBHRO0OvMQtKgLegQIEhAB&biw=1707&bih=791&dpr=1.5#vhid=CWr5PA6MYYGeWM&vssid=mosaic"
+        target="_blank">阿库娅图片</a>
+</div>
+#在这个div块显示一张阿库娅图片并点击后再新的页面打开这个链接的网站
+    <div>
+        <a href="https://www.google.com/search?sca_esv=524817ecb69216e7&rlz=1C1GCEU_en__1160__1160&q=%E9%98%BF%E5%BA%93%E5%A8%85&udm=2&fbs=ABzOT_AGBMogrnfXHu6GxeqSvos9XSASLdCNmBvs6Xj8xORx7OLI8Qw2o0eaitm-Nl0CS9Y9Vk2YNWDYrSp0kjCBYw-cr_Z2gg5Tl30z9kk4iEklYLIVKQXzfZqJo4uQQHZCPTa2HFP__AL1u37xqy1GB-uRSCQ50UN8SVx4La6cxt7s0ot0UbWDg3Qj1f6fW-F4YZ_I8tHI9Py9ikDGVosMeEkhByJFOA&sa=X&ved=2ahUKEwi3yY_elIWNAxW4klYBHRO0OvMQtKgLegQIEhAB&biw=1707&bih=791&dpr=1.5#vhid=CWr5PA6MYYGeWM&vssid=mosaic"
+            target="_blank">
+<!--        显示一张阿库娅图片，在出错时提示找不到图片，并在鼠标放在该图片上一秒后提示这是阿库娅    -->
+            <img
+                src="../picture/阿库娅.png"
+                alt="找不到图片"
+                title="这是阿库娅"
+            >
+        </a>
+    </div>
+    <div>
+        <a href="https://www.google.com/search?sca_esv=524817ecb69216e7&rlz=1C1GCEU_en__1160__1160&q=%E9%98%BF%E5%BA%93%E5%A8%85&udm=2&fbs=ABzOT_AGBMogrnfXHu6GxeqSvos9XSASLdCNmBvs6Xj8xORx7OLI8Qw2o0eaitm-Nl0CS9Y9Vk2YNWDYrSp0kjCBYw-cr_Z2gg5Tl30z9kk4iEklYLIVKQXzfZqJo4uQQHZCPTa2HFP__AL1u37xqy1GB-uRSCQ50UN8SVx4La6cxt7s0ot0UbWDg3Qj1f6fW-F4YZ_I8tHI9Py9ikDGVosMeEkhByJFOA&sa=X&ved=2ahUKEwi3yY_elIWNAxW4klYBHRO0OvMQtKgLegQIEhAB&biw=1707&bih=791&dpr=1.5#vhid=CWr5PA6MYYGeWM&vssid=mosaic"
+            target="_blank">
+<!--        显示一张阿库娅图片，在出错时提示找不到图片，并在鼠标放在该图片上一秒后提示这是阿库娅    -->
+            <img
+                src="../picture/阿库娅.png"
+                alt="找不到图片"
+                title="这是阿库娅"
+            >
+        </a>
+    </div>
+    <div>
+<!--        表示点击这张图片之后直接回到网站顶部-->
+        <a href="#top">
+<!--        显示一张阿库娅图片，在出错时提示找不到图片，并在鼠标放在该图片上一秒后提示这是阿库娅    -->
+            <img
+                src="../picture/阿库娅.png"
+                alt="找不到图片"
+                title="这是阿库娅"
+            >
+        </a>
+    </div>
+</body>
+</html>

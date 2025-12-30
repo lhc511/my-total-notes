@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>李海川e</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    第二十八行的内嵌样式
+    <style>
+        /*id选择器*   x选择一个id为div2的值/
+        #div2{color: #EC7AB0}
+
+        /*将浏览器当中所有的默认边距都置为0*/
+        *{margin:0;
+        padding: 0}
+
+        /*选择所有标签名是p和div的元素,并进行属性设置。由于(要选择所有复合内容的)速度慢，和太过概括不建议用*/
+        p{}
+        div{}
+        /*标签选择器    */
+
+
+    </style>
+<!--    通过type来选定类型-->
+    <style type="text/css" >
+    </style>
+
+</head>
+<body>
+<!--    设置红色方法一：<p id='p1' style="color: red">今天好热</p> 方法二在上面看左边红色-->
+<!--    设置红色方法2：<p id='p1'>今天好热</p> 方法二在上面看左边红色-->
+<div id="div1">
+    明天可能下雨
+    <div>
+        lalllaallllalaal子类会继承父类的特征(针对字体文本的大部分属性)
+    </div>
+</div>
+
+<div>
+    <p id="p2">
+        后天晴天
+    </p>
+</div>
+<div id=div2 style="color: #005aa0;">
+    我是一个测试内容(7-11行) 就近原则，最终为蓝色字体
+</div>
+
+</body>
+</html>

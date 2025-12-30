@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        h2{
+            display: block;
+            margin-top: 15px;
+            /*border: 2px red solid;*/
+        }
+
+        #frame{
+            margin: 0 auto;
+            width: 998px;
+            height: 688px;
+            /*border: solid 1px red;*/
+            position: relative;
+        }
+
+        #frame>div:nth-child(1){
+
+            overflow: hidden;
+            width: 120px;
+            height: 100%;
+            float: left;
+        }
+        #frame>#line5px{
+            position: absolute;
+            width: 100px;
+            height: 3px;
+            background-color: black;
+            top: 100px;
+
+        }
+
+        #frame>div:nth-child(1)>img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+
+        #frame>#all_img{
+            position: absolute;
+            margin-top: 5px;
+            width: 500px;
+            left: 120px;
+        }
+        #frame>#all_img>img{
+            width: 135px;
+            height: 135px;
+        }
+        .left{
+            margin-left: 10px;
+        }
+        .top{
+            margin-top: 10px;
+        }
+    </style>
+
+</head>
+<body style="background-color: yellow">
+    <div id="frame">
+        <div>
+            <img src="profile.jpg" alt="">
+        </div>
+
+        <div>
+            <h2>BlueNileInc</h2>
+            <p>
+                平泽唯，日本漫画《轻音少女》及其衍生的动画、游戏等作品中的主人公。
+                私立樱丘女子高等学校轻音部的吉他手兼主唱，最初因为错把轻音乐当成“轻便、简易的音乐”而加入了轻音部，乐器演奏方面是完全的初学者，依靠直觉自学成才。
+                是个迷糊冒失、有点天然呆，不擅长读书与运动，拥有绝对音感的女孩。另外，她吃什么都不会胖，令轻音部其他几人羡慕不已。
+            </p>
+        </div>
+
+        <div id="all_img">
+                <img id="img1" src="9/1.jpeg" alt="">
+                <img class="left" id="img2" src="9/2.jpg" alt="">
+                <img class="left" id="img3" src="9/3.jpg" alt="">
+                <img id="img4" src="9/4.png" alt="">
+                <img class="top left" id="img5" src="9/5.jpg" alt="">
+                <img class="top left" id="img6" src="9/6.jpg" alt="">
+                <img id="img7" src="9/7.png" alt="">
+                <img class="top left" id="img8" src="9/8.jpg" alt="">
+                <img class="top left" id="img9" src="9/9.jpg" alt="">
+        </div>
+
+        <div id="line5px"></div>
+    </div>
+</body>
+</html>

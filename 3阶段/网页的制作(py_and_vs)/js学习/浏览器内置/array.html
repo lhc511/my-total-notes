@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        ul{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            width: 260px;
+            border: 1px solid red;
+        }
+        ul>li:nth-child(1){
+            font-weight: bold;
+            background-color: #9c9a9c;
+             border:none;
+        }
+
+        ul>li{
+            padding: 5px 10px;
+             border: solid 1px #ccc;
+        }
+        ul>li>span{
+            display: inline-block;
+            width: 80px;
+        }
+
+        #add{
+            padding: 5px 10px;
+        }
+
+        #add>div>span{
+            display: inline-block;
+            width: 60px;
+        }
+
+        #add>div{
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="stu">
+        <ul id="ul"></ul>
+
+        <div id="add">
+            <div>
+                <span>姓名</span>
+                <input type="text" id="name">
+            </div>
+
+            <div>
+                <span>年龄</span>
+                <input type="text" id="age">
+            </div>
+            <div>
+                <span></span>
+                <button id="btnAdd">增加</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 定义一个数组
+        var stu=[{name:"Zhangsan",age:20},{name:"lisi",age:30}]
+        // 读取数组
+
+        function loadStu(){
+            var HTML="<li><span>姓名</span><span>年龄</span></li>";
+            for (var i=0;i<stu.length;i++){
+                HTML+='<li>';
+                HTML+='<span>'+stu[i].name+'</span>';
+                HTML+='<span>'+stu[i].age+'</span>';
+                HTML+='</li>';
+            }
+            document.getElementById("ul").innerHTML=HTML;
+        }
+
+        loadStu();
+        document.getElementById("btnAdd").onclick=function (){
+            // 从文本框输入提交给服务器的值是value
+            var _name=document.getElementById("name").value;
+            var _age=document.getElementById("age").value;
+            // 声明一个对象
+            var _obj={};
+            _obj.name=_name;
+            _obj.age=_age;
+            // console.log(_obj)
+            //将对象放入数组中
+            stu.push(_obj);
+            // 更新页面数据
+            loadStu();
+        }
+
+        var arr2=["a","b","c"]
+        // 移除数组末尾的最后一个数据,返回被移除元素
+        arr2.pop()
+        console.log(arr2.toString());
+
+        // 在数组头部添加一个或者多个元素,并返回添加后的数组长度
+        arr2.unshift("a1")
+        // sort() reverse()  正序 反序排布
+    </script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+python3 -m venv /path/to/venv
+source /path/to/venv/bin/activate
+source /Users/wangyang/PycharmProjects/venv/bin/activate
+pip install  xxxx
+deactivate #退出虚拟环境
+sudo nautilus #管理员模式进入文件管理器
+

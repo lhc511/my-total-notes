@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+<script>
+    function checkuname(){
+        let ret =false
+        const xhr=createXhr()
+        let url = '/user/checkuname/?uname='+$('#uname').val()
+        xhr.open('get',url,false)
+        xhr.onreadystatechange=function (){
+            if(xhr.readyState===4&&xhr.status===200){
+                if (xhr.responseText==='1'){
+                    ret=true
+                    $('#show').html('用户已存在')
+                }else{
+                    $('#show').html('ok')
+                }
+            }
+        }
+        xhr.send(null)
+            return ret
+    }
+    {#  绑定blur事件  #}
+    /*$(function () {
+        $('#uname').blur(function () {
+            const xhr = createXhr()
+            const url = '/user/checkuname/?uname=' + $('#uname').val()
+            xhr.open('get', url, true)
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    $('#show').html(xhr.responseText)
+                }
+            }
+            xhr.send(null)
+        })
+    })*/
+
+    $(function (){
+        //uname绑定blur
+        $('#uname').blur(function(){
+            checkuname()
+        })
+
+        $("#btn").click(function (){
+            if (checkuname()){
+                alert('用户已存在')
+            }else{
+                alert('ok')
+            }
+        })
+    })
+
+
+
+
+</script>
+
+
+<p>
+    用户名 <input type="text" id="uname">
+    <span id="show"></span>
+</p>
+
+<p>
+    密码: <input type="text" id="pwd">
+</p>
+
+<p>
+    昵称: <input type="text" id="nickname">
+</p>
+
+<p>
+    <button id="btn">提交</button>
+</p>
+
+
+</body>
+</html>

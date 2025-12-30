@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>mynow</title>
+</head>
+<body>
+    <input type="text" id="username">
+    <input type="checkbox" name="" id="remember"> 记住用户名
+    <script>
+        const user=document.querySelector('#username')
+        const remember=document.querySelector('#remember')
+        remember.addEventListener('click',function (){
+            // if (this.checked===false){this.checked=true}
+            // else if (this.checked===true){this.checked=false}
+
+            if (localStorage.getItem('username')){
+                if (remember.checked===true){
+                    user.value=localStorage.getItem('username')
+                }
+                else if (remember.checked===false){
+                    user.value=''
+                 }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+        div {
+            margin: 200px;
+        }
+
+        span {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span class="hour">1</span>
+        <span class="minute">2</span>
+        <span class="second">3</span>
+    </div>
+
+    <button class="start">aa</button>
+    <button class="end">end</button>
+    <script>
+        let hour=document.querySelector('.hour')
+        let minute=document.querySelector('.minute')
+        let second=document.querySelector('.second')
+        const startbtn=document.querySelector('.start')
+        const endbtn=document.querySelector('.end')
+
+        const inputTime=+new Date('2025-2-23 12:22:30')
+
+
+        function a(){
+            let presentTime=+new Date()
+            // console.log(presentTime)
+            let time=presentTime-inputTime
+
+            // let hour1=parseInt(time/1000/3600%24)
+            let hour1=Math.floor(time/1000/3600%24)
+            hour.innerHTML=hour1<10 ? '0'+hour1:hour1
+
+            // let mi=parseInt(time/1000/60%60)
+            let mi=Math.floor(time/1000/60%60)
+            minute.innerHTML=mi<10 ? '0'+mi:mi
+
+            // let second1=parseInt(time/1000%60)
+            let second1=Math.floor(time/1000%60)
+            second.innerHTML=second1<10 ? '0'+second1:second1
+
+        }
+        let timer=null
+        startbtn.addEventListener('click',function (){
+            a()
+            timer=setInterval(a,1000)
+        })
+        endbtn.addEventListener('click',function (){
+            clearInterval(timer)
+        })
+
+    </script>
+
+
+</body>
+</html>

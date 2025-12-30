@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #frame{
+            width: 300px;
+            height: 300px;
+            border: 1px solid blue;
+            position: relative;
+        }
+        #frame>.select{
+            position: absolute;
+            text-align: center;
+            line-height: 20px;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: yellow;
+            color: black;
+            cursor: pointer;
+
+        }
+         #frame>.select:hover{
+            background-color: white;
+        }
+        #sele1{
+            top: 10px;
+            right: 5px;
+        }
+        #sele2{
+            top: 55px;
+            right: 5px;
+        }
+        #sele3{
+            top: 100px;
+            right: 5px;
+        }
+        #sele4{
+            top: 145px;
+            right: 5px;
+        }
+        #sele5{
+            top: 190px;
+            right: 5px;
+        }
+        #sele6{
+            top: 235px;
+            right: 5px;
+        }
+        #sele7{
+            top: 280px;
+            right: 5px;
+        }
+
+        img{width: 100%}
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="sele1" class="select">1</div>
+        <div id="sele2" class="select">2</div>
+        <div id="sele3" class="select">3</div>
+        <div id="sele4" class="select">4</div>
+        <div id="sele5" class="select">5</div>
+        <div id="sele6" class="select">6</div>
+
+        <img id="sele7" src="pic2/39.png" alt="">
+    </div>
+
+    <script>
+        let select01=document.getElementsByClassName("select")
+        let img1=document.getElementsByTagName("img")[0]
+
+        select01[0].onclick=function (){
+            img1.src="pic2/39.png"
+        }
+
+        select01[1].onclick=function (){
+            img1.src="pic2/qianshi.png"
+        }
+    </script>
+</body>
+</html>

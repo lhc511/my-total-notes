@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="tip">/。。</div>
+    <script>
+        // 定义一个带名称参数的函数
+        // function hi(name){
+        //     return name+"hello world"
+        // }
+        // // 获取指定id元素
+        // var objTip=document.getElementById("tip")
+        // objTip.innerText=hi("auhciu")
+
+        // 定义一个匿名函数
+        // log包装的函数后面要加分号就行
+        var log={
+            ab:function (){
+                return "ok"
+            },
+
+            cd:function (){
+                return "no"
+            }
+        };
+
+        (function (name){
+            var str= name+"hello world"
+            var objTip=document.getElementById("tip")
+            objTip.innerText=log.ab()
+        })("张三")
+    </script>
+
+</body>
+</html>

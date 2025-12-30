@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 10px solid red;
+            padding: 10px;
+            overflow: auto;
+        }
+    </style>
+</head>
+
+<body>
+        scroll得到的是实际上的内容的大小，scrollTop就是被卷去的头部，可以在同文件夹的看图理解
+    <div>
+        我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容 我是内容
+    </div>
+    <script>
+        // scroll 系列
+        var div = document.querySelector('div');
+        console.log(div.scrollHeight);//整个内容的高度(会将超出的内容也算上)
+        console.log(div.clientHeight);//元素标签的高度
+        // scroll滚动事件当我们滚动条发生变化会触发的事件
+        div.addEventListener('scroll', function() {
+            console.log(div.scrollTop);
+
+        })
+    </script>
+</body>
+</body>
+</html>

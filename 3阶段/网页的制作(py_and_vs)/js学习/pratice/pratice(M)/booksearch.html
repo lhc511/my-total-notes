@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img{
+            width: 100%;
+        }
+
+        a{
+            word-break: break-word;
+            height: 60px;
+            /*border:1px solid green;*/
+            margin-top: 20px;
+            font-size: 20px;
+
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2; /* 限制显示的行数为2 */
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            /*display: block;*/
+            /*overflow: hidden;*/
+            /*white-space: nowrap;*/
+            /*text-overflow:ellipsis ;*/
+        }
+        span{
+            font-size: 20px;
+            display: block;
+            color: #9c9a9c;
+            margin-top: 20px;
+        }
+
+        #frame>div:nth-child(1){
+            height: 30px;
+            /*border: 1px blue solid;*/
+        }
+
+        #frame>div:nth-child(1)>div:nth-child(1){
+            font-size: 25px;
+            font-weight: bold;
+            float: left;
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top: 0;*/
+        }
+
+        #change{
+            border: 1px solid blue;
+            font-size:22px;
+            font-weight: bold;
+            float:right;
+            cursor: pointer;
+        }
+
+        #frame{
+            padding: 0 10px;
+            position: relative;
+            width: 670px;
+            height: 370px;
+            /*border: 1px solid red;*/
+        }
+
+        .book{
+            display: inline-block;
+            overflow:hidden;
+            width: 140px;
+            float: left;
+            /*position: absolute;*/
+            margin-top: 20px;
+        }
+
+        #frame>div:nth-child(2){
+            height: 332px;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+            /*border: 1px solid blue;*/
+        }
+        /*#frame>div:nth-child(2)>{*/
+        /*    margin-left: 40px;*/
+        /*}*/
+        #frame>div:nth-child(2)>.book:nth-child(3),.book:nth-child(2){
+            margin-left: 36px;
+        }
+        #frame>div:nth-child(2)>.book:nth-child(4){
+            position: absolute;
+            right: 0;
+        }
+
+        #one{
+            display: block;
+        }
+        #two{
+            display: block;
+        }
+        #three{
+            display: block;
+        }
+        #four{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div>
+            <div>相关书籍</div>
+            <div id="change">换一换</div>
+        </div>
+
+        <div>
+            <div id="one" class="book">
+                <img src="pic2/6flower.png" alt="">
+                <div>
+                    <a href="https://www.bing.com/images/search?q=%e5%b0%8f%e5%b2%9b%e6%b8%b8%e5%85%ad%e8%8a%b1&form=HDRSC3&first=1">
+                    小岛游六花的图片
+                    </a>
+                </div>
+                <span>出自中二病也要谈恋爱</span>
+            </div>
+
+            <div id="two" class="book">
+                <img src="pic2/39.png" alt="">
+                <div>
+                    <a href="https://www.bing.com/images/search?q=%E4%B8%89%E7%8E%96%E5%9B%BE%E7%89%87&FORM=HDRSC3">
+                        三玖的图片(在动漫的五姐妹中排行第三性格沉稳)
+                    </a>
+                </div>
+                <span>五等分的花嫁</span>
+
+            </div>
+
+            <div id="three" class="book">
+                <img src="pic2/qianshi.png" alt="">
+                <div>
+                    <a href="https://www.bing.com/images/search?q=ural%E8%BF%B7%E8%B7%AF%E8%B4%B4%E5%8D%83%E5%A4%B1%E5%9B%BE%E7%89%87&form=IQFRML&first=1">
+                        千失(从山中走到城市学习预言)
+                    </a>
+                </div>
+                <span>ural迷路帖</span>
+
+            </div>
+
+            <div id="four" class="book">
+                <img style="margin-right: 0" src="pic2/hequanshawu.png" alt="">
+                <div>
+                    <a href="https://www.bing.com/images/search?q=%E5%92%8C%E6%B3%89%E7%BA%B1%E9%9B%BE%E5%9B%BE%E7%89%87&form=HDRSC3&first=1">
+                    和泉纱雾动漫中职业为一名h图画家</a>
+                </div>
+                <span>埃罗芒阿老师的女主</span>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        let change=document.getElementById("change");
+        let book=document.getElementsByClassName("book");
+        let changeEle=[book[0],book[1],book[2],book[3]]
+        let numList=[]
+        function getArr(){
+            for(let i=0;i<4;i++) {
+                numList[i] = Math.floor(Math.random() * numList.length)
+                for (let j = 0; j < i; j++) {
+                    if (numList[i] === numList[j]) {
+                        i--;
+                        break
+                    }
+                }
+            }
+            return numList
+        }
+
+        change.onclick=function (arr){
+            //清除图片
+            for(let i=0;i<4;i++) {
+                changeEle[i].style.display = "none"
+            }
+            arr=getArr()
+
+            for(let a=0;a<4;a++){
+                changeEle[arr[a]].style.display=""
+            }
+
+
+            console.log(numList)
+
+            // for(let i=0;i<numList.length;i++){
+            //     console.log(i)
+            //     changeEle[numList[i]].style.display=""
+            // }
+
+        }
+    </script>
+</body>
+</html>

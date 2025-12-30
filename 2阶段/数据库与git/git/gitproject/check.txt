@@ -1,0 +1,55 @@
+mysql> select * from class_1 where name like 'L%'; #找出名字用l开头的数据     不分大小写
+ select * from interest where name like '___'; #三个下划线表示有三个字符
+
+like:
+    LIKE用于在where子句中进行模糊查询，SQL LIKE 子句中使用百分号 %来表示任意0个或多个字符，
+    下划线_表示任意一个字符。
+
+    使用 LIKE 子句从数据表中读取数据的通用语法：
+        SELECT field1, field2,...fieldN
+        FROM table_name
+        WHERE field1 LIKE condition1
+    
+    Mysql
+    e.g.
+        mysql> select * from class_1 where name like 'A%';
+    mysql中对正则表达式的支持有限，只支持部分正则元字符
+        SELECT field1, field2,...fieldN
+        FROM table_name
+        WHERE field1 REGEXP condition1
+        e.g.
+        select * from class_1 where name regexp 'B.+'; #按照正则表达式规则来看   并且其中的B不区分大小写
+        select * from class_1 where name regexp '^B.+'; #按照正则表达式规则来看  只以B/b开头的名字  并且其中的B不区分大小写
+
+
+联合查询(字段个数要保持一直 即expression个数)
+
+    若查询的字段内容不一致，则以第一个为准(name,age)
+    select name,age from class_1 where gender='w' union select name,gender from class_1 where age>17;
+
+    不同的表也可以
+    select name,age from class_1 where gender='w' union select name,hobby from interest;
+
+    UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 语句
+    会删除重复的数据。
+    UNION 操作符语法格式：
+
+    Mysql
+        SELECT expression1, expression2, ... expression_n
+        FROM tables
+        [WHERE conditions]
+        UNION [ALL | DISTINCT]
+
+        SELECT expression1, expression2, ... expression_n
+        FROM tables
+        [WHERE conditions];
+
+        expression1, expression2, ... expression_n: 要检索的列。
+        tables: 要检索的数据表。
+        WHERE conditions: 可选， 检索条件。
+
+    DISTINCT: 可选，删除结果集中重复的数据。默认情况下 UNION 操作符已经删除了重复数据，
+    所以 DISTINCT 修饰符对结果没啥影响。
+
+    ALL: 可选，返回所有结果集，包含重复数据。
+    select * from class_1 where sex='m' UNION ALL select * from class_1 where age > 9;

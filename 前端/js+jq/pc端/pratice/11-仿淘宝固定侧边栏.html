@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="/pc端/js端/js/aminate_vertical.js"></script>
+    <title>my</title>
+    <style>
+        .slider-bar {
+            position: absolute;
+            left: 50%;
+            top: 300px;
+            margin-left: 600px;
+            width: 45px;
+            height: 130px;
+            background-color: pink;
+        }
+        
+        .w {
+            width: 1200px;
+            margin: 10px auto;
+        }
+        
+        .header {
+            height: 150px;
+            background-color: purple;
+        }
+        
+        .banner {
+            height: 250px;
+            background-color: skyblue;
+        }
+        
+        .main {
+            height: 1000px;
+            background-color: yellowgreen;
+        }
+        
+        span {
+            display: none;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-bar">
+        <span class="goBack">返回顶部</span>
+    </div>
+    <div class="header w">头部区域</div>
+    <div class="banner w">banner区域</div>
+    <div class="main w">主体部分</div>
+    <script>
+        let slider_bar=document.querySelector('.slider-bar')
+        let header=document.querySelector('.header')
+        let banner=document.querySelector('.banner')
+        let main=document.querySelector('.main')
+        let goBack=document.querySelector('span')
+
+        //若父元素没有position属性则直接返回相对有body页面的距离
+        let bannerTop=banner.offsetTop
+        let sliderH=slider_bar.offsetTop
+
+        let mainTop=main.offsetTop
+        //滑块距离窗口的距离
+        let slider_barTop=slider_bar.offsetTop-bannerTop
+        //滚动事应将吧会移动的所有元素包裹起来的元素标签作为对象 此就为document 整个页面
+        //是整个页面在滚动所以用页面滚动事件
+        document.addEventListener('scroll',function (){
+            // let sliderH=slider_bar.offsetTop
+            if (window.pageYOffset>=bannerTop){
+                slider_bar.style.top=slider_barTop+'px'
+                //fix是距离当前窗口
+                slider_bar.style.position='fixed'
+
+            }else {
+                //父元素是document文档页面，即距离文档页面顶端300px，因此会跟随滑动
+                slider_bar.style.top=300+'px'
+                slider_bar.style.position='absolute'
+            }
+
+            if (window.pageYOffset>mainTop){
+                goBack.style.display='block'
+            }else {
+                goBack.style.display='none'
+            }
+        })
+        // 点击了返回顶部模块，就返回顶部
+        goBack.addEventListener('click',function (){
+            // 此处是窗口进行滚动，所以用window
+            // a_vertical(window,0)
+            a_vertical(document,0)
+        })
+    </script>
+</body>
+
+</html>

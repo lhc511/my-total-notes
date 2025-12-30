@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="`en`">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            font-size: 13px;
+        }
+        #bg{
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color:rgba(0,0,0,0.5);
+            display: none;
+        }
+
+        #box{
+            border: solid 1px red;
+            width: 260px;
+        }
+        #box .title{
+            color: white;
+            background-color: #008081;
+            padding: 10px 20px;
+        }
+        #box .con{
+            overflow: hidden;
+        }
+        #box .con img{
+            margin:0 10px;
+            width: 50px;
+            float: left;
+        }
+        #box .con .rright{
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <button id="btnShow">弹出</button>
+    <div id="bg"></div>
+<!--    定义一个弹框-->
+    <div id="box">
+        <div class="title">
+        提示
+        </div>
+
+        <div class="con">
+            <div class="img">
+                <img src="picture/自己头像.jpg" alt="">
+            </div>
+            <div class="rright">
+                <p>lsssssssssssssssss</p>
+                <div class="btn">
+                    <button>确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btnShow=document.getElementById("btnShow")
+        var divBg=document.getElementById("bg")
+        btnShow.onclick=function (){
+            divBg.style.display="block";
+        }
+    </script>
+</body>
+</html>

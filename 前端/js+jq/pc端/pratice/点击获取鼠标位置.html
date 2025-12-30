@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>获取鼠标位置</title>
+<style>
+        .box {
+            width: 300px;
+            height: 300px;
+            background-color: pink;
+            margin: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+
+    <script>
+        div1=document.querySelector('.box')
+        p1=document.createElement('p')
+        div1.appendChild(p1)
+
+        div1.addEventListener('mousemove',function (e){
+
+            let relative_x=e.pageX-div1.offsetLeft
+            let relative_y=e.pageY-div1.offsetTop
+            // console.log(relative_x)
+            // console.log(relative_y)
+            p1.innerHTML='x:'+relative_x+",y:"+relative_y
+        })
+    </script>
+</body>
+</html>

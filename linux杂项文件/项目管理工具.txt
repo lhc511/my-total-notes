@@ -1,0 +1,5 @@
+项目工具：
+编写文档 word ppt excel markdown LaTex
+项目流程图 Mindmanager visio
+项目管理 progect
+代码管理 svn git

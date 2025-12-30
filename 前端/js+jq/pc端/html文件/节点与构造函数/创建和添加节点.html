@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        <li>123</li>
+    </ul>
+    <script>
+        // 1. 创建节点元素节点
+        var li = document.createElement('li');
+        // 2. 添加节点 node.appendChild(child)  node 父级  child 是子级 后面追加元素  类似于数组中的push
+        var ul = document.querySelector('ul');
+        ul.appendChild(li);
+        console.log(ul.children)  //HTMLCollection(2) [li, li]
+        // 3. 添加节点 node.insertBefore(child, 指定元素);
+        var a = document.createElement('a');
+        ul.insertBefore(a, ul.children[0]);
+        console.log(ul.children) //[a, li, li]
+        // 4. 我们想要页面添加一个新的元素 ： 1. 创建元素 2. 添加元素
+    </script>
+</body>
+</html>

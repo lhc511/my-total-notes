@@ -1,0 +1,32 @@
+水平触发：倘若有一个io事件已经触发，但却没有对应方法去处理，那么就会一直提醒该触发，直到解决为止
+例如：
+from select import *
+from socket import *
+from time import sleep
+
+s = socket()
+s.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
+s.bind(('0.0.0.0', 8888))
+s.listen(3)
+# 创建epoll对象
+ep = epoll()  # epoll()包含在select函数内部，所以可以直接调用
+
+fdmap = {s.fileno(): s}  # 通过这个io的文件描述符来找到其本身
+
+# 关注s
+ep.register(s, EPOLLIN)  # 在读io事件中关注(被动接收的操作 例如accept():等待连接，recv()：等待接收消息)
+
+# 循环监控io发生
+while True:
+    events = ep.poll()  # 阻塞等待 s(被动接收) 发生
+
+    print("你有新的io要处理") #此处会一直打印该内容直到处理完（该代码没有处理方式）
+
+    for fd, event in events:
+        # 区分哪个io发生
+        if fd == s.fileno():
+            c, addr = fdmap[fd].accept()
+            print("connect from...", addr)
+            ep.register(c, EPOLLIN | EPOLLERR)  # 再关注c
+            # ep.register(c, EPOLLIN | EPOLLERR)  # epoll不允许注册两个io对象回，会报错 但是poll可以，只是后一个会覆盖前一个
+            fdmap[c.fileno()] = c  # 将关注的对象c添加到字典里面

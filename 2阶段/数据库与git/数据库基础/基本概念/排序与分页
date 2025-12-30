@@ -1,0 +1,24 @@
+排序
+ORDER BY 子句来设定你想按哪个字段哪种方式来进行排序，再返回搜索结果。
+
+使用 ORDER BY 子句将查询数据排序后再返回数据：
+    SELECT field1, field2,...fieldN from table_name1 where field1
+    ORDER BY field1 [ASC [DESC]]
+
+****默认情况ASC表示升序，DESC表示降序****
+    select * from class_1 where sex='m' order by age; #升序
+    select * from class_1 where sex='m' order by age desc; #降序
+
+分页(限制)
+LIMIT 子句用于限制由 SELECT 语句返回的数据数量 或者 UPDATE,DELETE语句的操作数量
+
+带有 LIMIT 子句的 SELECT 语句的基本语法如下：
+SELECT column1, column2, columnN
+FROM table_name
+WHERE field
+LIMIT [num]
+
+select * from class_1 where age=17 limit 1;   #从class_1中只选择一条年龄=17的数据
+#查找入学时间最早的男生
+select * from class_1 where gender='m' order by 入学时间 limit 1;  #经过 入学时间 升序后输出第一个位置的数据
+

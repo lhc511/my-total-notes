@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*padding:可以看做把原来的边框向内或外偏移了设置的像素，使在一个块中所包含的元素*/
+        /*中的样式只能到达偏移后的边框，例如border边界线*/
+        #news{
+            width: 834px;
+            padding: 0 15px;
+            border-top: solid 4px #cccccc;
+            border-left: solid 1px #cccccc;
+            border-right: solid 1px #cccccc;
+            border-bottom: solid 1px #cccccc;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style-type:none ;
+        }
+        .last{
+            border-bottom: none;
+        }
+        ul>li{
+            padding: 10px;
+            border-bottom: solid 1px #cccccc;
+        }
+        /*font-weight: bold;   将字体加粗  bold相当于700px*/
+        span{
+            /*内联元素转变块元素 使其在具有内联元素的性质的同时又能有块元素的特质，变得可以更改宽高等*/
+            display: inline-block;
+            width: 15px;
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<!--    div是吧后面的整体变成一个块，在这个块当中进行操作-->
+    <div id="news">
+        <ul>
+            <li><span>1</span> 爱检查表出不去v那句出去</li>
+            <li><span>2</span> 爱检查表出不去v那句出去</li>
+            <li><span>3</span> 爱检查表出不去v那句出去</li>
+            <li class="last"><span>4</span> 爱检查表出不去v那句出去</li>
+
+        </ul>
+    </div>
+</body>
+</html>

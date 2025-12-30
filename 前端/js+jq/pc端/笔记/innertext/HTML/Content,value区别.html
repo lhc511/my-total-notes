@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>修改元素的文本</title>
+        <style type="text/css">
+            div{
+                width:300px;
+                height:300px;
+                float:left;
+                border:1px solid blue;
+                margin-left:50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div><p>i love you</p></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+            <p>J
+            哥                 最    帅</p>
+            <a href="http://www.xxoo.com">xx                oo</a>
+        </div>
+        <div></div>
+
+        <script type="text/javascript">
+        var divs=document.getElementsByTagName('div');
+        /*
+            value :应用于表单的输入框---textarea
+            innerHTML：与后两者的区别，可以写入html代码会被解析，并且可以获得html代码
+            innerText:获得内容的时候，都会忽略html代码
+            textContent:获得内容的时候，都会忽略html代码
+        */
+        //读取内容
+        console.log(divs[0].innerHTML);
+        console.log(divs[0].innerText);
+        console.log(divs[0].textContent);
+
+        //写入内容
+        divs[1].innerHTML='<p>i miss you</p>';
+        divs[2].innerText='<p>i miss you</p>';
+        divs[3].textContent='<p>i miss you</p>';
+
+        /*
+            比较innerText和textContent的区别
+            innerText 获取的内容和html解析的内容一样
+            textContent获取的内容与源代码的内容一样
+        */
+        console.log('%c'+divs[4].innerText,'color:red;');
+        console.log(divs[4].textContent);
+
+        var str="<p>哥                 最    帅</p> <a href='http://www.xxoo.com'>xx                oo</a>";
+        // divs[5].innerText=str;
+        // divs[5].textContent=str;
+
+        </script>
+    </body>
+    </html>

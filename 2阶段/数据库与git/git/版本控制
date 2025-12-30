@@ -1,0 +1,28 @@
+版本控制
+1.退回到上一个commit节点 commit提交之前的版本
+    git reset --hard HEAD^
+    注意:一个^表示回退1个版本，依次类推。当版本回退之后工作区会自动和当前commit版本保持一致
+
+2.退回到指定的commit_id节点
+#添加前7位          4cb4c98             每一次commit操作的全球唯一码 用前7位操作
+git reset --hard [commit_id]  #commit 4cb4c98784d50de9ed4e796944ff3ee1e06ce25c
+
+
+3.查看所有操作记录
+git reflog
+注意:最上面的为最新记录，可以利用commit id去往任何操作位置
+
+4.创建标签
+标签:在项目的重要commit位置添加快照，保存当时的工作状态，-般用于版本的迭代。
+git tag [tag_name] [commit_id] -m [message] 说明:commit_id可以不写则默认标签表示最新的commit_id位置,
+message也可以不写，但是最好添加。
+e.g.在最新的commit处添加标签v1.0
+git tag v1.0 -m '版本1'
+查看命令：git tag   #Output:v1.0
+展示标签详细信息：git show v1.0
+通过标签回到版本：git reset --hard v0.9
+
+5.删除标签：、
+#           v0.9
+git tag -d [标签名]
+
