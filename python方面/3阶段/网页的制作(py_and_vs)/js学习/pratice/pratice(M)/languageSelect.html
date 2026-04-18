@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="frame">
+    <div><input id="selectionAll" type="checkbox">编程语言</div>
+    <div><input id="selection2" type="checkbox">C</div>
+    <div><input id="selection3" type="checkbox">Java</div>
+    <div><input id="selection4" type="checkbox">PHP</div>
+    <div><input id="selection5" type="checkbox">Javascript</div>
+    <div><input id="selection6" type="checkbox">C++</div>
+    <div><input id="selection7" type="checkbox">Python</div>
+</div>
+<script>
+    let s1=document.getElementById("selectionAll");
+    let s2=document.getElementById("selection2");
+    let s3=document.getElementById("selection3");
+    let s4=document.getElementById("selection4");
+    let s5=document.getElementById("selection5");
+    let s6=document.getElementById("selection6");
+    let s7=document.getElementById("selection7");
+    (function (){
+        s1.onclick=function (){
+            if(s1.checked===false){
+                s2.checked=s3.checked=s4.checked=s5.checked=s6.checked=s7.checked=false
+            }
+            else {
+                s2.checked=s3.checked=s4.checked=s5.checked=s6.checked=s7.checked=true
+            }
+
+        };
+    })()
+
+</script>
+</body>
+</html>

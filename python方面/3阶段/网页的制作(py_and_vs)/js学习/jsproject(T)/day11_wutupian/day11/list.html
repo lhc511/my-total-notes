@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>文章列表</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/scrollReveal.js"></script>
+    <script src="js/system.js"></script>
+</head>
+
+<body>
+    <div class="bgimg"></div>
+    <!-- 文字提示信息 开始-->
+    <!-- 文字提示信息 结束-->
+    <!-- 内嵌元素编写js代码 -->
+
+    <div class="con">
+        <div class="cleft"></div>
+        <div class="cright">
+            <h3>特别推荐</h3>
+            <div class="line"></div>
+        </div>
+    </div>
+    <script>
+        //初始化滚动显示框加
+        window.scrollReveal = new scrollReveal({
+            reset: true
+        })
+        //调用导航栏模板，追加到页面中
+        $("body").prepend($(index.nav.html(2)));
+        //调用模板，追加提示信息到页面中
+        $(".bgimg").after($(index.list.html('文章列表2', '不要轻易放弃，学习成长的路上，我们长路漫漫，只因学无止境。')));
+        //移动鼠标后显示子类菜单
+        $("#nav ul li:nth-child(2)").hover(function(){
+            //找到子类列表，停止当前动画，并显示
+          $(this).children("ul").stop(true,true).show(400);
+        },function(){
+             //找到子类列表，停止当前动画，并隐藏
+          $(this).children("ul").stop(true,true).hide(400);
+        })
+
+        //遍历全部的存储对象
+        for (var j = 0; j < localStorage.length; j++) {
+            if (localStorage.key(j).substr(0, 4) == "blog") {
+                var _key = localStorage.key(j);
+                var _val = localStorage.getItem(_key);
+                //将字符串转成对象
+                var obj = JSON.parse(_val);
+                //console.log(obj.title)
+                //console.log(obj.txt)
+                $(".cleft").prepend($(index.list.conn(obj.title, 'images/toppic01.jpg', obj.txt, '56755')))
+            }
+        }
+        //调用图片模板，追加图片列表数据到页面中
+        $(".cright").append(
+            $(index.list.imgs('images/banner01.jpg')),
+            $(index.list.imgs('images/banner02.jpg')),
+            $(index.list.imgs('images/banner03.jpg'))
+        )
+    </script>
+</body>
+
+</html>

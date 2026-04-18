@@ -1,0 +1,915 @@
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 10:03:44 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 10:07:05 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8000 fd 4
+spawned uWSGI http 1 (pid: 32707)
+uwsgi socket 0 bound to TCP address 127.0.0.1:44295 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x77e3d7aa39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x77e3d7aa39e8 pid: 32705 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 32705, cores: 2)
+主页被访问
+[pid: 32705|app: 0|req: 1/1] 127.0.0.1 () {54 vars in 1164 bytes} [Mon Sep  8 02:07:10 2025] GET /index/ => generated 6 bytes in 4 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+主页被访问
+[pid: 32705|app: 0|req: 2/2] 127.0.0.1 () {54 vars in 1164 bytes} [Mon Sep  8 02:07:10 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+主页被访问
+[pid: 32705|app: 0|req: 3/3] 127.0.0.1 () {54 vars in 1164 bytes} [Mon Sep  8 02:07:10 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+主页被访问
+[pid: 32705|app: 0|req: 4/4] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:10 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+主页被访问
+[pid: 32705|app: 0|req: 5/5] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:10 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+主页被访问
+[pid: 32705|app: 0|req: 6/6] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+主页被访问
+[pid: 32705|app: 0|req: 7/7] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+主页被访问
+[pid: 32705|app: 0|req: 8/8] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+主页被访问
+[pid: 32705|app: 0|req: 9/9] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+主页被访问
+[pid: 32705|app: 0|req: 10/10] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+主页被访问
+[pid: 32705|app: 0|req: 11/11] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+主页被访问
+[pid: 32705|app: 0|req: 12/12] 127.0.0.1 () {54 vars in 1165 bytes} [Mon Sep  8 02:07:11 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+[pid: 32705|app: 0|req: 13/13] 127.0.0.1 () {52 vars in 1144 bytes} [Mon Sep  8 02:14:38 2025] GET /index/page1 => generated 179 bytes in 8 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 32705|app: 0|req: 14/14] 127.0.0.1 () {52 vars in 1142 bytes} [Mon Sep  8 02:14:43 2025] GET /index/page => generated 7 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 10:21:15 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uWSGI http bound on 127.0.0.1:8000 fd 4
+spawned uWSGI http 1 (pid: 33009)
+uwsgi socket 0 bound to TCP address 127.0.0.1:35455 (port auto-assigned) fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7f537fea39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7f537fea39e8 pid: 33007 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 33007, cores: 2)
+[pid: 33007|app: 0|req: 1/1] 127.0.0.1 () {54 vars in 1173 bytes} [Mon Sep  8 02:21:17 2025] GET /index/page => generated 7 bytes in 4 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+[pid: 33007|app: 0|req: 2/2] 127.0.0.1 () {54 vars in 1173 bytes} [Mon Sep  8 02:21:19 2025] GET /index/page => generated 7 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 12:15:55 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7cfa914a39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7cfa914a39e8 pid: 35345 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 35345, cores: 2)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+[pid: 35345|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1145 bytes} [Mon Sep  8 04:16:28 2025] GET / => generated 179 bytes in 15 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+[pid: 35345|app: 0|req: 2/2] 127.0.0.1 () {56 vars in 1155 bytes} [Mon Sep  8 04:16:57 2025] GET /index => generated 0 bytes in 1 msecs (HTTP/1.1 301) 5 headers in 197 bytes (1 switches on core 0)
+主页被访问
+[pid: 35345|app: 0|req: 3/3] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 04:16:57 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 13:09:45 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x710712ea39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x710712ea39e8 pid: 36321 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 36321, cores: 2)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+Not Found: /
+[pid: 36321|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1145 bytes} [Mon Sep  8 05:14:04 2025] GET / => generated 2302 bytes in 12 msecs (HTTP/1.1 404) 6 headers in 215 bytes (1 switches on core 1)
+主页被访问
+[pid: 36321|app: 0|req: 2/2] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 05:14:10 2025] GET /index/ => generated 6 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+[pid: 36321|app: 0|req: 3/3] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 05:16:30 2025] GET /index/page => generated 7 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 16:58:24 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x77401cea39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x77401cea39e8 pid: 39223 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 39223, cores: 2)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 17:00:00 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x738716ea39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x738716ea39e8 pid: 39307 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 39307, cores: 2)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 17:04:17 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x72d85aaa39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x72d85aaa39e8 pid: 39390 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 39390, cores: 2)
+[pid: 39390|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 09:04:22 2025] GET /index/page => generated 7 bytes in 8 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 17:06:18 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7db11dea39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x7db11dea39e8 pid: 39456 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 39456, cores: 2)
+[pid: 39456|app: 0|req: 1/1] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:26:59 2025] GET /static => generated 179 bytes in 16 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39456|app: 0|req: 2/2] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:01 2025] GET /static => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39456|app: 0|req: 3/3] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:02 2025] GET /static => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39456|app: 0|req: 4/4] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:02 2025] GET /static => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39456|app: 0|req: 5/5] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:02 2025] GET /static => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39456|app: 0|req: 6/6] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:02 2025] GET /static => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39456|app: 0|req: 7/7] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:03 2025] GET /static => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39456|app: 0|req: 8/8] 127.0.0.1 () {58 vars in 1188 bytes} [Mon Sep  8 09:27:03 2025] GET /static => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39456|app: 0|req: 9/9] 127.0.0.1 () {56 vars in 1312 bytes} [Mon Sep  8 09:28:07 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 17:30:32 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7122884a39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7122884a39e8 pid: 39984 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 39984, cores: 2)
+[pid: 39984|app: 0|req: 1/1] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:35 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 9 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39984|app: 0|req: 2/2] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39984|app: 0|req: 3/3] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39984|app: 0|req: 4/4] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39984|app: 0|req: 5/5] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39984|app: 0|req: 6/6] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39984|app: 0|req: 7/7] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39984|app: 0|req: 8/8] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 39984|app: 0|req: 9/9] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 39984|app: 0|req: 10/10] 127.0.0.1 () {58 vars in 1343 bytes} [Mon Sep  8 09:30:36 2025] GET //home/ubuntu/django/day08/code/mysite8/static/images/%E8%90%A8%E5%A1%94%E5%B0%BC%E4%BA%9A%20.jpeg => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 17:48:18 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7aec0c8a39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7aec0c8a39e8 pid: 40395 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 40395, cores: 2)
+[pid: 40395|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 09:48:23 2025] GET /index/page => generated 7 bytes in 7 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+[pid: 40395|app: 0|req: 2/2] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 09:48:25 2025] GET /index/page => generated 7 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 17:51:50 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x725bd96a39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x725bd96a39e8 pid: 40488 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 40488, cores: 2)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 18:09:51 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x792e85ea39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x792e85ea39e8 pid: 40865 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 40865, cores: 2)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 18:24:30 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 18:36:26 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+[pid: 40865|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 10:36:42 2025] GET /index/page => generated 7 bytes in 36 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+[pid: 40865|app: 0|req: 2/2] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 10:36:44 2025] GET /index/page => generated 7 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+invalid request block size: 21573 (max 4096)...skip
+[pid: 40865|app: 0|req: 3/3] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 10:37:20 2025] GET /index/page => generated 7 bytes in 2 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+[pid: 40865|app: 0|req: 4/4] 127.0.0.1 () {56 vars in 1187 bytes} [Mon Sep  8 10:37:25 2025] GET /static/images/img.jpg => generated 179 bytes in 35 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 40865|app: 0|req: 5/5] 127.0.0.1 () {56 vars in 1187 bytes} [Mon Sep  8 10:43:13 2025] GET /static/images/img.jpg => generated 179 bytes in 1 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+[pid: 40865|app: 0|req: 6/6] 127.0.0.1 () {56 vars in 1187 bytes} [Mon Sep  8 10:43:16 2025] GET /static/images/img.jpg => generated 179 bytes in 4 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 40865|app: 0|req: 7/7] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 10:48:11 2025] GET /index/page => generated 7 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+[pid: 40865|app: 0|req: 8/8] 127.0.0.1 () {56 vars in 1187 bytes} [Mon Sep  8 10:48:14 2025] GET /static/images/img.jpg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)
+[pid: 40865|app: 0|req: 9/9] 127.0.0.1 () {58 vars in 1218 bytes} [Mon Sep  8 10:49:48 2025] GET /static/images/img.jpg => generated 179 bytes in 0 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 18:50:16 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+[pid: 40865|app: 0|req: 10/10] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 10:51:35 2025] GET /index/page => generated 7 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+[pid: 40865|app: 0|req: 11/11] 127.0.0.1 () {56 vars in 1155 bytes} [Mon Sep  8 10:54:36 2025] GET /admin => generated 0 bytes in 1 msecs (HTTP/1.1 301) 5 headers in 197 bytes (1 switches on core 1)
+[pid: 40865|app: 0|req: 12/12] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 10:54:36 2025] GET /admin/ => generated 145 bytes in 25 msecs (HTTP/1.1 500) 7 headers in 240 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 18:55:41 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+主页被访问
+[pid: 40865|app: 0|req: 13/13] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 11:01:58 2025] GET /index/ => generated 6 bytes in 61 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 19:10:30 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 21:54:25 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+[pid: 40865|app: 0|req: 14/14] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 13:54:59 2025] GET /admin/ => generated 145 bytes in 224 msecs (HTTP/1.1 500) 7 headers in 240 bytes (1 switches on core 0)
+[pid: 40865|app: 0|req: 15/15] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 13:55:01 2025] GET /admin/ => generated 145 bytes in 20 msecs (HTTP/1.1 500) 7 headers in 240 bytes (1 switches on core 1)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 21:57:05 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 21:57:12 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 22:03:50 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 22:04:06 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+probably another instance of uWSGI is running on the same address (127.0.0.1:8000).
+bind(): Address already in use [core/socket.c line 769]
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 22:10:13 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7bade0aa39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7bade0aa39e8 pid: 45067 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 45067, cores: 2)
+主页被访问
+[pid: 45067|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 14:10:21 2025] GET /index/ => generated 6 bytes in 13 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 22:10:53 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7ac3b90a39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7ac3b90a39e8 pid: 45098 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 45098, cores: 2)
+主页被访问
+[pid: 45098|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1157 bytes} [Mon Sep  8 14:10:57 2025] GET /index/ => generated 6 bytes in 6 msecs (HTTP/1.1 200) 6 headers in 205 bytes (1 switches on core 0)
+*** Starting uWSGI 2.0.30 (64bit) on [Mon Sep  8 23:15:43 2025] ***
+compiled with version: 13.3.0 on 07 September 2025 09:41:40
+os: Linux-6.8.0-79-generic #79-Ubuntu SMP PREEMPT_DYNAMIC Tue Aug 12 14:42:46 UTC 2025
+nodename: ubuntu-virtual-machine
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/ubuntu/django/day08/code/mysite8
+writing pidfile to uwsgi.pid
+detected binary path: /usr/local/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+chdir() to /home/ubuntu/django/day08/code/mysite8
+*** WARNING: you are running uWSGI without its master process manager ***
+your processes number limit is 22198
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to TCP address 127.0.0.1:8000 fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.12.3 (main, Aug 14 2025, 17:47:21) [GCC 13.3.0]
+Python main interpreter initialized at 0x7f44ecaa39e8
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+python threads support enabled
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 83376 bytes (81 KB) for 2 cores
+*** Operational MODE: threaded ***
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x7f44ecaa39e8 pid: 46005 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI worker 1 (and the only) (pid: 46005, cores: 2)
+[pid: 46005|app: 0|req: 1/1] 127.0.0.1 () {56 vars in 1165 bytes} [Mon Sep  8 15:15:54 2025] GET /index/page => generated 146 bytes in 30 msecs (HTTP/1.1 404) 6 headers in 214 bytes (1 switches on core 0)

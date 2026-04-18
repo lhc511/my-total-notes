@@ -1,0 +1,43 @@
+<!--在对父元素中包含的子元素设置浮动之后会让子元素从父元素中脱离出去-->
+<!--从而导致原本父元素中由于被子元素而撑开的宽度和高度消失变为零，此时需要-->
+<!--重新设置,可以写死(不推荐) 也可以在父元素末尾添加-->
+<!--<div style="clear:浮动方向"></div>来清除浮动-->
+<!--或者在父元素style中添加 overflow: hidden; -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #parent{
+            margin: 0 auto;
+            width: 408px;
+            /*方式一*/
+            /*height: 102px;*/
+            border: solid 1px red;
+            /*方式三*/
+            overflow: hidden;
+        }
+        #parent .child{
+            float: left;
+            width: 100px;
+            height: 100px;
+            border: dashed 1px #575454;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <div class="child"></div>
+        <!-- 方式二-->
+        <div style="clear:left"></div>
+    </div>
+</body>
+</html>

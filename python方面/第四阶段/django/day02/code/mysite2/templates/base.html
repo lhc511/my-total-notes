@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+</head>
+<body>
+    <h1 style="background-color:blue;">注册，登陆</h1>
+
+<!--  模板中未来产生改变的内容  -->
+    {% block page_info %}
+    <h1 style="background-color:orange;">网站主页</h1>
+    <a href="/sport">进入运动页</a>
+    <a href="/sss">进入运动页sss</a>
+<!--  此处有url中的路径函数的name传递来动态算出页面(不管名称怎么变化)  -->
+    <a href="{% url 'sport' %}">进入运动页动态</a>
+    <a href="/news">进入新闻业</a>
+<!--  如果有两个相同的name(此处为pagen)那么只有最后一个生效,99,100用于给name为pagen函数传参  -->
+    <a href="{% url 'pagen' '99' %}">第一页</a>
+    <a href="{% url 'pagen' '100' %}">第二页</a>
+
+    {% endblock page_info %}
+
+
+    <h1 style="background-color:grey;">联系我们lalalalal</h1>
+</body>
+</html>

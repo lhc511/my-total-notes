@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+        #pic{
+            width: 179px;
+            height: 186px;
+            border:1px solid red;
+            margin: 0 auto;
+
+        }
+
+        /*float: left; 除了可以用来使目标向左浮动布局还可以用来取消宽度*/
+       #pic>div:nth-child(1){
+           background-color: red;
+           color: white;
+           float: left;
+           border-radius:0 3px 3px 0 ;
+           margin-left: 1px;
+       }
+        #pic>div:nth-child(3){
+            margin-left: 42px;
+            font-size: 20px;
+        }
+
+         #pic>div:nth-child(4){
+             margin-left: 42px;
+            font-size: 18px;
+             color: #cccccc;
+         }
+    </style>
+
+</head>
+<body>
+<div id="pic">
+    <div>低价</div>
+<!--    clear 用于解决同级元素的浮动问题，使其从脱离的文档流中恢复过来-->
+<!--    而overfloat:hidden用于解决子元素脱离文档流后的高度塌陷问题-->
+    <div style="clear: left"></div>
+    <div>母婴馆</div>
+    <div>秒杀低至1元</div>
+    <div></div>
+</div>
+</body>
+</html>

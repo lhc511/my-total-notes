@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--空格只在第一次输入时有效，若需要连续空格则用特殊符号-->
+<!--在input中id是用于搜寻地址导航栏的调用，而name是用于对数据的提交-->
+<form action="#">
+    <!--    用户名输入-->
+    <!--     <label>普通文本标签，常与表单控件结合 实现文本与控件的绑定</label>
+    label文本标签     input可输入的文本框-->
+<!--    <div>-->
+<!--        特殊符号：<:&lt;(空格):!&ndash;        for 是对指定的ID生效，与id名字一样&ndash;&gt;-->
+<!--        <lable for="name">用户名：</lable>-->
+<!--        &lt;!&ndash;placeholder占位符:可以在文本框中显示，并在点击输入后消失&ndash;&gt;-->
+
+<!--        <input type="text"-->
+<!--               id="name"-->
+<!--               name="name"-->
+<!--               placeholder="请输入用户名">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;    密码输入&ndash;&gt;-->
+<!--    <div>-->
+<!--        &lt;!&ndash;        for 是对指定的ID生效，与id名字一样&ndash;&gt;-->
+<!--        <lable for="pass">密码：</lable>-->
+<!--        &lt;!&ndash;        password 可以隐藏输入&ndash;&gt;-->
+<!--        <input type="password"-->
+<!--               id="pass"-->
+<!--               name="pass"-->
+<!--               placeholder="请输入密码">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;    学历选项&ndash;&gt;-->
+<!--    <div>-->
+<!--        &lt;!&ndash;        for 是对指定的ID生效，与id名字一样&ndash;&gt;-->
+<!--        <lable for="xl">学历：</lable>-->
+<!--        &lt;!&ndash;  单选按钮      下拉列表框元素 使用option设置列表项 value是列表值&ndash;&gt;-->
+<!--        <select name="xl" id="xl">-->
+<!--            &lt;!&ndash;       设置选项 传递value值 显示用户&ndash;&gt;-->
+<!--            <option value="1">大学</option>-->
+<!--            <option value="2">中学</option>-->
+<!--            <option value="3">小学</option>-->
+<!--        </select>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;        单选元素按钮&ndash;&gt;-->
+<!--    <div>-->
+<!--        <label for="sex">性别: </label>-->
+<!--        &lt;!&ndash; 设置name属性一样使其可以相互排斥，即只能选一个  reandonly只读属性-->
+<!--        部分类型不支持用readonly例如select radio 此时可以用disabled&ndash;&gt;-->
+<!--        &lt;!&ndash;        添加了checked可以让选项默认选择第一个，若去掉则由用户选择&ndash;&gt;-->
+<!--        &lt;!&ndash;        在HTML表单中，<input type="radio">的value属性用于定义该单选按钮的实际提交值。-->
+<!--        当表单被提交时，服务器接收到的数据是所选单选按钮的value值，而非用户可见的标签文本。&ndash;&gt;-->
+<!--        <input type="radio"-->
+<!--               name="sex"-->
+<!--               value="1"-->
+<!--               checked-->
+<!--               disabled-->
+<!--        />男-->
+<!--        <input type="radio" readonly name="sex" value="2"/>女-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;   多项选择爱好&ndash;&gt;-->
+<!--    <div>-->
+<!--        <label for="like">爱好</label>-->
+<!--        <input type="checkbox" name="like1"/>编程-->
+<!--        &lt;!&ndash;        默认选中游戏也可以取消&ndash;&gt;-->
+<!--        <input type="checkbox" checked name="like2"/>游戏-->
+<!--        <input type="checkbox" name="like3"/>阅读-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="demo">介绍自己：</label>-->
+<!--        &lt;!&ndash; 文本输入框,输入多行多列文本&ndash;&gt;-->
+<!--        &lt;!&ndash;        名字   编号   列数       行数  &ndash;&gt;-->
+<!--        <textarea name="demo"-->
+<!--                  id="demo"-->
+<!--                  cols="30"-->
+<!--                  rows="10">-->
+<!--        </textarea>-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash;    &ndash;&gt;-->
+<!--    <div>-->
+<!--        <input type="submit" value="注册"/>-->
+<!--        <input type="reset" disabled value="重置"/>-->
+<!--    </div>-->
+
+
+</form>
+</body>
+</html>

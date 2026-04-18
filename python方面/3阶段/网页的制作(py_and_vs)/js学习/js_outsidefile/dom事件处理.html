@@ -1,0 +1,72 @@
+<!--事件:用户的行为或者元素的状态-->
+<!--由指定元素监听事件，并绑定事件处理函数-->
+<!--事件处理函数:元素监听事件，并在事件发生时自动执行操作-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+    <div id="tip">
+
+    </div>
+<!--&lt;!&ndash;                       通过id寻找目标                 对目标使用innerText函数插入数据             &ndash;&gt;-->
+
+<!--     <script>-->
+<!--        // 获取指定id元素-->
+<!--        a=1;//iwuehgveoigvoewivniowevniowvnowihviab-->
+<!--        A=1;-->
+
+<!--        a1=2;//全局变量-->
+<!--        var a2=3;//页面局部变量。只能在该页面使用-->
+<!--        var a3,a4,a5;//定义多个变量没有赋值-->
+<!--        a3=7;//赋值-->
+<!--        var a6=a7=a8=0;-->
+
+<!--        const c=4//定义一个常量-->
+<!--        var o=3.8776239467;-->
+<!--        //保留3位并显示页面-->
+<!--        alert(o.toFixed(3))-->
+<!--    </script>-->
+<!--    <button onclick="a=document.getElementById('tip');a.innerText=o.toFixed(3);">点一下</button>-->
+<script>
+    var strName='aocnoqwn';
+    var isSa=false
+    // 函数的定义要写在script脚本当中  在body主体中调用
+
+    fun=function()
+    {
+        a=document.getElementById('tip');
+        a.innerText=typeof(strName);
+
+        // 强制类型转换
+        ////转变为字符串
+        // count=1
+        // console.log(typeof(count) )
+        // str_count=count.toString()//toString() ()里面的要填1-36 切必须是进制数字 例如2表示二进制
+        // console.log(typeof(str_count))
+
+        ////强制转换数字类型
+        // c="ol"
+        // console.log(Number(c))//非number字符，一律转换失败，返回 NaN
+        // m="12"
+        // console.log(Number(m))//转换成功，返回number值
+
+        str01="lsidjv"
+        // 回指定位置的字符的 Unicode 编码。这个返回值是 0 - 65535 之间的整数
+        index01=str01.charCodeAt(2)
+        console.log(index01)
+
+
+    }
+</script>
+<!--    点击后执行onclick后面双引号的语句(可打包成一个函数函数),a相当于id是tip的标签,通过a来访问标签的各种操作，此处是向网页中写入数据-->
+<button onclick = "fun()" > 点一下 </button>
+<!--<button onclick = "a=document.getElementById('tip');a.innerText=typeof(isSa);" > 点一下 </button>-->
+
+</body>
+</html>

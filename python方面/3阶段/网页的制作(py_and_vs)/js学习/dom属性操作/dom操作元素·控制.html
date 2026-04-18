@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<!--    属性设置-->
+    <style>
+        .focus{
+            color: white;
+            background-color: red;
+        }
+
+        .fs{
+            font-size: 28px;
+        }
+
+        .red{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<!--////////////////////////////////文////////////////////////////-->
+<!--<input type="text">-->
+<!--<span ></span>-->
+<!--<span ></span>-->
+
+<!--<script>-->
+<!--    let inputs=document.getElementsByTagName("input")-->
+<!--    let spans=document.getElementsByTagName("span")-->
+<!--    inputs[0].oninput=function (){-->
+<!--        spans[0].innerText=inputs[0].value;-->
+<!--    }-->
+<!--</script>-->
+
+<!--///////////////////////////////元素属性///////////////////////////-->
+<div>
+    <span class="focus">首页</span>
+    <span class="focus">新闻</span>
+    <span class="focus">图片</span>
+    <span class="focus">热点</span>
+</div>
+
+<script>
+    let spans=document.getElementsByTagName("span")
+    // spans[0].setAttribute("title","这是一个首页")
+    spans[0].title="这是一个是一个首页"
+
+</script>
+
+
+<!--/////////////////////////////////////////////////////////////////-->
+<!--<div id="tip">你好</div>-->
+<!--<script>-->
+<!--    //在此处并没有在tip内部定义类但是可以在得到元素后.访问来确定样式-->
+<!--    document.getElementById("tip").className="red fs";//添加多个类别样式用空格隔开-->
+<!--</script>-->
+</body>
+</html>

@@ -1,0 +1,11 @@
+数据备份
+1. 备份命令格式
+mysqldump -u用户名 -p 源库名 > ~/stu.sql
+--all-databases 备份所有库
+库名 备份单个库
+-B 库1 库2 库3 备份多个库
+库名 表1 表2 表3 备份指定库的多张表
+2. 恢复命令格式
+mysql -uroot -p 目标库名 < stu.sql
+从所有库备份中恢复某一个库(--one-database)
+mysql -uroot -p --one-database 目标库名 < all.sql

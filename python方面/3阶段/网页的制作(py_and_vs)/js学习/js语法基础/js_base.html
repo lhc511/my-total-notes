@@ -1,0 +1,52 @@
+<!--js代码可以写在文档任何位置，并且加载到就会立即执行，从上而下(和python类似)-->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //类似于input
+        a=prompt("请输入值")
+        // alert(a)
+        // alert("我啥也不知道")
+
+        // 在浏览器上 编辑页面中的console显示代码
+        console.log("接收到的值："+a)
+    </script>
+</head>
+<body>
+
+    <div>
+        <script>
+            document.write("你也很帅")
+        </script>
+    </div>
+
+    方式一
+    <!--alert是浏览器自带函数可以弹出一个窗口 on**** 表示和****的操作进行绑定
+    并执行双引号中的函数   在这里是 当点击页面中的按钮时浏览器退弹出一个窗口上面写着我真帅。-->
+<!--    <div>-->
+<!--        <input onclick="alert('我真帅')" type="button" value="点一下" />-->
+<!--    </div>-->
+
+
+<!--    这里会清空页面因为 按钮和样式里onclick中的函数绑定后 点击按钮会直接生成一个新的文档流
+        并将原先的页面完全覆盖 导致页面被清空-->
+    <div>
+        <input onclick="document.write('清空后的文本')" type="button" value="清除所有">
+    </div>
+
+    <!--  此处已经写了内嵌的js代码就不能再 外部引入js文件中的代码 只能二选一  -->
+    <script>
+        alert("最底下")
+    </script>
+
+<!--    此处是外部引入文件-->
+    <script src="../js_outsidefile/js_outsidefile.js"></script>
+</body>
+</html>

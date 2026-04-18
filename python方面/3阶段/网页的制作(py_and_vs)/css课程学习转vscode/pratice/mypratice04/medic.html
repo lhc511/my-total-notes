@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #frame{
+            width: 421px;
+            height: 260px;
+            background-color: #fdf4fe;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #frame>div:nth-child(1){
+            margin-left: 50px;
+            font-size: 30px;
+            color: #9b6029;
+        }
+
+        #frame>div:nth-child(2)>div>img{
+            margin-left: 20px;
+            margin-top: -18px;
+            width: 150px;
+            height: 135px;
+            float: left;
+        }
+
+        #picture{
+            position: relative;
+        }
+
+        #id{
+            position: absolute;
+            font-size: 20px;
+            color:white;
+            text-align: center;
+            left: 20px;
+            width: 150px;
+            height:30px;
+            top: 117px;
+            background-color: #9b6029;
+
+        }
+
+        #frame>div:nth-child(2){
+            border: 1px solid black;
+            background-color:#9b6029 ;
+            height:75px;
+            margin-top: 40px;
+        }
+
+        #frame>div:nth-child(2)>span{
+            font-size: 20px;
+            color: white;
+            display: inline-block;
+            margin-left: 20px;
+            padding-top: 6px;
+            padding-bottom: 6px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="frame">
+        <div>名中医推荐</div>
+
+        <div>
+            <div id="picture">
+                <img src="profile.jpg" alt="">
+                <div id="id">
+                    平泽唯
+                </div>
+            </div>
+            <span>唯教授谈论从脾胃治<br>糖尿病</span>
+            <span style="color: black;margin-top: 10px">北大医院中医科<br>主任医师</span>
+        </div>
+        
+    </div>
+</body>
+</html>

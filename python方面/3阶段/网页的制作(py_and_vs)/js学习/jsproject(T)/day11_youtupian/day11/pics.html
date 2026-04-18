@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/scrollReveal.js"></script>
+    <script src="js/system.js"></script>
+</head>
+<body>
+    <div class="bgimg"></div>
+    <div class="items"></div>
+    <script>
+        //调用导航栏模板，追加到页面中
+        $("body").prepend($(index.nav.html(3)));
+        $(".bgimg").after($(index.list.html('文章列表2', '不要轻易放弃，学习成长的路上，我们长路漫漫，只因学无止境。')));
+        $(".items").append(
+            $(index.pics.html('images/a.jpg','Python基础学习总结')),
+            $(index.pics.html('images/b.jpg','Python基础学习总结')),
+            $(index.pics.html('images/c.jpg','Python基础学习总结')),
+            $(index.pics.html('images/d.jpg','Python基础学习总结')),
+        )
+    </script>
+</body>
+</html>

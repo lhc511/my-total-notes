@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">>
+    <title>Title</title>
+</head>
+<body>
+{#<form action="/user/make_post/" method="POST">#}
+{#    #}
+{##}
+{#</form>#}
+
+{% csrf_token %}
+    <span id="show">aaa</span>
+    <span id="show">aaa</span>
+    <span id="show">aaa</span>
+    <p>
+        用户名：<input type="text" name="uname" id="uname">
+    </p>
+
+    <p>
+        密码：<input type="text" name="pwd" id="pwd">
+    </p>
+    <input type="submit" id="btn" value="aa" name="btn">
+
+<script src="/static/js/common.js"></script>
+<script src="/static/js/jquery-3.7.1.min.js"></script>
+<script>
+    $(function(){
+        $('#btn').click(function ()
+        {#$('#uname').blur(function ()#}
+        {
+        const xhr = createXhr()
+
+
+        xhr.open('post', '/user/make_post/', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert(xhr.responseText)
+                $('#show').html(xhr.responseText)
+            }
+        }
+
+        {#此步骤用于将ajax的请求头设置成django能够识别的form表单的请求头#}
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        //发送请求 key=value&key1=value1
+        const uname = $('#uname').val();
+        const pwd = $('#pwd').val();
+        const csrf = $("[name = 'csrfmiddlewaretoken']").val();
+        //拼接post表单提交的参数
+        const params = 'uname=' + uname + '&pwd=' + pwd + '&csrfmiddlewaretoken=' + csrf;
+        //发送post请求
+        xhr.send(params)
+        })
+    })
+
+</script>
+
+
+</body>
+</html>

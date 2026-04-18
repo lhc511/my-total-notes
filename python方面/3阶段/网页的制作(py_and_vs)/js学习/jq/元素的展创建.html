@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="`en`">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tip{
+            width: 200px;
+            border: black 1px solid;
+            padding: 10px ;
+            text-align: center;
+            /*background-color: blue;*/
+            color:black;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+
+    <script src="jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<!--    <div id="tip">-->
+<!--        akjbaqhouqboanoasioahsiohas-->
+<!--    </div>-->
+
+<!--    <div>a</div>-->
+<!--    <div id="mid">b</div>-->
+<!--    <div>c</div>-->
+
+    <div id="parent">
+        <div>wodhciojbviaoWDVB</div>
+
+
+    </div>
+    <script>
+    //添加         类                  属性
+    // $("#tip").addClass("red").css("color","white");
+
+    //用于切换元素样式类型
+    // $("#tip").on("click",function (){
+    //     $("#tip").toggleClass("red");
+    // })
+
+    //查找一个兄弟元素中的前后元素
+    // console.log($("#mid").prev())
+    // console.log($("#mid").prev().text())//查看内容
+    //
+    // console.log($("#mid").next())
+
+    let $div=$("<div>jjjjjjjj</div>");
+    $div.attr("id","child").html("我是一个动态元素").css("color","blue")
+    console.log($div);
+
+    //以下两种方式效果一样
+    // $("#parent").html($div);
+    // $("#parent").append($div) //将html中的的元素在父元素的添加在后面
+
+    // $("#parent").prepend($div); //将html中的的元素在父元素的添加在前面
+
+    </script>
+
+</body>
+</html>

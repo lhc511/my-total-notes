@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="sw">
+<!--        显示一个拖动条 最大为10 最小为1 默认开始值是3 step拖动一格就是1-->
+        <input
+                id="num"
+                type="range"
+                min="1"
+                max="10"
+                step="1"
+                value="3">
+<!--        方案一在元素中加入onchange-->
+<!--                onchange="aa()"-->
+<!--        >-->
+        <div id="tip">
+
+        </div>
+        <img id="img1" src="picture/自己头像.jpg" alt="">
+    </div>
+
+
+    <script>
+        var a=document.getElementById("num");
+        var b=document.getElementById("tip");
+        //方案二元素onchan直接绑定function aa
+        a.onchange=function(){
+            console.log(a.value)
+            b.innerText=a.value
+            switch (a.value){
+                case "1":
+                    console.log("lallalalallaa")
+                    break
+                case "2":
+                    
+                    console.log("i啊手机哦好")
+                    break
+                case "3":
+                    //图片隐藏
+                    document.getElementById("img1").style.display="none"
+                    console.log("哦维护v个黑怕女孩不哦")
+                    break
+                default:
+                    document.getElementById("img1").style.display=""
+                    console.log("错了")
+                    break
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <script src="{% static 'js/common.js' %}"></script>
+</head>
+<body>
+uhvoihov
+<button onclick="testXhr()" value="xhr">确定</button>
+
+<script>
+    function testXhr(){
+        {#此处是返回了一个XMLHttpRequest对象,即创建了一个异步对象#}
+        const xhr = createXhr();
+        console.log(xhr)
+    }
+</script>
+
+</body>
+</html>

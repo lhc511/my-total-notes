@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<!--        当上下两个元素都有外边距会进行合并最终取其中的最大值-->
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            border: solid 1px green;
+            margin: 0 auto;
+        }
+        /*#div1{*/
+        /*    background-color: red;*/
+        /*    margin-bottom:50px ;*/
+        /*}*/
+        /*#div2{*/
+        /*    margin-top: 20px;*/
+        /*    background-color: blue;*/
+        /*}*/
+
+        /*当该元素有边框时，一个元素内部的另一个元素外面边框会生效(border不为零)，没有边框时(border)为0就不会生效*/
+        /*#div3{*/
+        /*    margin-top: 30px;*/
+        /*    background-color: aqua;*/
+        /*    width: 300px;*/
+        /*    height: 300px;*/
+        /*}*/
+        /*#div4{*/
+        /*    margin-top: 20px;*/
+        /*        background-color: #61B141;*/
+        /*}*/
+
+        #div6{
+            margin-top: -1px;
+        }
+    </style>
+
+</head>
+<body>
+<!--    <div id="div1">-->
+
+<!--    </div>-->
+<!--    <div id="div2">-->
+
+<!--    </div>-->
+
+<!--    <div id="div3">-->
+<!--        <div id="div4">-->
+
+<!--    </div>-->
+<!--    </div>-->
+
+    <div id="div5">
+
+    </div>
+
+    <div id="div6">
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            color: rgb(111,103,115);
+            margin-top: 40px;
+            text-decoration: none;
+        }
+        p{
+            display: inline-block;
+            padding: 0;
+            /*float: right;*/
+            margin: 40px 0 0 20px;
+        }
+        #frame{
+            padding: 0 ;
+            width:700px ;
+            height: 360px;
+            margin: 0 auto;
+            border: 3px solid red;
+            position: relative;
+        }
+
+        #frame>#title{
+            position: relative;
+            width: 100%;
+            margin: 0;
+
+            border: 1px solid blue;
+            height: 42px;
+            background-color: #9c9a9c;
+        }
+
+        #frame>#title>.option:hover{
+            background-color: #005aa0;
+        }
+
+        #frame>div:nth-child(1)>.option{
+            height: 42px;
+            line-height: 42px;
+            width: 175px;
+            float: left;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #frame>div:nth-child(2)>div{
+            height:78px ;
+            border-bottom:1px #cccccc dashed;
+        }
+
+        #frame>#operationStrategy{
+            width: 668px;
+            padding: 0 16px;
+            border: solid 1px green;
+            display: none;
+        }
+        span{
+            display: inline-block;
+            font-size: 15px;
+            color: #9c9a9c;
+            float: right;
+            margin: 40px 0 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="title">
+            <div class="option" id="option1">热点新闻</div>
+            <div class="option" id="option2">合作播报</div>
+            <div class="option" id="option3">行业咨询</div>
+            <div class="option" id="option4">运营攻略</div>
+        </div>
+
+        <div id="operationStrategy">
+            <div>
+                <a href="#">[运营攻略]</a>
+                <p>加盟网络棋牌的注意事项</p>
+                <span>2014-09-05</span>
+            </div>
+
+            <div>
+                <a href="#">[运营攻略]</a>
+                <p>加盟网络棋牌的注意事项</p>
+                <span>2014-09-05</span>
+            </div>
+
+            <div>
+                <a href="#">[运营攻略]</a>
+                <p>加盟网络棋牌的注意事项</p>
+                <span>2014-09-05</span>
+            </div>
+
+            <div>
+                <a href="#">[运营攻略]</a>
+                <p>加盟网络棋牌的注意事项</p>
+                <span>2014-09-05</span>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        option=document.getElementsByClassName("option")//class返回的是一个数组
+        // console.log(option[3])
+        option[3].onclick=function (){
+            let o=document.getElementById("operationStrategy");
+            let title4=document.getElementById("option4");
+            // o.style.display="block"
+            console.log(window.getComputedStyle(o).display)
+            if (window.getComputedStyle(o).display==="none"){
+                o.style.display="block";
+                title4.style.backgroundColor="blue"
+            }
+            else if (window.getComputedStyle(o).display==="block"){
+                o.style.display="none"
+                title4.style.backgroundColor=""
+            }
+        };
+
+    </script>
+</body>
+</html>

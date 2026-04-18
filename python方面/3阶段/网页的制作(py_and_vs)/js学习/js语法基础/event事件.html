@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        fieldset{
+            width: 100px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+<!--    分组元素-->
+    <fieldset>
+<!--        分组元素标题-->
+        <legend></legend>
+        <div class="btns">
+            <button  id="red">红色</button>
+            <button id="blue">蓝色</button>
+            <button id="green">绿色</button>
+        </div>
+        <script>
+            var btnRed=document.getElementById("red")
+            var btnBlue=document.getElementById("blue")
+            var btnGreen=document.getElementById("green")
+            btnRed.onclick=function (){
+            //    让元素背景色变红
+                document.body.style.backgroundColor="red"
+            }
+        </script>
+    </fieldset>
+</body>
+</html>

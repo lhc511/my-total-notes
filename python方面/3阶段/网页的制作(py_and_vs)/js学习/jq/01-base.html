@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+
+</head>
+<body>
+    <div id="tip">
+        helloWorld
+    </div>
+
+    <input type="checkbox" name="marry" id="marry"  checked>
+    <script>
+        // //输出jq对象
+        // console.log($("#tip"))
+        // //输出dom对象
+        // console.log(document.getElementById("tip"))
+        // //转成jq对象
+        // console.log($(document.getElementById("tip")))
+        // //jq转成原生对象
+        // console.log($("#tip")[0])//在jq对象后面加数组下标就可以转变为原生对象
+
+        //获取jq对象并显示内容
+        $("#tip").html("<b>oiqhbfuiojewqbvfueq</b>")
+        console.log($("#tip").attr("id"))
+        console.log($("#marry").attr("checked"))
+        console.log($("#marry").prop("checked"))//当checked选中后返回true
+    </script>
+
+</body>
+</html>

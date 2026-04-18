@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #frame{
+            border: 1px solid red;
+            margin: 0 auto;
+            width: 400px;
+            text-align: center;
+        }
+
+        #frame>div:nth-child(2){
+            height: 980px;
+        }
+        #frame>div:nth-child(2)>img:nth-child(1){
+            display: inline-block;
+            height: 240px;
+        }
+
+        #frame>div:nth-child(2)>img:nth-child(2){
+            display: inline-block;
+            height: 240px;
+        }
+
+        #frame>div:nth-child(2)>img:nth-child(3){
+            display: inline-block;
+            height: 240px;
+        }
+
+        #frame>div:nth-child(2)>img:nth-child(4){
+            display: inline-block;
+            height: 240px;
+        }
+
+        img{
+            width: 100%;
+        }
+        #frame>div:nth-child(3){
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="totalBtn">
+            <input type="checkbox" name="turnOn" id="turnOn">
+            <label for="turnOn">开启功能</label>
+        </div>
+
+        <div id="pic">
+            <img id="img1" src="picture/img1.jpg" alt="">
+            <img id="img2" src="picture/img2.jpg" alt="">
+            <img id="img3" src="picture/img3.jpg" alt="">
+            <img id="img4" src="picture/img4.png" alt="">
+        </div>
+
+        <div id="selection">
+            <input type="radio" id="select1" name="selection1" checked>
+            <label for="select1">showImg1</label>
+            <input type="radio" id="select2" name="selection2" checked=>
+            <label for="select2">showImg2</label>
+            <input type="radio" id="select3" name="selection3" checked>
+            <label for="select3">showImg3</label>
+            <input type="radio" id="select4" name="selection4" checked>
+            <label for="select4">showImg4</label>
+        </div>
+    </div>
+
+    <script>
+        function getId(id){
+            return document.getElementById(id)
+        }
+
+        let totalBtn=getId("totalBtn")
+
+        let img1=getId("img1")
+        let img2=getId("img2")
+        let img3=getId("img3")
+        let img4=getId("img4")
+
+        let select1=getId("select1")
+        let select2=getId("select2")
+        let select3=getId("select3")
+        let select4=getId("select4")
+
+        select1.onclick=function (){
+            img1.style.display="none"
+            img2.style.display=""
+            img3.style.display=""
+            img4.style.display=""
+
+        };
+        select2.onclick=function (){
+            img1.style.display=""
+            img2.style.display="none"
+            img3.style.display=""
+            img4.style.display=""
+
+        };
+        select3.onclick=function (){
+            img1.style.display=""
+            img2.style.display=""
+            img3.style.display="none"
+            img4.style.display=""
+
+        };
+        select4.onclick=function (){
+            img1.style.display=""
+            img2.style.display=""
+            img3.style.display=""
+            img4.style.display="none"
+
+        };
+
+        totalBtn.onclick=function (){
+            select1.checked=false
+            select2.checked=false
+            select3.checked=false
+            select4.checked=false
+            if(select4.checked===false){
+                img1.style.display="none"
+                img2.style.display="none"
+                img3.style.display="none"
+                img4.style.display="none"
+            }
+
+            else if(select4.checked===true){
+                img1.style.display=""
+                img2.style.display=""
+                img3.style.display=""
+                img4.style.display=""
+            }
+
+        }
+
+    </script>
+</body>
+</html>
