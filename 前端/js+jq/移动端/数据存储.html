@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>e</title>
+</head>
+<body>
+    <input type="text">
+    <button class="set">存储数据</button>
+    <button class="get">获取数据</button>
+    <button class="remove">删除数据</button>
+    <button class="del">清空所有数据</button>
+    <script>
+        var ipt = document.querySelector('input');
+        var set = document.querySelector('.set');
+        var get = document.querySelector('.get');
+        var remove = document.querySelector('.remove');
+        var del = document.querySelector('.del');
+
+        // sessionStorage
+        // set.addEventListener('click',function (){
+        //     let val=ipt.value
+        //     sessionStorage.setItem('uname',val)
+        // })
+        //
+        // get.addEventListener('click',function (){
+        //     console.log(sessionStorage.getItem('uname'))
+        // })
+        //
+        // remove.addEventListener('click',function (){
+        //     sessionStorage.removeItem('uname')
+        // })
+        // del.addEventListener('click',function (){
+        //     sessionStorage.clear()//清除掉页面中存储的所有数据
+        // })
+
+        //localStorage   只有手动删除才会从数据中清除
+        set.addEventListener('click', function() {
+            var val = ipt.value;
+            localStorage.setItem('username', val);
+        })
+        get.addEventListener('click', function() {
+            console.log(localStorage.getItem('username'));
+
+        })
+        remove.addEventListener('click', function() {
+            localStorage.removeItem('username');
+
+        })
+        del.addEventListener('click', function() {
+            localStorage.clear();
+
+        })
+
+    </script>
+</body>
+</html>

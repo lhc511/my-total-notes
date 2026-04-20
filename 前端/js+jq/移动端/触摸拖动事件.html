@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>aaaaaaaa</title>
+    <style>
+            div {
+                position: absolute;
+                left: 0;
+                width: 100px;
+                height: 100px;
+                background-color: pink;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div></div>
+
+    <script>
+        //手指在页面的坐标
+        let startX=0
+        let startY=0
+        //手指在div内的坐标
+        let x=0
+        let y=0
+        let div=document.querySelector('div')
+        div.addEventListener('touchstart',function (e){
+            //手指触摸时的初始X页面坐标
+            startX = e.targetTouches[0].pageX
+            //手指的初始Y页面坐标
+            startY = e.targetTouches[0].pageY
+            x=this.offsetLeft
+            y=this.offsetTop
+
+        })
+
+        div.addEventListener('touchmove',function (e){
+            //手指的位移距离  移动时触发的
+            //手指移动后的坐标减去初始坐标
+            let moveX=e.targetTouches[0].pageX-startX
+            let moveY=e.targetTouches[0].pageY-startY
+
+            // div.style.left=div.offsetLeft+moveX+'px'
+            // div.style.top=div.offsetTop+moveY+'px'
+
+            //相当于将元素的距离变成移动的距离加上初始距离
+            div.style.left=x+moveX+'px'
+            div.style.top=y+moveY+'px'
+        })
+
+    </script>
+
+</body>
+</html>

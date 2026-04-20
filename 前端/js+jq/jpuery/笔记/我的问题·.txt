@@ -1,0 +1,89 @@
+navagition = $('.nav>li>a') 返回的是jQuery对象（一个包含匹配元素的集合）
+navagition[0] 返回的是原生的DOM元素（集合中的第一个DOM节点）
+原生DOM元素没有siblings()方法（这是jQuery提供的方法）
+
+方案1：使用jQuery对象方法（推荐）
+    保持操作对象始终为jQuery对象，使用.eq()代替数组索引：
+    console.log(navagition.eq(0).siblings('li'));
+    .eq(index)：返回jQuery对象（包含指定索引位置的元素）
+方案2：将DOM元素重新包装为jQuery对象
+    console.log($(navagition[0]).siblings('li'));
+    用$()包裹原生元素，使其成为jQuery对象
+
+eq(索引)是jq的数组元素选择方法，如果使用[]来选择会将其转换成dom元素对象
+$(this).toggleClass("current"); 的作用是‌切换当前元素的 "current" 类名‌。如果元素已包含该类名，则移除它；若未包含，则添加该类名
+
+在jQuery中，.hover() 方法被用来绑定两个函数到鼠标悬停（hover）事件上：鼠标进入元素时触发一个函数，鼠标离开元素时触发另一个函数。
+$(选择的元素).hover(鼠标经过的函数,鼠标离开的函数)
+// 2. 事件切换 hover  如果只写一个函数，那么鼠标经过和鼠标离开都会触发这个函数
+例如:// $(".nav>li").hover(function() {
+            //     $(this).children("ul").slideDown(200);
+            // }, function() {
+            //     $(this).children("ul").slideUp(200);
+            // });
+
+            $(".nav>li").hover(function() {
+                $(this).children("ul").slideToggle();
+            });
+
+            $(".nav>li"i.hover(function() {
+            // stop 方法必须写到动画的前面,因为stop方法结束的是上一个动画,在进行slideToggle()动画之前停掉上一次动画
+            $(this).children("ul").stop().slideToggle();
+
+            animate()动画函数中要修改css属性的话要用大括号包起来
+            比如 animate({left: 500,top: 300,opacity: .4,width: 500}
+
+            链式编程操作机制  链式操作的本质是：每个方法返回一个新的jQuery对象，该对象表示当前操作上下文中的元素集合
+                案例:$(this).stop().animate({width: 224}).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn();
+                分析:$(this)：
+            这是一个jQuery对象，指向事件触发时的元素（假设为一个li元素）。例如，在您的引用[1]中，$(this)常用于事件处理程序2。
+                .stop().animate({width: 224})：
+            对$(this)元素应用动画效果（停止当前动画后，将其宽度变为224px）。此方法返回原始的$(this)对象（即同一个元素集合），因此上下文未改变。
+                .find(".small")：
+            这是关键转折点。.find()方法在$(this)元素内部查找类名为.small的子元素（例如，在您的引用[3]中，.small定义为绝对定位的子元素3）。.find()返回一个新的jQuery对象，该对象包含.small元素（如一个img或div）。此时，上下文转移到.small元素上。
+                .stop().fadeOut()：
+            对.small元素应用淡出动画。方法返回的仍是.small元素的jQuery对象，上下文保持不变。
+                .siblings(".big")：
+            这里，.siblings()方法作用于当前上下文元素——即.small元素。它查找.small元素的兄弟元素（同级元素），并筛选出类为.big的元素。例如，在您的引用[3]中，.big类定义为.small的兄弟元素（都位于a标签下）
+
+            $('.j-checkbox:checked').length  //此处指的是类名是j-checkbox的选框中被勾选中(checked)的个数
+
+            当有整数/小数多次相加因为浮点问题出现很多位小数时用 数字.toFixed(2) 来进行修正
+
+
+切割字符串函数:
+    1. split() 方法
+    用于将字符串按照指定的分隔符切割成数组。
+        let str = "apple,banana,orange";
+        let result = str.split(","); // ["apple", "banana", "orange"]
+    2. substring() 方法
+    用于提取字符串中介于两个指定下标之间的部分。
+        let str = "Hello, World!";
+        let result = str.substring(0, 5); // "Hello"
+    3. substr() 方法
+    用于从指定位置开始，提取指定长度的子字符串。
+        let result = str.substr(7, 5); // "World"
+        4. slice() 方法
+    类似于 substring()，但支持负索引。
+        let result = str.slice(-6, -1); // "World"
+
+清除元素  元素对象.remove()
+隐式迭代只能给选中的元素做相同的操作，即普通的用jq选择器选择，而要进行不同的操作就要进行
+$("p").remove(".italic");    此代码会删除所有带有 class="italic" 的 <p> 元素。
+
+原生js:页面头部被卷去就用window.pageYOffset  jq框架 $(元素).scrollTop()
+获取元素距离页面的距离:原生js: 元素.offsetTop等   jq:$(元素).offset().top等
+jq中的隐式迭代是作用与全体的，向单独作用与其中一个要用循环
+在jq框架中使用window时也要用$()来转化成jq形式才能使用
+
+jQuery 的 animate() 方法只能作用于 DOM 元素，而 document 和 window 属于浏览器环境对象（BOM），并非 DOM 元素
+所以    $('body,html').stop.animate()
+animate在末尾可以设置回调函数
+
+解决动态元素事件绑定问题的标准方法是使用事件委托。jQuery中可以使用$(document).on('click', 'a', function(){...})或更具体的父元素作为委托容器。
+从网站上下载封装好的功能中里面寻找dist文件夹，里面有css和js文件
+localStorage中键名相同会追加到一个列表当中
+
+当 done = true 时，表示任务已完成。
+当 done = false 时，表示任务未完成。      例如:data[index].done = $(this).prop("checked");   data[index]为input元素
+在待办事项应用中，勾选一个任务复选框会将其 done 设为 true，标记为已完成。取消勾选则设为 false，标记为未完成。

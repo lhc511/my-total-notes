@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--  AMD通过require.js库之后调用main.js，使得浏览器能够解析main中通过模块调用的其他文件  -->
+<!--  此处是一种能保证main.js在require.js模块加载完毕之后才执行的语法  -->
+    <script src="./lib/require.js" data-main="./src/index.js"></script>
+
+<!--  此处相当于直接调用main.js文件，而main的文件中会通过模块化调用其他文件  -->
+<!--   而浏览器普通的调用方式无法解析模块化调用文件，因此此处会出错   -->
+<!--    <script src="./src/index.js"></script>-->
+</head>
+<body>
+
+</body>
+</html>

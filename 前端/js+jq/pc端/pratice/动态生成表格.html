@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>aaaa</title>
+ <style>
+        table {
+            width: 500px;
+            margin: 100px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        td,
+        th {
+            border: 1px solid #333;
+        }
+
+        thead tr {
+            height: 40px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <table cellspacing="0">
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>科目</th>
+                <th>成绩</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <script>
+        let datas = [{
+            name: '魏璎珞',
+            subject: 'JavaScript',
+            score: 100
+        }, {
+            name: '弘历',
+            subject: 'JavaScript',
+            score: 98
+        }, {
+            name: '傅恒',
+            subject: 'JavaScript',
+            score: 99
+        }, {
+            name: '明玉',
+            subject: 'JavaScript',
+            score: 88
+        }, {
+            name: '大猪蹄子',
+            subject: 'JavaScript',
+            score: 0
+        }];
+
+        let tbody=document.querySelector('tbody')
+
+        for(let i=0;i<datas.length;i++){
+            let tr=document.createElement('tr')
+            tbody.appendChild(tr)
+            //给字典计数的方法
+            // for (let a=0;a<Object.keys(datas[i]).length;a++){console.log(a)}
+            for (let key in datas[i]){
+                let td=document.createElement('td')
+                td.innerHTML=datas[i][key]
+                // td.innerHTML=datas[i].key
+                tr.appendChild(td)
+            }
+            tr.innerHTML+='<td><a href="javascript:;">删除</a></td>'
+
+        }
+        console.log(tbody.children[4])   //tr
+        console.log(tbody.children[4].children[0])  //td
+        console.log(tbody.children[4].children[3].children[0])  //a
+
+        a_set=document.querySelectorAll('a')
+        // console.log(a_set[0].parentNode)
+        for(let i=0;i<a_set.length;i++){
+            a_set[i].onclick=function (){
+                // tbody.removeChild(this.parentNode.parentNode)
+                // console.log(this.parentNode)
+
+                //删除a元素标签的父节点td
+                tbody.children[4].removeChild(this.parentNode)
+            }
+        }
+    </script>
+
+</body>
+</html>

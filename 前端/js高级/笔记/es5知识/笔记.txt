@@ -1,0 +1,490 @@
+"use strict"：使用严格模式
+
+代码执行与页面渲染过程
+解析代码生成AST（抽象语法树）：
+V8引擎首先使用Parser组件将JavaScript源代码解析成抽象语法树（AST->了解就好，不管原理）。AST是一种结构化表示，便于后续处理。例如，对于代码 const name = "coderwhy"; console.log(name)，Parser会将其分解为变量声明和函数调用等节点。
+字节码生成与解释执行。在此过程中还会创建一个 GlobalObject{}(->又称GO)全局对象 里面的window属性指向自己，用来解析存储 所有全局变量，对象，函数等(与全局相关的), 并将自定义的对象赋值为undefined,但是此时的 自定义对象赋值代码 本身并没有执行
+所以储存在global对象中的代码会显示undefined(也就是常说的作用域提升)，同理函数内部也会创建一个ao对像来存储函数内部创建的所有对象
+    2. 运行代码->运行代码(不深究，知道过程就好)
+    1.v8为了执行代码,v8引擎内部会有一个执行上下文栈(Execution Context·Stack,ECStack)(函数调用栈)，一般情况下只能存储函数
+    2.因为我们执行的是全局代码,为了全局代码能够正常的执行,需要创建 全局执行上下文(Global Execution Context)(全局代码需要被执行时才会创建),将全局执行上下文放到函数调用栈中
+    在全局执行上下文中会维护一个vo(veriable object),在此处指向go全局对象，然后再次开始执行代码，在每一次执行赋值等操作时会进入栈通过vo找到go在找到里面的目标对象进行赋值比如 num=1
+解释器（如Ignition->了解就好，不管原理）将AST转换成字节码（一种低级指令集），并逐行解释执行字节码。字节码比源代码更高效，因为它减少了直接编译的开销。Ignition在执行过程中同时收集性能数据，如代码执行频率4。检测热点代码：
+在解释执行期间，V8监控代码的执行次数。如果某段代码（如一个函数）被反复执行多次（称为“热点代码”），引擎会识别它为优化候选。例如，函数 sayHi(name) 在多次调用后可能成为热点代码34。
+JIT编译与优化：
+一旦检测到热点代码，编译器（如TurboFan）介入，将其编译成优化的机器码（原生CPU指令）。机器码执行速度远快于字节码解释执行。这个过程称为Just-In-Time（JIT）编译，它允许V8在运行时动态优化性能34。
+执行优化代码：
+优化后的机器码替换原始字节码，引擎直接执行机器码以提升效率。V8引擎因此具有“执行时间越久，效率越高”的特点，因为更多热点代码被编译成机器码4。
+
+1. Token的定义
+核心概念: Token是词法分析器（Lexer）对源代码进行扫描后生成的原子单位。每个token对应一个特定的语法类别，例如：
+关键字（Keywords）: 如 var、function、if（表示语言保留字）。
+标识符（Identifiers）: 如变量名 name 或函数名 sayHi。
+运算符（Operators）: 如 =、+、*（用于数学或逻辑操作）。
+字面量（Literals）: 如字符串 "coderwhy" 或数字 42。
+分隔符（Delimiters）: 如 {、}、,（用于代码块或参数分隔）。
+生成过程: V8引擎在分词（Tokenization）环节，逐行扫描源代码字符串，根据语法规则将字符序列切分成token列表。例如，对于代码 const name = "coderwhy";：
+分词后生成token序列：[const, name, =, "coderwhy", ;]。
+每个token都携带属性（如类型、值、位置信息），便于后续解析。
+
+■那么我们的JavaScript源码是如何被解析(Parse过程)的呢? (见图:2-解析执行过程)
+■ Blink将源码交给V8引擎,Stream获取到源码并且进行编码转换;
+■Scanner会进行词法分析(lexical analysis),词法分析会将代码转换成tokens;
+■接下来tokens会被转换成AST树,经过Parser和PreParser:
+□ Parser就是直接将tokens转成AST树架构;
+□ PreParser称之为预解析,为什么需要预解析呢?
+√这是因为并不是所有的JavaScript代码,在一开始时就会被执行。那么对所有的JavaScript代码进行解析,必然会
+影响网页的运行效率;
+√所以V8引擎就实现了Lazy Parsing(延迟解析)的方案,它的作用是将不必要的函数进行预解析,也就是只解析暂
+时需要的内容,而对函数的全量解析是在函数被调用时才会进行;
+√比如我们在一个函数outer内部定义了另外一个函数inner,那么inner函数就会进行预解析;、
+■生成AST树后,会被Ignition转成字节码(bytecode),之后的过程就是代码的执行过程(后续会详细分析)。
+
+Blink渲染引擎	浏览器渲染核心，负责DOM解析、布局和渲染；调度JavaScript执行请求12	将JS源码传递给V8引擎的执行入口
+Stream流	源码输入管道：1. 分块读取Blink传递的源码  2. 处理编码转换（如UTF-16→UTF-8）4	为Scanner提供标准化字符流
+Scanner	    词法分析核心：1. 逐字符扫描Stream输入的源码。  2. 生成Token序列（如标识符/运算符）14	输出Tokens供解析器生成AST
+
+1. 资源加载与解析初始化
+    进程调度：
+    网络线程获取资源后，通过IPC管道传递给渲染进程（Renderer Process）。
+    并行解析：
+    HTML解析：自上而下解析HTML标签，构建DOM树（Document Object Model）
+    CSS加载：异步加载CSS文件，解析为CSS规则树（CSSOM）
+    JS阻塞：遇到<script>标签时暂停HTML解析，等待JS加载执行完毕
+2. 构建渲染树（Render Tree）
+    将DOM树与CSSOM树合并为布局树（Layout Tree）：
+    节点匹配：DOM节点附加CSS样式规则
+    过滤无效节点：移除display: none等不可见元素
+    生成渲染树：仅保留可见节点，形成最终Render Tree
+    RenderTree=DOMTree∪CSSOMTree−{hidden nodes}
+3. 布局（Layout）与分层（Layers）
+    布局计算：根据渲染树计算每个节点的几何属性（位置、尺寸）
+    分层处理：将页面分为多层（如滚动层、动画层）
+            每层划分为小块（Tiles），仅渲染视口（Viewport）内区域3
+            优势：滚动时复用已渲染块，减少重复计算
+
+4. 绘制（Paint）与合成（Composite）
+    栅格化（Rasterization）：将每个块转换为位图像素
+    合成显示：合成线程（Compositor Thread）将各层位图合并为最终帧，提交给GPU渲染显示
+
+js代码在编译阶段时会将该函数的地址添加到GO中，并指向在内存当中创建空间存储当前函数对象（保存父级作用域和函数执行体），执行代码时通过vo找到GO查找该函数（地址）指向的内存空间，在调用时存放到函数调用栈（执行上下文栈）。在调用时会创建一个函数执行上下文（调用栈执行完毕后销毁），其中也维护了一个VO，不过指向是AO（activation object最后销毁），而非GO（不会销毁）。
+函数内部的变量，对象会在编译时存储在AO当中，GO同理
+‌核心区别在于预编译处理源代码中的预处理指令（如宏替换、头文件包含和条件编译），生成中间文件；而编译则将预处理后的代码转换为机器码或目标文件，进行语法检查、语义分析和优化‌。
+函数的作用域在编译时已经确定，和调用的位置无关，只和定义的位置有关。函数的变量，对象等的查找会顺着作用域链查找(在vo指向的对象中，在解析中(执行代码之前)会将所有自定义变量函数对象等提升存储在此)，如果自身有 目标 则用自身的对象，若没有则找父作用域
+作用域链:scope chain  父级作用域：parentchain
+es6常用方法
+1.filter: 过滤
+[10, 5, 11, 100,55]
+ var newNums = nums. filter(function(item) {
+    return item % 2 ===0// 偶数 true/false  true返回并存放到数组，false不返回
+}
+ console.log(newNums)
+map:映射
+ [10, 5, 11, 100, 55]
+ var newNums2 = nums, map(function(item) {return item * 20}  //返回全部元素*20的数组
+ console.log(newNums2)
+
+forEach:迭代   单纯遍历每一个元素
+nums.forEach(function(item) {console.log(item),obj}  obj是指向的对象
+
+find（精确查找值）/findIndex（返回索引）
+es6~12
+var item = nums.find(function(item) {return item === 11}
+console.log(item)
+var friends = [
+{name: "why", age: 18},
+{name: "kobe", age: 40},
+{name: "james", age: 35),
+{name: "curry", age: 30),]
+
+var findFriend = friends.find(function(item){return item.name === 'james'})        //返回该元素
+
+console.log(findFriend)
+
+var friendIndex = friends.findIndex(function(item) {return item.name === 'james'})  //返回该元素的索引
+    console.log(friendIndex)
+
+5.reduce:累加
+ nums.reduce
+ [10, 5, 11, 100, 55]
+var total = 0
+for (var i =0; i < nums.length; i++) {total += nums[i]}
+console.log(total)
+prevValue: 0, item: 10
+prevValue: 10, item: 5
+prevValue: 15, item: 11
+var total = nums.reduce(function(prevValue, item) {return prevValue + item}, 0)
+console. log(total)
+
+//高阶函数:把一个函数如果接受另外一个函数作为参数,或者该函数会返回另外一个函数作为返回值的函数,那么这个函数就称之为是一个高阶函数
+示例代码:function foo() {
+    function bar () {console. log("bar")}
+    return bar
+}
+var fn = foo()
+fn()
+-》见图03高阶函数执行过程
+描述：在首先解析代码，将全局对象存放在一个全局执行上下文(GEC)中并存放在ECStack调用栈，其中的fn属性对应值为foo函数的地址，go和ao都是复杂对象拥有各种各样的属性，函数执行时
+通过维护的vo指向堆中的GO对象，在foo函数执行时会再创建一个函数执行上下文并存放在ECStack调用栈，该函数执行上下文的vo指向堆中的ao，ao存放着bar的地址，因为bar是ao中定义的函数，
+bar执行时同理创建调用栈和ao对象，不过bar的ao中无自定属性因为未创建，再执行bar后fn的值为bar地址，此时foo高级函数执行完毕，销毁他们两个的 上下文调用栈
+
+
+//-函数function :- 独立的function,那么称之为是一个函数
+// 方法method :· 当我们的一个函数属于某一个对象时,我们成这个函数是这个对象的方法
+
+闭包和内存管理
+■不管什么样的编程语言,在代码的执行过程中都是需要给它分配内存的,不同的是某些编程语言需要我们自己手动
+的管理内存,某些编程语言会可以自动帮助我们管理内存:
+■不管以什么样的方式来管理内存,内存的管理都会有如下的生命周期:
+    □第一步:分配申请你需要的内存(申请);
+    □第二步:使用分配的内存(存放一些东西,比如对象等);
+    口第三步:不需要使用时,对其进行释放;
+■不同的编程语言对于第一步和第三步会有不同的实现:
+    □手动管理内存:比如C、C++,包括早期的OC,都是需要手动来管理内存的申请和释放的(malloc和free函数);
+    □自动管理内存:比如Java、JavaScript、Python、Swift、Dart等,它们有自动帮助我们管理内存;
+■我们可以知道JavaScript通常情况下是不需要手动来管理的。
+
+JS对于基本数据类型内存的分配会在执行时,直接在栈空间进行分配;                         举例应用:深浅拷贝
+□JS对于复杂数据类型内存的分配会在堆内存中开辟一块空间,并且将这块空间的指针返回值变量引用;
+
+垃圾回收机制在回收时不会在对象失去引用(指向)后立刻回收(因为不会实时监视，这样浪费性能),而是会根据自己的算法在一定时间后进行回收
+常见的GC算法-引用计数：（垃圾回收机制）
+□当一个对象有一个引用指向它时,那么这个对象的引用就+1,当一个对象的引用为0时,这个对象就可以被销毁掉;
+口这个算法有一个很大的弊端就是会产生循环引用;
+标记清除: □这个算法可以很好的解决循环引用的问题;
+□这个算法是设置一个根对象(root object),垃圾回收器会定期从这个根开始,找所有从根开始有引用到的对象,对
+于哪些没有引用到的对象,就认为是不可用的对象;
+
+闭包的形成->见4-闭包的形成
+代码变化L:foo函数中添加了name变量除了在ba函数中因没有name属性而找到父级作用域(parentscope)中的name，其余过程与上一个知识点高阶函数过程一样，在形成闭包后可以访问本该销毁的变量
+        6-内存泄漏案例.png
+闭包内存泄漏原因:->见5-闭包内存泄漏原因 (需要用引用(变量)接收->即在全局go中储存，否则会被自动销毁，)
+由于在函数foo中的return返回的是bar函数的地址，使得全局执行上下文中指向的go中的fn存储变为bar函数对象的地址，根据js的回收机制(标记清除)，从根目录开始查找能够找的bar，
+，而内存中的bar函数对象中的父作用域链指向原本foo的ao，因此函数执行上下文在函数执行完毕销毁后会发生内存泄露(foo是一个全局函数，在go中存储，所以不会清除)，在执行bar函数后bar函数的ao会销毁，
+但由于指向bar函数的地址存储在go中，因为不会销毁，释放内存的方法，将go中的存储变量赋值为null，使其不指向任何一个函数对象
+
+js v8引擎有一种优化机制，在闭包中虽然可以保存其中的数据不被销毁，但是如果闭包中有在代码执行过程中未被使用的对象，则会将其优化掉；示例代码：
+其中由于age未被使用在执行时会被优化掉
+    // var arr=[1,1,1,1,1,1,1,1,1,1,1,1,1]
+    // 占据的空间是4M-x 100 +·其他的内存=400M+
+    // 1 ->number -> 8byte -> 8M
+    // js: 10 3.14 -> number -> 8byte ? js引擎
+    // 8byte =>2的64次方=> 4byte
+    // 小的数字类型,在v8中成为Sim,小数字 2的32次方
+function foo(){
+    var name = "why"
+    var age = 18
+    function bar () {
+        console. log(name)
+    }
+    return bar
+}
+var fn = foo()
+fn()
+
+debugger:当浏览器执行到写了debugger这一行时会停止运行
+
+this指向        更多见js的绑定文件
+在大多数情况下,this都是出现在函数中
+在全局作用域下
+浏览器:window(globalobject)
+Node环境{}
+console. log(this)
+console.log(window)
+call和apply会绑定并进行调用，并且在调用时需重复绑定，而bind不会在绑定时调用，并只用绑定一次以后无需绑定
+
+1.默认规则的优先级最低
+毫无疑问,默认规则的优先级是最低的,因为存在其他规则时,就会通过其他规则的方式来绑定this
+2.显示绑定优先级高于隐式绑定
+var obj = {
+    name: "obj",
+    foo: function() {
+        console. log(this)
+        }
+    }
+// obj.foo()
+obj.foo.call('abc')  //String('abc')   bind，call一样
+
+//-3.更明显的比较bind
+function foo() {
+    console.log(this)
+}
+var obj = {
+    name: "obj",
+    foo: foo.bind("aaa")
+}
+obj.foo()   //aaa
+3.new绑定优先级高于隐式绑定，也高于显式绑定
+function foo() {
+    console.log(this)
+}
+var bar = foo.bind("aaa")
+var obj = new bar()  //foo{}
+****************************************
+function foo(el) {
+    console.log(el,this.id)
+}
+//对象没有作用域，此处里面的函数若无嵌套父级作用域会直接找全局
+var obj = {
+    id: 'awesome'
+}
+[1,2,3].forEach(foo,obj)
+//此处代码无法运行是因为js在分析代码时将obj后面所有部分内容看作一个整体导致错误，因此要obj结束后加分号明确告知结束才能结束
+    .this的绑定和定义的位置(编写的位置)没有关系;
+    .this的绑定和调用方式以及调用的位置有关系;
+箭头函数：->箭头函数js文件
+隐式绑定：当函数作为对象的方法被调用时，this隐式地绑定到该对象上。例如，obj.func()中的this指向obj。
+显式绑定：通过call、apply或bind方法显式设置this的值。例如，func.call(obj)强制this指向obj。
+独立调用（Default Binding）。定义：函数直接调用，不通过任何对象或绑定方法。
+
+//call函数实现
+
+Function. prototype.hycall = function(thisARG,...args) {
+//、在这里可以去执行调用的那个函数(foo)
+//问题:得可以获取到是哪一个函数执行了hycall
+//    获取需要被执行的函数
+
+    // 对thisARG转换成对象类型,存在转换成对象，没有则为window
+    thisARG=thisARG?Object(thisARG):window
+    //需要被执行的函数，此处相当于隐式调用 this指向的是调用他的 对象
+    thisARG.fn=this
+    //执行函数
+    return thisARG.fn(...args)
+}
+function foo() {
+    console.log("foo函数被执行",this)
+}
+
+function sum(num1, num2) {
+    console.log('sum函数被执行',this,num1,num2)
+    return num1+num2
+}
+
+// 系统的函数的call方法
+// foo. call()
+// const result=sum.call({},20,30)
+// console.log('系统调用的结果',result)
+//·自己实现的函数的hycall方法
+// 默认进行隐式绑定
+// foo. hycall({})
+const result=sum.hycall('abc',20,30)
+console.log(result)
+
+->见 call,apply,bind函数实现.js文件
+    apply中arrArray参数如果没有传递参数则会 为undefined出现报错，因为undefined无法用展开运算符来展开运算，因此要在其内部给未传递参数的情况下进行赋值或者条件判断
+    在bind函数中传参，在bind第一次绑定this指向后面可以添加参数，但在之后的函数调用中传递的参数要顺着第一次绑定时的参数继续往下传递
+    bind的返回值是一个新函数
+    arguments是传进去的所有参数，即使实参多于形参
+    ■ arguments 是一个 对应于 传递给函数的参数 的 类数组(array-like)对象。
+■array-like意味着它不是一个数组类型,而是一个对象类型:
+□但是它却拥有数组的一些特性,比如说length,比如可以通过index索引来访问;
+□但是它却没有数组的一些方法,比如forEach、map等;
+var newArr2 = Array.prototype.slice.call(arguments)//将伪数组转换为真数组,括号内为伪数组名
+
+JavaScript中的Slice方法
+    在JavaScript中，slice()方法用于从数组中提取一段元素，并返回一个新数组。这个方法不会修改原数组，而是返回一个新数组，包含从开始索引（start）到结束索引（end）之间的元素。
+示例
+    const fruits = ["Banana", "Orange", "Lemon", "Apple", "Mango"];
+    const citrus = fruits.slice(1, 3);
+    console.log(citrus); // 输出: ["Orange", "Lemon"]
+参数和返回值
+    start（可选）: 提取的起始索引（包含该索引）。如果为负数，则表示从数组末尾开始计算。
+    end（可选）: 提取的结束索引（不包含该索引）。如果省略或大于数组长度，则提取到数组末尾。
+注意事项
+    如果只传入一个参数且该参数大于数组长度，则返回空数组。
+    slice()方法返回的新数组是原数组的浅拷贝，即如果原数组中的元素是对象，新数组中的对应元素是对原对象的引用。
+    // 箭头函数和浏览器没有arguments参数
+
+
+纯函数.柯里化.组合
+■ 函数式编程中有一个非常重要的概念叫纯函数,JavaScript符合函数式编程的范式,所以也有纯函数的概念;
+□在react开发中纯函数是被多次提及的;
+□比如react中组件就被要求像是一个纯函数(为什么是像,因为还有class组件),redux中有一个reducer的概念,也
+是要求必须是一个纯函数;
+□所以掌握纯函数对于理解很多框架的设计是非常有帮助的;
+
+■纯函数的维基百科定义:
+□在程序设计中,若一个函数符合以下条件,那么这个函数被称为纯函数:
+□此函数在相同的输入值时,需产生相同的输出。    //输入相同的参数必须得到相同的结果
+□函数的输出和输入值以外的其他隐藏信息或状态无关,也和由I/O设备产生的外部输出无关。//和除了输入的参数输出的结果以外的所有变量，对象，函数，键盘输入等等均无关
+□该函数不能有语义上可观察的函数副作用,诸如“触发事件”,使输出设备输出,或更改输出值以外物件的内容等。 //不能更改外部的变量，对象，函数等等，内部也不能有触发事件，比如click等
+
+当然上面的定义会过于的晦涩,所以我简单总结一下:
+    □确定的输入,一定会产生确定的输出;
+    □函数在执行过程中,不能产生副作用;
+在计算机科学中,也引用了副作用的概念,表示在执行一个函数时,除了返回函数值之外,还对调用函数产生
+了附加的影响,比如修改了全局变量,修改参数或者改变外部的 存储;
+由于console.log()在函数中输出结果于控制台不造成任何副作用，所以在非严格意义上是纯函数，而在严格意义上在控制台上输出也不算纯函数
+
+■为什么纯函数在函数式编程中非常重要呢?
+口你在写的时候保证了函数的纯度,只是单纯实现自己的业务逻辑即可,不需要关心传入的内容是如何获得的或者依赖其他的外部变量是否已经发生了修改;
+□你在用的时候,你确定你的输入内容不会被任意篡改,并且自己确定的输入,一定会有确定的输出;
+
+在计算机科学中,柯里化(英语:Currying),又译为卡瑞化或加里化;
+是把接收多个参数的函数,变成接受一个单一参数(最初函数的第一个参数)的函数,并且返回接受余下的参数,而且返回结果的新函数的技术;
+柯里化声称“如果你固定某些参数,你将得到接受余下参数的一个函数”;
+维基百科的结束非常的抽象,我们这里做一个总结:
+只传递给函数一部分参数来调用它,让它返回一个函数去处理剩余的参数;这个过程就称之为柯里化;
+
+//未柯里化的函数
+function add1(x, y, z){
+    return x + y + z
+}
+console.log(add1(10, 20,30))
+
+//add2中的参数也可以传递多个，只要把原本的参数拆开传递，并通过返回的函数处理剩余参数，就是柯里化
+//柯里化处理的函数
+function add2(x) {
+    return function(y) {
+        return function(z) {
+            return x + y + z
+        }
+    }
+}
+console.log(add2(10)(20)(30))
+
+JS知识补充
+函数名.length  可以得到函数的参数个数
+组合(Compose)函数是在JavaScript开发过程中一种对函数的使用技巧、模式:
+比如我们现在需要对某一个数据进行函数的调用,执行两个函数fn1和fn2,这两个函数是依次执行的;
+那么如果每次我们都需要进行两个函数的调用,操作上就会显得重复;
+那么是否可以将这两个函数组合起来,自动依次调用呢?
+这个过程就是对函数的组合,我们称之为组合函数(Compose Function);
+
+■eval是一个特殊的函数,它可以将传入的字符串当做JavaScript代码来运行。（了解就好）
+var evalString = 'var message = "Hello World";console.log(message)
+eval(evalString)
+console.log(message)
+■不建议在开发中使用eval:
+□eval代码的可读性非常的差(代码的可读性是高质量代码的重要原则);
+□eval是一个字符串,那么有可能在执行的过程中被刻意篡改,那么可能会造成被攻击的风险;
+□ eval的执行必须经过JS解释器,不能被JS引擎优化;
+js函数式编程是一种编程范式  范式即规范方式
+
+不推荐使用with语句,因为它可能是混淆错误和兼容性问题的根源。(with语句知道就好) with语句 扩展一个语句的作用域链。
+
+严格模式->7-严格模式.png
+静默错误:一些有语法错误但是不对代码造成影响的错误
+ECMA未来定义的语法：让保留字也无法赋值等操作  保留字是语言规范中预定义的关键字，不能用作变量名、函数名或其他标识符
+在文件前面添加"use strict"是给全文件添加严格模式，function函数内部添加"use strict"是给单个函数添加严格模式
+1.无法意外的创建全局变量
+2.严格模式会使引起静默失败(silently fail,注:不报错也没有任何效果)的赋值操作抛出异常
+3.严格模式下试图删除不可删除的属性
+4.严格模式不允许函数参数有相同的名称
+5.不允许0的八进制语法
+6.在严格模式下,不允许使用with
+7.在严格模式下,eval不再为上层引用变量
+8.严格模式下,this绑定不会默认转成对象
+
+■在前面我们的属性都是直接定义在对象内部,或者直接添加到对象内部的:
+□但是这样来做的时候我们就不能对这个属性进行一些限制:比如这个属性是否是可以通过delete删除的?这个
+属性是否在for-in遍历的时候被遍历出来呢?
+var obj = {name: "why",age: 18,height: 1.88}
+■如果我们想要对一个属性进行比较精准的操作控制,那么我们就可以使用属性描述符。
+
+□通过属性描述符可以精准的添加或修改对象的属性;
+□属性描述符需要使用Object.defineProperty 来对属性进行添加或者修改;
+
+Object.defineProperty()方法会直接在一个对象上定义一个新属性,或者修改一个对象的现有属性,并返回此对象。
+Object.defineProperty(obj, prop, descriptor)
+可接收三个参数:
+obj要定义属性的对象;
+prop要定义或修改的属性的名称或 Symbol;
+descriptor要定义或修改的属性描述符;
+var obj = {name: "why",age: 18}
+Object.defineProperty(obj,"height",属性描述符) //如果目标属性在原对象中没有则会创建一个新的属性
+
+属性描述符的类型有两种:
+数据属性(Data Properties)描述符(Descriptor);
+存取属性(Accessor访问器 Properties)描述符(Descriptor);
+// configurable，enumerable，writable默认值是false
+
+           configurable   enumerable   value   writable   get    set
+数据描述符        可以           可以        可以      可以   不可以   不可以
+存取描述符       可以            可以       不可以    不可以    可以     可以
+■数据数据描述符有如下四个特性:
+■[[Configurable]]:表示属性是否可以通过delete删除属性,是否可以修改(重新定义)它的特性,或者是否可以将它修改为存取属性描述符;
+    □当我们直接在一个对象上定义某个属性时,这个属性的[[Configurable]]为true;
+    □当我们通过属性描述符定义一个属性时,这个属性的[[Configurable]]默认为false;
+■[[Enumerable]]:表示属性是否可以通过for-in或者Object.keys()返回该属性;
+    □当我们直接在一个对象上定义某个属性时,这个属性的[[Enumerable]]为true;
+    □当我们通过属性描述符定义一个属性时,这个属性的[[Enumerable]]默认为false;
+■[[Writable]]:表示是否可以修改属性的值;
+    □当我们直接在一个对象上定义某个属性时,这个属性的[[Writable]]为true;
+    □当我们通过属性描述符定义一个属性时,这个属性的[[Writable]]默认为false;
+■[[value]]:属性的value值,读取属性时会返回该值,修改属性时,会对其进行修改;
+    □默认情况下这个值是undefined;
+
+
+原型对象是js中每个对象创建时自动关联创建的另一个对象，内有constructor指回原对象(构造函数)。对象原型就是通过new创建的对象，__proto__指向原型对象，并通过constructor指回构造函数
+构造函数  constructor,prototype,__proto__都是自带属性
+
+__proto__和constructor属性是对象所独有的；② prototype属性是函数所独有的。
+但是由于JS中函数也是一种对象，所以函数也拥有__proto__(指向构造函数Function的原型对象Function.prototype)和constructor(指向函数本身)属性
+// 在 JavaScript 中，全局内置对象 Object 和 构造函数 Object 本质是同一个实体，但在不同使用场景下表现出双重角色。以下是详细解析：
+
+原型对象和普通对象一样都只有__proto__属性，函数(拥有prototype,__proto__两种属性)创建时也会自动关联一个原型对象，prototype指向原型对象，而通过new创建的对象通过赋值使__proto__也指向原型对象
+JavaScript函数都有__proto__属性。这是一个非标准但广泛支持的属性，指向函数的原型对象（即Function.prototype）
+Function.prototype对象(Function的原型对象)有一个constructor属性，它指向Function构造函数本身（即构造函数的引用）。
+console.log(Object.prototype)，在浏览器中会将原本的不可枚举的属性全部展现出来以方便调试，但是颜色较前，本身返回的应该是一个空对象
+
+
+
+无论是直接创建的对象{}还是new函数 创建的对象 在其本身/构造函数中找不到目标属性时会 自动向上 找到他的 原型对象 中的属性，直到查找到最初的原型
+如果一个函数被使用 new操作符 调用了,那么它就是一个构造函数,同时会执行如下操作:
+    1.在内存中创建一个新的对象(空对象);
+    2.(8-原型内存图.png).这个对象内部的[[prototype]]属性会被赋值为该构造函数的prototype属性;(后面详细讲);即__proto__=prototype，因此在表现上是一样的
+    [[prototype]]即为对象中的__proto__属性(称为隐式原型)，而在函数中多出一个prototype属性(称为显示原型)
+    同时可以通过创建的不同的对象去改同一个数值，因为他们都是同一个地址指向同一个位置
+    3.构造函数内部的this,会指向创建出来的新对象;
+    4.执行函数的内部代码(函数体代码);
+    5.如果构造函数没有返回非空对象(有实际内容的对象),则返回创建出来的新对象;
+
+■面向对象有三大特性:封装、继承-9-原型链.png、多态
+封装:我们前面将属性和方法封装到一个类中,可以称之为封装的过程;
+继承:继承是面向对象中非常重要的,不仅仅可以减少重复代码的数量,也是多态前提(纯面向对象中);
+多态:不同的对象在执行时表现出不同的形态;
+
+借用构造函数继承
+■为了解决原型链继承中存在的问题,开发人员提供了一种新的技术:constructor stealing(有很多名称:借用构造函
+数或者称之为经典继承或者称之为伪造对象):
+□steal是偷窃、剽窃的意思,但是这里可以翻译成借用;
+■借用继承的做法非常简单:在子类型构造函数的内部调用父类型构造函数.
+□因为函数可以在任意的时刻被调用;
+口因此通过apply()和call()方法也可以在新创建的对象上执行构造函数;
+function Student(name, friends, sno) {
+    Person.call(this, name, friends)
+    this.sno = sno
+}
+Student.prototype = Person.prototype
+
+首先在对象实例自身查找：
+对象创建时，构造函数内部的this会添加实例成员（如属性或方法），这些成员直接属于对象实例。查找属性时，JavaScript引擎会优先检查对象自身的属性（即实例成员）。如果找到，立即返回该属性的值。
+然后在原型链上查找：
+如果属性不在对象实例自身，引擎会沿着原型链向上查找。当使用new创建对象时，新对象的隐式原型（__proto__）被设置为构造函数的显式原型（prototype）。因此，查找会转向构造函数.prototype对象上的属性（如共享方法或继承属性）。如果原型链上存在该属性，则返回；否则，继续向上一级原型（如Object.prototype）查找，直到链尾返回undefined
+
+对象的方法补充
+hasOwnProperty  □对象是否有某一个属于自己的属性(不是在原型上的属性)
+■ in/for in 操作符  □判断某个属性是否在某个对象或者对象的原型上
+instanceof  □用于检测构造函数的pototype,是否出现在某个实例对象的原型链上
+
+由于函数本身就由function构造函数创建的函数对象，所以函数对象的__proto__属性指向自身的原型对象，即Function.prototype
+
+function Object(){}：
+// 无参数
+var obj1 = Object(); // 返回一个新的空对象 {}
+console.log(obj1); // {}
+
+// 参数为对象
+var obj2 = {};
+var obj3 = Object(obj2);
+console.log(obj3 === obj2); // true，返回同一个对象
+
+// 参数为原始值
+var numObj = Object(123); // 等价于 new Number(123)
+console.log(typeof numObj); // "object"
+console.log(numObj instanceof Number); // true
+因此，Object函数的返回值总是对象类型，具体取决于传入的参数。
+
+Object是一个构造函数：在JavaScript中，Object是语言内置的构造函数，用于创建对象。当我们使用new Object()时，它会创建一个新的普通对象1。
+Object同时也是一个函数对象：因为所有的构造函数都是函数对象，而函数对象都是Function构造函数的实例。因此，Object本身也是一个函数对象，它的原型(__proto__)指向Function.prototype

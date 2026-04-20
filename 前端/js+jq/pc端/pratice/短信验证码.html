@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    手机号码： <input type="number"> <button>发送</button>
+    <script>
+        btn =document.querySelector('button')
+        let lastTime=3
+
+        btn.addEventListener('click',function (){
+
+            btn.disabled=true
+            // 计时器在执行的时候前面也会间隔一秒，所以要先执行一遍
+            a()
+            // timer=setInterval(() => a(lastTime),1000)//失败
+            timer=setInterval( a,1000)
+        })
+
+        function a(){
+            if (lastTime===0){
+                btn.innerHTML='发送'
+                btn.disabled=false
+                clearInterval(timer)
+                //只能执行一次原因，全局变量减少后未恢复
+                lastTime=3
+            }
+            else {
+                btn.innerHTML='请'+lastTime+'后再进行输入'
+                lastTime--
+            }
+
+        }
+    </script>
+
+</body>
+</html>

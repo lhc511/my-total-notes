@@ -1,0 +1,132 @@
+此处对bom和dom只是学了架构，还有更多的可以之后学习（有必要的话）
+
+httpOnly: false：设置cookies中的数据是否可以直接删除true不能删除，false可以直接删除
+Cookie(复数形态Cookies),又称为“小甜饼”。类型为“小型文本文件,某些网站为了辨别用户身份而存储在用户本地终端
+(Client Side)上的数据。
+
+□ 浏览器会在特定的情况下携带上cookie来发送请求,我们可以通过cookie来获取一些信息;
+
+■Cookie总是保存在客户端中,按在客户端中的存储位置,Cookie可以分为内存Cookie和硬盘Cookie。
+□内存Cookie由浏览器维护,保存在内存中,浏览器关闭时Cookie就会消失,其存在时间是短暂的;
+□硬盘Cookie保存在硬盘中,有一个过期时间,用户手动清理或者过期时间到时,才会被清理;
+
+■如果判断一个cookie是内存cookie还是硬盘cookie呢?
+
+□没有设置过期时间,默认情况下cookie是内存cookie,在关闭浏览器时会自动删除;
+有设置过期时间,并且过期时间不为0或者负数的cookie,是硬盘cookie,需要手动或者到期时,才会删除;
+
+Response Headers   View source
+Connection: keep-alive
+Content-Length: 4
+Content-Type: text/plain; charset=utf-8
+Date: Wed, 10 Nov 2021 09:34:56 GMT
+Keep-Alive: timeout=5
+Set-Cookie: name=why; path=/; expires=Wed, 10 Nov 2021 09:35:46 GMT; httponly
+             属性       路径              过期时间
+
+cookie的生命周期:
+    □ 默认情况下的cookie是内存cookie,也称之为会话cookie,也就是在浏览器关闭时会自动被删除;
+    □ 我们可以通过设置expires或者max-age来设置过期的时间;
+    >expires:设置的是Date.toUTCString(),设置格式是;expires=date-in-GMTString-format;
+    >max-age:设置过期的秒钟,;max-age=max-age-in-seconds(例如一年为60*60*24*365);
+■ cookie的作用域:(允许cookie发送给哪些URL)
+    □ Domain:指定哪些主机可以接受cookie。
+    >如果不指定,那么默认是origin,不包括子域名。
+    >如果指定Domain,则包含子域名。例如,如果设置Domain=mozilla.org,则Cookie也包含在子域名中(如developer.mozilla.org)。
+    即后面有mozilla.org的网址会接受cookie(不管前缀),www.mozilla.org aaa.mozilla.org都行 xxx.mozilla.org/xxx/xx...也可以
+
+    Path:指定主机下哪些路径可以接受cookie
+    >例如,设置Path=/docs,则以下地址都会匹配:
+    /docs               必须是以/docs开头的
+    /docs/Web/          或者其子路径才能接受   例:http://www.baidu.com/abc/cba/aaa
+    1/docs/Web/HTTP
+
+可以在浏览器控制台直接设置cookie: document.cookie='值' //该方法只能设置cookie不能删除cookie
+document.cookie = "name=why;max-age=0" //拿出原本设置的cookie并将过期时间设置为0，即立即过期(删除) 单位是秒
+                    键   值
+1.将cookie附加到每一次的http请求中,/home /category
+2.明文传输 headers
+3.大小限制:4kb
+4.cookie验证登录    由于本身的限制用的越来越少
+客户端cookie(浏览器,iOS swift、Android、小程序)->服务器
+token->对称加密(非对称)      用的越来越多
+
+/////////////////////////////BOM////////////////////////////////
+JavaScript有一个非常重要的运行环境就是浏览器,而且浏览器本身又作为一个应用程序需要对其本身进行操作,所以通常浏览器会有对
+应的对象模型(BOM,Browser Object Model)。
+□ 我们可以将BOM看成是连接JavaScript脚本与浏览器窗口的桥梁。
+
+■ BOM主要包括一下的对象模型:
+    □ window:包括全局属性、方法,控制浏览器窗口相关的属性、方法;
+    □ location:浏览器连接到的对象的位置(URL);  即在搜索栏的地址。例：URL: http://host:port/path?query
+    □ history:操作浏览器的历史;   即浏览记录
+    □ document:当前窗口操作文档的对象;
+window对象在浏览器中有两个身份:
+    □身份一:全局对象。
+        √我们知道ECMAScript其实是有一个全局对象的,这个全局对象在Node中是global;
+        √在浏览器中就是window对象;
+    □身份二:浏览器窗口对象。
+        √作为浏览器窗口时,提供了对浏览器操作的相关的API;
+
+在浏览器中,window对象就是之前经常提到的全局对象,也就是我们之前提到过GO对象:
+    □比如在全局通过var声明的变量,会被添加到GO中,也就是会被添加到window上;
+    □比如window默认给我们提供了全局的函数和类:setTimeout、Math、Date、Object等;
+通过var声明的变量,全局提供的类和方法:见文件01-
+
+事实上window对象上肩负的重担是非常大的:
+    □第一:包含大量的属性,localStorage、console、location、history、screenX、scrollX等等(大概60+个属性)
+    □第二:包含大量的方法,alert、close、scrollTo、open等等(大概40+个方法);
+    □第三:包含大量的事件,focus、blur、load、hashchange等等(大概30+个事件);
+    □第四:包含从EventTarget继承过来的方法,addEventListener、removeEventListener、dispatchEventListener方法;
+那么这些大量的属性、方法、事件在哪里查看呢?
+□ MDN文档:https://developer.mozilla.org/zh-CN/docs/Web/API/Window
+查看MDN文档时,我们会发现有很多不同的符号,这里我解释一下是什么意思:
+    □删除符号:表示这个API已经废弃,不推荐继续使用了;
+    □点踩符号:表示这个API不属于W3C规范,某些浏览器有实现 所以兼容性的问题)
+    □实验符号:该API是实验性特性,以后可能会修改,并且存在兼容性问题;
+
+//////////////////////////////location///////////////////////////
+■Location对象用于表示window上当前链接到的URL信息。
+■常见的属性有哪些呢?
+    □ href:当前window对应的超链接URL,整个URL;
+    protocol:当前的协议;
+    □ host:主机地址;
+    □hostname:主机地址(不带端口);
+    □ port:端口;
+    □ pathname:路径;
+    □ search:查询字符串;
+    hash:哈希值;
+    username:URL中的username(很多浏览器已经禁用);
+    password:URL中的password(很多浏览器已经禁用);
+history对象允许我们访问浏览器曾经的会话历史记录。
+    有两个属性:
+        □ length:会话中的记录条数;
+        state:当前保留的状态值;
+    有五个方法:
+        □ back():返回上一页,等价于history.go(-1);
+        □ forward():前进下一页,等价于history.go(1);
+        □ go():加载历史中的某一页;
+        □ pushState():打开一个指定的地址;
+        □ replaceState():打开一个新的地址,并且使用replace;
+
+前端渲染就是将请求的文本数据转换成前端页面显示的图像等
+querySelector是封装在document对象中的方法
+前面我们讲到了JavaScript脚本和浏览器之间交互时,浏览器给我们提供的BOM、DOM等一些对象模型。
+    □事实上还有一种需要和浏览器经常交互的事情就是事件监听:
+    □浏览器在某个时刻可能会发生一些事件,比如鼠标点击、移动、滚动、获取、失去焦点、输入内容等等一系列的事件;
+■我们需要以某种方式(代码)来对其进行响应,进行一些事件的处理;
+    □在Web当中,事件在浏览器窗口中被触发,并且通过绑定到某些元素上或者浏览器窗口本身,那么我们就可以
+    给这些元素或者window窗口来绑定事件的处理程序,来对事件进行监听。
+■如何进行事件监听呢?
+    □事件监听方式一:在script中直接监听;
+    □事件监听方式二:通过元素的on来监听事件;
+    □事件监听方式三:通过EventTarget中的addEventListener来监听;
+我们会发现默认情况下事件是从最内层的span向外依次传递的顺序,这个顺序我们称之为事件冒泡(EventBubble ) .
+    □事实上,还有另外一种监听事件流的方式就是从外层到内层(body->span),这种称之为事件捕获(EventCapture ) ;
+    □为什么会产生两种不同的处理流呢?
+    √这是因为早期浏览器开发时,不管是IE还是Netscape公司都发现了这个问题,但是他们采用了完全相反的事件流来对事件进行了传递;
+√IE采用了事件冒泡的方式,Netscape采用了事件捕获的方式;
+■那么我们如何去监听事件捕获的过程呢?
+document.body. addEventListener("click", (event) => {
+    console.log("事件捕获阶段:body被点击”)
+}, true)

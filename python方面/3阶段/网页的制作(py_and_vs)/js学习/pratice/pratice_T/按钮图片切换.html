@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #pic{
+            width: 300px;
+            margin: 0 auto;
+            border: solid 0 red;
+        }
+
+        #pic input{
+            margin-right: 45px;
+        }
+    </style>
+</head>
+<body>
+<div id="pic">
+    <div class="img">
+        <img id="img1" width="300px" src="picture/按钮图片切换/灵梦.jpg" alt="">
+    </div>
+    <fieldset>
+        <legend>按钮</legend>
+        <input checked type="radio" name="pic" id="pic1">
+        <input type="radio" name="pic" id="pic2">
+        <input type="radio" name="pic" id="pic3">
+        <input type="radio" name="pic" id="pic4">
+    </fieldset>
+
+    <script>
+<!--        获取单选按钮对象并分别保存在变量中-->
+        var btnPic1=document.getElementById("pic1")
+        var btnPic2=document.getElementById("pic2")
+        var btnPic3=document.getElementById("pic3")
+        var btnPic4=document.getElementById("pic4")
+        var imgShow=document.getElementById("img1")
+    //    绑定元素单击事件
+    btnPic1.onclick=function (){
+    //    改变图片显示来源  setAttribute设置/重置指定属性的值
+        imgShow.setAttribute("src","picture/按钮图片切换/灵梦.jpg");
+    }
+    btnPic2.onclick=function (){
+    //    改变图片显示来源  setAttribute设置/重置指定属性的值
+        imgShow.setAttribute("src","picture/按钮图片切换/img2.jpg");
+    }
+    btnPic3.onclick=function (){
+    //    改变图片显示来源  setAttribute设置/重置指定属性的值
+        imgShow.setAttribute("src","picture/按钮图片切换/img3.jpg");
+    }
+    btnPic4.onclick=function (){
+    //    改变图片显示来源  setAttribute设置/重置指定属性的值
+        imgShow.setAttribute("src","picture/按钮图片切换/img4.png");
+    }
+    </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script>
+        let divs=document.querySelectorAll('div')
+        // 传统解绑
+        divs[0].onclick=function (){
+            alert('aaaaa')
+            this.onclick=null// 传统解绑
+        }
+        //addEventListener解绑方式需要函数名，所以需要在外部定义一个函数名
+        divs[1].addEventListener('click',fn)
+        function fn(){
+            alert('aaaaa')
+            divs[1].removeEventListener('click',fn)
+        }
+
+    </script>
+</body>
+</html>

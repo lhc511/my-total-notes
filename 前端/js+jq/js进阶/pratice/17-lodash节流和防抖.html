@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    .box {
+      width: 500px;
+      height: 500px;
+      background-color: #ccc;
+      color: #fff;
+      text-align: center;
+      font-size: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <script src="./lodash.min.js"></script>
+  <script>
+    const box = document.querySelector('.box')
+    let i = 1  // 让这个变量++
+    // 鼠标移动函数
+    function mouseMove() {
+      box.innerHTML = ++i
+      // 如果里面存在大量操作 dom 的情况，可能会卡顿
+    }
+
+    // box.addEventListener('mousemove', mouseMove)
+    // lodash 节流写法
+    // box.addEventListener('mousemove', _.throttle(mouseMove, 500))
+    // lodash 防抖的写法
+
+    box.addEventListener('mousemove', _.debounce(mouseMove, 500))
+    // _.debounce(mouseMove, 500) 是使用防抖技术对 mouseMove 函数进行封装，设置延迟时间为 500 毫秒。
+    // 这意味着当鼠标移动事件频繁触发时，mouseMove 函数将在最后一次移动后 500 毫秒执行，期间若再次触发事件则重新计时。
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+基础
+    只要有嵌套结构(字典，列表等)直接用等号赋值改变一个都会改变另一个，用copy()只复制顶级元素，要用deepcopy()才行
+    script外部引入js代码中间是不允许写代码的
+    ctrl+shift+/  快速多行注释
+    prompt(info) # 浏览器弹出输入框,可以用于收集输入的信息然后存储到js代码中的变量中
+    只声明不赋值,undifined
+    注意!!!!要用驼峰式命名法,第一个单词字母小写,后面单词首字母大写
+    js是一种弱类型的动态语言(机即不提前声明变量类型自动确定)
+    方法isNaN(value) #用来判断是不是数字(true,false)
+    检测字符串长度 x.length
+    只要字符串与其他类型拼接结果均为字符串类型相连(包括整型,布尔类型等)
+    布尔类型true,false在参与数据计算当做1和零 例如:1+true=2
+    undefined的变量和数字相加(整形等)  NaN(Not a Number，非数)  ,但是null和数字相加=数字本身的值
+    num.toString(),String(value)#强制转换成字符串   +拼接可以自动转换为字符串(不熟!!!!)
+    parse 翻译为对（句子）作语法分析
+
+    将其他转换成   整型数字型(向下取整)                        浮点型             数值型
+                parseInt(string)                parseFloat(string)  Number(string)
+             去掉以数字开头的其他任意字符                     与前面一样
+             parseInt('120op')#120
+         parseInt('aaa120op')#NaN(非数字开头)            与前面一样
+    隐式转换 - * /  #除+以外的基本运算符可以吧字符串变成整形然后正常运算  例如:'11'-5   输出:6
+    转换布尔类型  Boolean(value)
+
+    在函数中给变量赋值但是又没有使用let,const,var 声明代表使用全局变量
+
+    编译型语言:编译器在代码执行之前编译，生成中间代码文件   java,c,c++等
+    解释型语言:解释器在运行时及时解释，并立即执行(编译其以解释方式运行也称解释器) python，js等
+    自增自减：++a a++ --a a-- 都行     p=10
+    ++p+10 先加1再加10  输出21      p++ + 10  先返回原值再加1，得到二十之后再加一  输出20
+    如果表达式1为真则返回表达式2  1为假则返回表达式1
+    !表示取反  console.log(123&&456)  //456   console.log(0&&456)  //0
+    逻辑中断，短路运算
+        &&：如果第一个是假，那么就返回第一个表达式，不管后面  例: console.log(0 && 1+2 && 456*88)  //0
+        ||：同理如果表达式1真则返回表达式1，表达式1为假则返回表达式2，第一个真则后面不再执行与上同理
+
+    三元表达式: 条件表达式 ? 表达式1:表达式2  条件表达式为真则返回表达式1的值，若为假则返回表达式2都值
+    b=a>5 ? 1:2          console.log(b)  //1
+分支循环与构造对像(与python中的类对象相似):
+    switch(表达式):{                    表达式的值等于哪个value就执行哪个语句,
+        case value1: 执行语句1 break
+        case value2: 执行语句2 break
+        ....
+        default: 默认执行语句
+        }
+    for(let i=1;i<=100;i++){}    中间要用分号隔开
+    在浏览器source里面的有代码也，可以进行调试，右上角有进行上下步骤的跳跃
+    正向索引不包括末尾索引
+    函数的定义与调用 1.function fn(){}  fn()     2.变量=function(){}  变量()
+
+    全局作用域：整个script标签或者一个单独的js文件
+    但是在es6之前没有，也就是说在{}内声明的变量不能在外部调用(也就是局部变量)
+    在es6中新增了块级作用域let，const，被 { } 包裹住的代码就是块级作用域(包括if、for等代码块)，
+    在if,for等用var声明的变量在声明以外的地方也可以使用，而在函数中声明的是局部变量只能在函数内部使用在块级作用域用var声明的变量可以在块之外调用
+    循环遍历泄漏为全局变量 for (var i = 0; i < 10; i++) {console.log(i);}   console.log(i);  //10
+
+    js运行分为两步:预解析，执行
+    预解析：会把所有var和function提到当前作用域前面   赋值按照就近原则
+        变量提升1：吧所有变量声明提升到当前作用域最前面，不提升赋值操作
+        因此有:console.log(m) var m=10  //undefined    var m=10 必须在console.log(m)后面
+        变量提升2 fun()  var fun =function(){console.log(value)}
+        在经过变量函数提升之后  ->var fun  fun(); fun=function(){console.log(value)}  // 在未定义函数之前就会调用所以会报错
+        函数提升：把所有函数声明提升到当前作用域最前面
+    代码执行：从上往下按顺序执行
+
+    练习案例:var num=10; fun(); function fun(){console.log(num);var num=20};
+    在经过变量提升之后->var num; function fun(){var num; console.log(num); num=20}; num=10; fun(); 因此输出undefined
+
+    js函数如果没有返回则默认返回undefined
+
+    function f1(){var a=b=c=9} -> function f1(){var a; a=b=c=9}#变换后a是局部变量，bc是全局变量
+    var a=b=c=9相当与 var a=9,b=9,c=9，var只作用与第一个相连的变量，后面是做直接写b=9,c=9,作为全局变量(集体声明)
+
+    调用对象属性  obj={建(属性)：值}   1.对象.属性名  2.对象['属性名'] 3.调用函数(键值对中的值是函数) 对象.属性名()
+    对象创建: var obj=new Object() 添加属性 obj.属性名=值  还可以像python一样创建和添加 等价于var obj={}
+    同理 var arr1=new Array() 创建一个数组对象 等价于 var arr1=[]
+
+    ***构造函数(函数名首字母要大写)，与python 类对象差不过
+    function Star(uname,age,...){this.name=name;this.age=age;...}  #function 构造函数名(param1,param2){this.属性名1=param1,...}this指向构造函数对象
+    new Star('刘德华',18,'男')   也可以 var 变量名= new Star('刘德华',18,'男')   #  new 构造函数名(value1,value2,...) #new 构造函数名(param1,param2,...)
+
+    new在创建对象的作用：在内存中创建一个空对象，让this指向这个空对象(和python一样不过是多了一个new)
+    对象遍历  for (let k in obj){console.log(k)} # 输出的是对象中的属性名 obj[k] 得到值
+
+对象和集：
+    //Math数学对象 不是一个构造函数,所以我们不需要new 来调用 而是直接使用里面的属性和方法即可
+    console.log(Math.PI);//一个属性 圆周率
+    console.log(Math.max(1, 99, 3)); // 99
+    console.log(Math.max(-1, -10)); // -1
+    console.log(Math.max(1,99,'pink老师'));//NaN
+    console.log(Math.max()); // -Infinity
+
+    for (var key in obj01){console.log(key)} #obj01是一个对象，里面有多个字典 此方法可以拿出对象中字典的键
+    其余的地方还是用与c语言类似的for循环 大概->for(;;)
+
+    // 1.绝对值方法
+    console.log(Math.abs(1)); //1
+    console.log(Math.abs(-1)); // 1
+    console.log(Math.abs('-1'));//隐式转换 会把字符串型 -1 转换为数字型
+    console.log(Math.abs('pink')); // NaN
+
+    // 2.三个取整方法
+    // (1) Math. floor() 地板 向下取整 往最小了取值
+    console.log(Math.floor(1.1)); //1
+    console.log(Math.floor(1.9)); //1
+    // (2) Math.ceil() ceil 天花板 向上取整 往最大了取值
+    console.log(Math.ceil(1.1)); // 2
+    console.log(Math.ceil(1.9)); // 2
+    // (3) Math.ceil() ceil 天花板 向上取整 往最大了取值
+
+    // (3) Math.round()  四舍五入 其他数字都是四舍五入,但是.5特殊 它往大了取
+    Math.random返回一个随机小数 范围[0,1)
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random()*max - min)) + min 两个数之间取一个随机整数，(可以取到最小但取不到最大)
+    return Math.floor(Math.random() * (max -min+1)) + min; 两个数之间取一个整数，可以取到最大值
+
+日期方法：var date=new Date() 在js中必须用new来创建一个Date对象 Date()是一个构造函数
+返回形式例子：Sun Feb 23 2025 12:22:30 GMT+0800 (中国标准时间)
+若为var date=+new Date()则返回毫秒数
+
+    // 1. 使用Date 如果没有参数 返回当前系统的当前时间
+    var date = new Date();
+    console.log(date);
+    // 2. 参数常用的写法 数字型 2019,10,01 或者是 字符串型'2019-10-1 8:8:8'
+    var date1 = new Date(2019, 10, 1);
+    console.log(date1);//返回的是 11月 不是 10月
+    这个里面的是由用户输入的
+    var date2 = new Date('2019-10-1 8:8:8'); //8:8:8  -> 08:08:08 #八时八分八秒
+    console.log(date2);
+    var date = new Date();
+    ***********以下均返回当前时间
+    console.log(date.getFullYear());//返回当前日期的年
+    console.log(date.getMonth()+1);// 月份 返回的月份小1个月 记得月份+1
+    console.log(date.getDate());//返回的是 几号
+    console.log(date.getDay());//3 周一返回的是1周六返回的是6但是 周日返回的是0
+    console.log(date.getHours()); // 时
+    console.log(date.getMinutes()); // 分
+    console.log(date.getSeconds()); // 秒
+
+    //获得Date总的毫秒数(时间戳)
+    不是当前时间的毫秒数 而是距离1970年1月1号过了多少毫秒数
+    //1. 通过 valueOf()IgetTime()
+    var date = +new Date();
+    console.log(date.valueOf());//就是 我们现在时间 距离1970.1.1 总的毫秒数
+    console.log(date.getTime());
+    // 2. 简单的写法(最常用的写法)
+    var date1 = +new Date(); // +new Date()  返回的就是总的毫秒数
+    console.log(date1);
+    // 3. H5 新增的 获得总的毫秒数
+    console.log(Date.now());
+
+    //2. unshift 在我们数组的开头 添加一个或者多个数组元素
+    arr.unshift('red', 'purple');
+    console.log(arr);
+    //2. push 在我们数组的末尾 添加一个或者多个数组元素
+     let arr2 = [1, 2, 3];
+    arr2.push('pink')
+
+    二者都返回删除元素的值
+    arr2.pop()删除数组最后一个元素
+    arr2.shift()删除数组第一个元素
+    arr2.reverser()反转顺序
+    arr2.sort()#冒泡排序(升序)(只能排个位数)  但是在python里面不存在这个问题
+    解决(记住就好)arr2.sort(function (a,b){return a-b})升序 a-b
+    解决(记住就好)arr2.sort(function (a,b){return b-a})降序 b-a
+
+    //返回数组元素索引号方法 indexOf(数组元素) 作用就是返回该数组元素的索引号
+    //它只返回第一个满足条件的索引号
+    // 它如果在该数组里面找不到元素,则返回的是 -1
+    // var arr = ['red', 'green', 'blue', 'pink', 'blue'];
+    var arr = ['red', 'green', 'pink'];
+    console.log(arr.indexOf('blue')); # 2
+    var arr = ['red', 'green', 'blue', 'pink', 'blue'];
+    console.log(arr.lastIndexOf('blue')); // 4
+
+    数组变为字符串(toString) arr=[1,2,3]   arr.toString()
+    console.log(arr1.join()); // green,blue,pink
+    console.log(arr1.join('-')); // green-blue-pink
+    console.log(arr1.join('&')); // green&blue&pink
+
+    // 字符串对象 根据字符返回位置str.indexof(要查找的字符',[起始的位置])
+        var str=‘改革春风吹满地,春天来了’;
+        console.log(str.indexOf('春'));// 2 默认查找第一个
+        console.log(str.indexof('春',3));//从索引号是3的位置开始往后查找
+
+    返回指定位置的字符(index字符串的索引号)    str.charAt(0)        charAt(index)
+    获取指定位置处字符的ASCII码(index索引号)  str.charCodeAt(0)    charCodeAt(index)
+    获取指定位置处字符           HTML5,IE8+支持和charAt()等效      str[index]
+
+    concat(str1,str2,str3 ... )    concat()方法用于连接两个或多个字符串。拼接字符串,等效于+,+更常用
+    substr(start,length)    从start位置开始(索引号),length 取的个数 重点记住这个
+    slice(start, end)       从start位置开始,截取到end位置,end取不到(他们俩都是索引号)
+    substring(start, end)   从start位置开始,截取到end位置,end取不到 基本和slice相同 但是不接受负值
+
+
+    //1. 替换字符 replace('被替换的字符','替换为的字符') 它只会替换第一个字符(可以用循环来替换)
+    分割字符  split('分隔符') 和python中的函数用法一样
+
+    简单类型又叫做基本数据类型或者值类型,复杂类型又叫做引用类型。
+        ● 值类型:简单数据类型/基本数据类型,在存储时变量中存储的是值本身,因此叫做值类型
+    string , number, boolean , undefined , null
+        ● 引用类型:复杂数据类型,在存储时变量中存储的仅仅是地址(引用),因此叫做引用数据类型
+        通过new关键字创建的对象(系统对象、自定义对象),如Object、Array、Date等
+
+    堆栈空间分配区别:
+    栈因直接存储于内存中，访问速度更快；堆需通过指针间接访问，可能存在性能损耗。
+        1、栈(操作系统):由操作系统自动分配释放存放函数的参数值、局部变量的值等。其操作方式类似于数据结构中的栈;
+        简单数据类型存放到栈里面         栈的内存分配是按照“后进先出”的原则进行的
+        2、堆(操作系统):存储复杂类型(对象),一般由程序员手动分配释放,若程序员不释放,由垃圾回收机制回收。
+        复杂数据类型存放到堆里面
+
+    // 1. 简单数据类型 是存放在栈里面 里面直接开辟一个空间存放的是值
+    // 2. 复杂数据类型 首先在栈里面存放地址 十六进制表示 然后这个地址指向堆里面的数据
+

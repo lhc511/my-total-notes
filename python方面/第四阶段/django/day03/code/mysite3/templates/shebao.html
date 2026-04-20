@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+    {{ method }}
+     <form action="/shebao" method='POST'>
+       <div>
+       <label for="id_base">请输入基数</label><input type="input" name="base" id="id_base"
+       value = "{{ base }}">
+       </div>
+
+       <div>
+            <label>请输选择户口</label>
+            <select name="is_city">
+                <option value ="1">城镇户口</option>
+                <option value ="0">农村户口</option>
+            </select>
+        </div>
+
+<!--       <a href="/shebao">-->
+<!--           <input type="submit" value="开始计算">-->
+<!--       </a>-->
+
+       <input type="submit" value="开始计算">
+    </form>
+
+    {% if base %}
+    <table>
+        <tr>
+            <th>项目</th>
+            <th>个人缴纳</th>
+            <th>单位缴纳</th>
+        </tr>
+
+        <tr>
+            <td>养老保险</td>
+            <td>{{ yl_gr }}</td>
+            <td>{{ yl_dw }}</td>
+        </tr>
+
+        <tr>
+            <td>失业保险</td>
+            <td>{{ sy_gr }}</td>
+            <td>{{ sy_dw }}</td>
+        </tr>
+    </table>
+{% endif %}
+<!--  以下两种方法均与静态文件的存储文件夹名称无关  -->
+<!--   这种方法需要和setting.py文件中的 STATIC_URL值一模一样，无法动态运算填充  -->
+    <img src="/static/images/tedu.png" alt="">
+
+     {% load static %}
+<!--   "{% static 'images/meinv.png' %}" 是一种格式
+ 其中单引号内的为静态文件存储路径 static为动态相对路径，与setting.py文件中的 STATIC_URL自动
+ 保持一致-->
+     <img src="{% static 'images/meinv.png' %}" alt="">
+</body>
+</html>

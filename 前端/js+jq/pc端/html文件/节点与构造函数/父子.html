@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <div>我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+
+    </ul>
+    <ol>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ol>
+    <div class="demo">
+        <div class="box">
+            <span class="erweima">×</span>
+        </div>
+    </div>
+
+    <script>
+        // 1. 父节点 parentNode
+        // var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        // 得到的是离元素最近的父级节点(亲爸爸) 如果找不到父节点就返回为 null
+        // console.log(erweima.parentNode);
+        var ul = document.querySelector('ul');
+        var lis = ul.querySelectorAll('li');
+        // 1. 子节点  childNodes 所有的子节点 包含 元素节点 文本节点等等
+        console.log(ul.childNodes);   //NodeList(9)[text, li, text, li, text, li, text, li, text]  有九个是因为 换行符 也算进去了
+        console.log(ul.childNodes[0].nodeType);  //文本节点 nodeType 为3(文本节点包含文字、空格、换行等)
+        console.log(ul.childNodes[1].nodeType); //元素节点 nodeType 为1
+        // 2. children 获取所有的子 元素 节点 也是我们实际开发常用的
+        console.log(ul.children);   //HTMLCollection(4)[li, li, li, li]
+
+    </script>
+
+</body>
+</html>

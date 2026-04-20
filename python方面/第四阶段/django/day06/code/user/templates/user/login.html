@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登陆
+    </title>
+    <style>
+        div>label{
+            display:inline-block;
+            width:80px;
+        }
+
+        div>span{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="/user/login" method="POST">
+        <!--    用来使该表单通过csrf验证    -->
+        {% csrf_token %}
+        <div>
+
+            <label>用户名</label>
+            <input type="text" name="username" value="{{ username }}">
+            <span> {{ username_error }} </span>
+        </div>
+
+        <div>
+            <label>密码</label>
+            <input type="text" name="password" value="{{ password1 }}">
+            <span> {{ password_error }} </span>
+        </div>
+
+<!--    未选择不会提交键值对，选择后提交 键为remember,值为1    -->
+        <div>
+            <label for="id_rem">记住用户名</label>
+            <input type="checkbox" name="remember" value="1" id="id_rem">
+        </div>
+
+        <div><input type="submit"></div>
+    </form>
+</body>
+</html>

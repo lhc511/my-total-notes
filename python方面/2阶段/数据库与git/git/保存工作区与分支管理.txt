@@ -1,0 +1,72 @@
+保存工作区
+    1.保存工作区内容
+    git stash save [message]
+    说明:将工作区未提交给仓库的修改封存，让工作区回到修改前的状态
+
+    2.查看工作区列表git stash list
+    说明:最新保存的工作区在最上面
+    查看封存的工作区:git stash list
+
+    3.应用某个工作区
+    git stash apply [stash@{η}]
+
+    4.删除工作区
+    git stash drop [stash@{η}] #选定的工作区
+    git stash clear  #所有
+
+
+切换到一个新分支是对有原先的整个项目而言实现了多个分支，并在原有项目上进行操作
+
+分支管理：分支会把主支的仓库区拷贝，不包括工作区，暂存区，并将分支的工作区和拷贝的仓库区一致化处理(可以理解为原仓库区当工作区*不准)
+    定义:分支即每个人在原有代码(分支)的基础上建立自己的工作环境，单独开发，互不干扰。完成开发工作后再进行分支统一合并。
+
+    1.查看分支情况
+    git branch 说明:前面带 * 的分支表示当前工作分支
+    2.创建分支
+    git branch [branch_name]
+    说明:基于a分支创建b分支，此时b分支会拥有a分支全部内容在创建b分支时最好保持a分支"干净"状态。
+    3.切换分支
+    #            Joy_dev
+    git checkout [branch_name]
+    #创建的同时切换
+    git checkout -b [branch_name]
+
+    4.合并分支  会和上一条主分支合并
+    git merge [branch_name]
+    #添加新文件
+    注意:当一个分支向主支合并是若 主支因其他分支的合并 发生改变，则会发生冲突，并有使用者决定是否上传(一般无影响)，即commit基本命令
+    #修改原有文件
+
+
+
+    操作编码：git checkout Alex_dev        #切换到 Alex_dev 分支
+            在此处可以修改ia文件内容
+            git add *                    #将分支中修改后的文件内容上传到暂存区中
+            git commit -m 'Alex commit'  #将暂存区的文件内容上传到仓库
+            git checkout main            #切换到主支
+            此时main，还没变化
+            git merge Alex_dev           #将分支合并时出现报错1
+            发生了变化，改变的数据传到了暂存区
+            git commit -m 'merge Alex'   #最后一部将main暂存区的变化传给仓库区，完成合并
+
+            在另一条子支中重复上述操作
+            当有两个或多个子支同时修改会报 错误2
+            选择后需要再次commit将工作区里的数据传给 暂存仓库区
+
+
+
+    报错1：：在主支merge分支操作之后：git merge [branch_name]
+        提示：等待您的编辑器关闭文件... 错误：cannot run pycharm: 没有那个文件或目录
+        错误：unable to start editor 'pycharm'
+        未提交合并，使用 'git commit' 完成此次合并。
+
+    解决：该错误是因为在merge之后会把分支的数据放在主支的暂存区，需要手动切换到 主支 来commit操作
+    错误2：  自动合并 README.md
+            冲突（内容）：合并冲突于 README.md
+            自动合并失败，修正冲突然后提交修正的结果。
+    解决：pycharm需要手动删除自己不想要的那一部分
+
+
+    5.删除分支
+    git branch -d [branch_name]  #只能删除已经合并的分支
+    git branch -D [branch_name]  #可以强制删除未合并的分支

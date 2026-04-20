@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #page{
+            position: relative;
+            width: 612px;
+            height: 314px;
+            background-color: #666666;
+            margin:0 auto;
+        }
+        #page>#pop{
+            position: absolute;
+            /*完全居中对齐方式1*/
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 向上和向左移动自身宽高的50% */
+            background-color:white;
+            height:  225px;
+            width: 460px;
+        }
+
+        #page>#pop>#topColmn{
+            position: relative;
+            background-color: green;
+            height: 45px;
+        }
+
+        #tip{
+            color: white;
+            font-size: 20px;
+            padding-left: 20px;
+            padding-top: 10px;
+        }
+        #x{
+            font-size: 20px;
+            position: absolute;
+            text-align: center;
+            color: black;
+            width: 30px;
+            height: 30px;
+            right: 25px;
+            top: 8px;
+        }
+
+        img{
+            float: left;
+            width: 78px;
+            margin-top:55px ;
+            margin-left: 70px;
+        }
+        #pop>div:nth-child(3){
+            font-size: 20px;
+            color: pink;
+            margin-top: 55px;
+            margin-left: 200px;
+        }
+        button{
+            float: right;
+            width:110px ;
+            height: 45px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+            background-color: green;
+            margin-right: 70px;
+            border: red 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="page">
+        <div id="pop">
+            <div id="topColmn">
+                <div id="tip">提示</div>
+                <div id="x">x</div>
+            </div>
+            <img id="pic" src="picture/自己头像.jpg" alt="">
+            <div id="text1">你看到的是simplepop</div>
+            <button id="buttonExit">确定</button>
+
+        </div>
+
+        <script>
+            var colseX=document.getElementById("x")
+            colseX.onclick=function (){
+                pop=document.getElementById("pop")
+                pop.style.display="none"
+            }
+            var buttonExit=document.getElementById("buttonExit")
+            buttonExit.onclick=function (){
+                pop.style.display="none"
+            }
+
+
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #frame{
+            height: 60px;
+            width: 500px;
+        }
+        #frame>div{
+            float: left;
+            margin-left: 10px;
+            line-height: 50px;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            color: white;
+            background-color: red;
+        }
+        span{
+            margin-left: 10px;
+            line-height: 50px;
+            float: left;
+            display: block;
+            width: 100px;
+            height: 50px;
+            background-color: #9c9a9c;
+            border-radius: 25%;
+            text-align: center;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="num1" class="num">06</div>
+        <div id="num2" class="num">11</div>
+        <div id="num3" class="num">21</div>
+        <div id="num4" class="num">26</div>
+        <div id="num5" class="num">28</div>
+        <div id="num6" class="num">31</div>
+        <span>换一个</span>
+    </div>
+
+    <script>
+        function getId(id){
+            return document.getElementById(id)
+        }
+
+        let num1=getId("num1")
+        let num2=getId("num2")
+        let num3=getId("num3")
+        let num4=getId("num4")
+        let num5=getId("num5")
+        let num6=getId("num6")
+        let span1=document.getElementsByTagName("span")[0];
+
+        // let ranNum1=Math.floor(Math.random()*32)
+        // let ranNum2=Math.floor(Math.random()*32)
+        // let ranNum3=Math.floor(Math.random()*32)
+        // let ranNum4=Math.floor(Math.random()*32)
+        // let ranNum5=Math.floor(Math.random()*32)
+        // let ranNum6=Math.floor(Math.random()*32)
+        // console.log((ranNum1))
+        span1.onclick=function changeNum(){
+          num1.innerText=Math.floor(Math.random()*32)
+          num2.innerText=Math.floor(Math.random()*32)
+          num3.innerText=Math.floor(Math.random()*32)
+          num4.innerText=Math.floor(Math.random()*32)
+          num5.innerText=Math.floor(Math.random()*32)
+          num6.innerText=Math.floor(Math.random()*32)
+        };
+    </script>
+</body>
+</html>

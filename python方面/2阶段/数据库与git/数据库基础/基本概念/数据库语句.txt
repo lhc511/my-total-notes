@@ -1,0 +1,15 @@
+服务端启动
+查看MySQL状态: sudo /etc/init.d/mysql status
+启动服务：sudo /etc/init.d/mysql start | stop | restart
+
+客户端连接
+命令格式
+mysql -h主机地址 -u用户名 -p密码
+mysql -hlocalhost -uroot -p123456
+
+本地连接可省略 -h 选项: mysql -uroot -p123456
+
+关闭连接
+ctrl-D
+exit
+

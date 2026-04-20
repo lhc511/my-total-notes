@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box{
+            width: 130px;
+            border: 1px solid red;
+            padding: 10px 5px;
+        }
+        #box>span{
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+            font-size: 21px;
+        }
+    </style>
+
+</head>
+<body>
+<!--<button id="stop">停止</button>-->
+<!--<script>-->
+<!--  //每秒输入一次ok-->
+<!--  var taskId=setInterval(function (){-->
+<!--        console.log("ok")-->
+<!--  },1000)//每过一秒执行一次function函数 1000单位是毫秒-->
+<!--  document.getElementById("stop").onclick=function (){-->
+<!--    //停止定时-->
+<!--    clearInterval(taskId)-->
+<!--  };-->
+<!--</script>-->
+
+<!--///////////////////////////动态时间/////////////////////////////////-->
+<!--<div id="box">-->
+<!--    <span id="hou">00</span>-->
+<!--    <span>:</span>-->
+<!--    <span id="min">00</span>-->
+<!--    <span>:</span>-->
+<!--    <span id="sec">00</span>-->
+<!--</div>-->
+<!---->
+<!--<script>-->
+<!---->
+<!--    let taskId2=setInterval(function (){-->
+<!--        let dt=new Date();-->
+<!--        document.getElementById("hou").innerText=changeTo(dt.getHours())-->
+<!--        document.getElementById("min").innerText=changeTo(dt.getMinutes())-->
+<!--        document.getElementById("sec").innerText=changeTo(dt.getSeconds())-->
+<!--    },1000)-->
+<!---->
+<!--    //定义一个由一位数字变为两位数字的函数-->
+<!--    function changeTo(n){-->
+<!--        if(n<10){-->
+<!--            return "0"+n;-->
+<!--        }-->
+<!--        else{-->
+<!--            return n;-->
+<!--        }-->
+<!--    }-->
+<!--////////////////////////////////////// 延时上传 ////////////////////////////////////-->
+<script>
+    //延时三秒发送
+    setTimeout(function (){
+        console.log(100000)
+    },3000)
+    clearTimeout()
+</script>
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+    <button>快速</button>
+
+    <script>
+        $(function (){
+            //在这个伪数组中点击事件触发的对象本身就是某一个元素
+            $('button').click(function (){
+                // this直接取到的是bom对象,需要转化成jq对象
+                $(this).css('background','pink')
+                $(this).siblings('button').css('background','')
+            })
+
+        })
+
+    </script>
+</body>
+</html>

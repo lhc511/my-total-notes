@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var date1=new Date();//空表示当前日期
+        console.log(date1.getFullYear());//获取年
+        console.log(date1.getMonth()+1); //获取月 要加一才能对上现在的时间
+        console.log(date1.getDate());    //获取日期
+        console.log(date1.getHours());    //获取时
+        console.log(date1.getMinutes());    //获取分
+        console.log(date1.getSeconds());    //获取秒
+        console.log(date1.getTime());    //获取毫秒 距离197几年那个有多少毫秒数
+
+        var dt2=new Date("2025/10/01 00:00:00");
+        var num=dt2-date1;//相减得到毫秒数
+        console.log(num/(1000*3600*24));
+
+
+    </script>
+</body>
+</html>

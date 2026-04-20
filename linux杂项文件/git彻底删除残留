@@ -1,0 +1,15 @@
+git verify-pack -v .git/objects/pack/pack-*.idx | sort -k 3 -g | tail -5      #列出文件文件包信息
+git rev-list --objects --all |grep $(git verify-pack -v .git/objects/pack/pack-*.idx | sort -k 3 -g | tail -1|awk '{print $1}')    输出文件名
+
+git filter-branch --index-filter 'git rm --cached --ignore-unmatch go.sum' -- --all
+rm -Rf .git/refs/original
+rm -Rf .git/logs/
+git gc
+git prune
+
+
+git filter-repo --path pycharm-community-2025.1.tar.gz --invert-paths --force #删除命令
+
+
+du -sh .git   #查看大小
+

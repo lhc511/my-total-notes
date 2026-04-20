@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    console.log(location.search)
+    div1=document.createElement('div')
+    body=document.querySelector('body')
+    body.appendChild(div1)
+    uname=location.search.split('=')[1]
+    div1.innerHTML='名称是'+uname
+</script>
+</body>
+</html>

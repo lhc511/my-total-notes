@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #frame{
+            width: 234px;
+            height: 60px;
+            background-color: #fef7ff;
+            /*border: solid red 1px;*/
+            /*position: relative;*/
+        }
+
+        #bubble{
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            border-top-left-radius:50% ;
+            border-top-right-radius:50% ;
+            border-bottom-right-radius:50% ;
+            text-align: center;
+            padding: 0 0 3px;
+            margin-left: 170px;
+        }
+
+        #frame>div:nth-child(2){
+            font-size: 20px;
+            position:absolute;
+            left: 75px;
+            top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div id="frame">
+    <div id="bubble">
+        1
+    </div>
+
+    <div>
+        我的购物车 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;>
+    </div>
+</div>
+</body>
+</html>

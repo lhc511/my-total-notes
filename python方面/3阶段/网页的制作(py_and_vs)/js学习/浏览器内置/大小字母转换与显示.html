@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="tip"></div>
+    <input type="text" id="txt">
+<!--    功能,在输入的同时页面也出现相同的文字-->
+    <script>
+        var objTip=document.getElementById("tip")
+        var objTxt=document.getElementById("txt")
+        // //当文本框有输入时触发该事件
+        objTxt.oninput=function (){
+            // objTip.innerText=objTxt.value.toUpperCase();//转变成大写字母 toLowerCase ()转变成小写字母
+            // objTip.innerText=objTxt.value.charAt(0);//获得第0个位置的字符 charCodeAt(index)获得该下标的字符编码
+            objTip.innerText=objTxt.value.indexOf("a");//查找是否出现过a,没有就返回-1，有则返回 第一次 出现的下标
+            objTip.innerText=objTxt.value.lastIndexOf("a");//查找是否出现过a,没有就返回-1，有则返回 最后 一次出现的下标
+        };
+
+
+
+    </script>
+</body>
+</html>

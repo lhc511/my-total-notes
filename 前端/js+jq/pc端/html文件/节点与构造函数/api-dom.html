@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/pc端/jquery-3.7.1.min.jsn.js"></script>
+
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+
+        body{
+            background-repeat: space;
+        }
+
+    </style>
+</head>
+<body>
+<!--    <div id="timer">2019-9-9</div>-->
+<!--    <button id="btn"> aa</button>-->
+<!--    <div id="aaa">123</div>-->
+<!--    <img src="/picture/ba.png" alt="vqefvwvqwv">-->
+
+<img src="/pc端/pictureture/square1.png" alt="">
+<img src="/pc端/pictureture/square2.png" alt="">
+<h1>hhhhh</h1>
+
+
+    <script>
+        // let timer = document.getElementById('timer');
+        // console.log(timer);     //返回一整个元素标签   //
+        // console.log(typeof timer);
+        // console.dir(timer)
+
+        // let btn=document.getElementById('btn')
+        // btn.onclick=function (){
+        //     alert('aa')
+        // }
+        //
+        // $('#btn').click(function (){
+        //     alert('bbb')
+        // })
+
+        // 选择一个对象
+        // let out=document.querySelector('#aaa')
+        // out.onclick=function (){
+        //     console.log(out.innerHTML)
+        // }
+
+        imgs=document.getElementsByTagName('img')
+        // for(let i=0;i<imgs.length;i++){
+        //     imgs[i].onclick=function (){
+        //      document.body.background=this.src
+        //     }
+        // }
+
+        for(let i=0;i<imgs.length;i++){
+            $(imgs[i]).click(function (){
+                document.body.background=this.src
+
+            })
+
+        }
+    </script>
+</body>
+</html>

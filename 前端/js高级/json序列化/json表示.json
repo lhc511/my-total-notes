@@ -1,0 +1,21 @@
+//表示一:简单值
+true,null,'asd',1123
+//表示2:对象值
+{
+  "name": "why",
+  "friend": {
+  "name": "kobe"
+  },
+  "hobbies":["篮球","足球"]
+}
+//表示三:数组值
+[
+  "abc",
+  123,
+  {
+    "name": "kobe"
+  }
+]
+
+1,
+2,3,true,null

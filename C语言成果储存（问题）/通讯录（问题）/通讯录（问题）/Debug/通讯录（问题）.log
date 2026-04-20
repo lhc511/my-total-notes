@@ -1,0 +1,13 @@
+﻿  contact.c
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.h(19,2): error C2365: “exit”: 重定义；以前的定义是“函数”
+D:\Windows Kits\10\Include\10.0.17134.0\ucrt\stdlib.h(52): message : 参见“exit”的声明
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.h(19,6): error C2086: “option exit”: 重定义
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.h(19): message : 参见“exit”的声明
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.c(8,11): warning C4098: “initcontact”:“void”函数返回值
+  test.c
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.h(19,2): error C2365: “exit”: 重定义；以前的定义是“函数”
+D:\Windows Kits\10\Include\10.0.17134.0\ucrt\stdlib.h(52): message : 参见“exit”的声明
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.h(19,6): error C2086: “option exit”: 重定义
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\contact.h(19): message : 参见“exit”的声明
+C:\Users\Administrator\Desktop\C语言成果储存（问题）\通讯录（问题）\通讯录（问题）\test.c(30,1): error C2051: case 表达式不是常量
+  正在生成代码...

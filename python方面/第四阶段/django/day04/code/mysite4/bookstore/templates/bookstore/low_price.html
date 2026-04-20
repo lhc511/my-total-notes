@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="lowed" method="post">
+      价格<input type="text" name="price">
+      <input type="submit">
+    </form>
+
+
+    <table>
+      <tr>
+        <td>id</td>
+        <td>书名</td>
+        <td>出版社</td>
+        <td>定价</td>
+        <td>零售价</td>
+    </tr>
+      {% for abook in books %}
+    <tr>
+      <td>{{ abook.id }}</td>
+      <td>{{ abook.title }}</td>
+      <td>{{ abook.pub }}</td>
+      <td>{{ abook.price }}</td>
+      <td>{{ abook.market_price }}</td>
+    </tr>
+      {% endfor %}
+    </table>
+
+
+
+
+</body>
+</html>

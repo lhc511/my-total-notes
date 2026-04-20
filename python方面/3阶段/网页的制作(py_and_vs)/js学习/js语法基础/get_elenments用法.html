@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn1" type="button" value="button1">点击我</button>
+
+        <p id="msg"></p>
+
+        <script>
+            // 相当于把id是btn1的所有内容都给了变量btn1,并且可以通过变量btn1去访问其中的数据
+           var btn1 = document.getElementById('btn1')
+           var msg = document.getElementById('msg')
+           var btn1Value = btn1.value
+
+
+           btn1.onclick = function(){
+             alert(btn1Value)
+             msg.innerText = "hello lucas"
+             // msg.style.color = "red"
+               msg.style.color="green"
+           }
+        </script>
+
+</body>
+</html>

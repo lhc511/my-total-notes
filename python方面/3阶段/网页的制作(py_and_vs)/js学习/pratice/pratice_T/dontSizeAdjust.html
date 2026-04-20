@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        p{
+            word-break: break-all;
+        }
+        #fs{
+            width: 260px;
+            border: solid 1px #cccccc;
+            padding: 10px;
+        }
+        .focus{
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="fs">
+        <div class="title">
+            <a href="javascript:void(0);">大</a>
+            <a href="javascript:void(0);">中</a>
+            <a href="javascript:void(0);" class="focus">小</a>
+        </div>
+        <p id="p1">edionh[VNUEIWOnhvoieswdhvuiwoHNVBUE[WOQ</p>
+    </div>
+
+    <script>
+        let links=document.getElementsByTagName("a")
+        let p1=document.getElementById("p1");
+        //移除链接样式
+        function clearFocus(){
+            for(let i=0;i<links.length;i++){
+                links[i].removeAttribute("class");
+            }
+        }
+
+        // for (let i=0;i<links.length;i++){
+        //     // 绑定每个对象的单击事件
+        //     links[i].onclick=function(){
+        //         console.log("ok")
+        //     };
+        // }
+        links[0].onclick=function(){
+            clearFocus();
+            p1.style.fontSize="16px";
+            links[0].className="focus";
+
+        }
+        links[1].onclick=function(){
+            clearFocus()
+            p1.style.fontSize="20px"
+            links[1].className="focus";
+        }
+        links[2].onclick=function(){
+            clearFocus()
+            p1.style.fontSize="25px"
+            links[2].className="focus";
+        }
+    </script>
+</body>
+</html>

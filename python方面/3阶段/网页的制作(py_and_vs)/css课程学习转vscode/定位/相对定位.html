@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        border: solid 1px #666666;
+    }
+    /*在集合中查找某一个子类*/
+    /*在div中找到第一个div行*/
+
+    /*div:nth-child(1){*/
+    /*    */
+    /*}*/
+
+    /*以左部为参照偏移8个像素*/
+    /*根据相对初始的位置进行偏移*/
+    div:nth-child(2){
+        position:relative;
+        left:8px
+    }
+
+    /*以下部为参照偏移8个像素*/
+    div:nth-child(3){
+        position:relative;
+        top: 8px;
+    }
+
+</style>
+<body>
+<!--通过元素伪类选择器获取相同元素的某个元素-->
+  <div>
+
+  </div>
+
+  <div>
+
+  </div>
+
+  <div>
+
+  </div>
+</body>
+</html>

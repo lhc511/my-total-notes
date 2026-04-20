@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+
+        <h5>s = {{ s }}</h5>
+<!--    在显示s之前先把s放到过滤器里将所有英文变成大写    -->
+        <h5>s = {{ s | upper }}</h5>
+        <h5>n+2 = {{ n | add:'2' }}</h5>
+        <h5>s = {{ s | safe }}</h5>
+        <h5>s2 = {{ s2 | safe }}</h5>
+        <h5>s2 = {{ s2 | truncatechars:'8' }}</h5>
+
+    </div>
+
+
+    <ul>
+        {% for city in lst %}
+        {% if forloop.first %}<li>========</li>{% endif %}
+        <li>{{ forloop.counter }}、{{ city }}</li>
+<!--    如果传来的可迭代对像是空的，就执行下列语句    -->
+        {% empty %}
+        <li>没有城市</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

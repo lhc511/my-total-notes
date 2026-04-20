@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 100px;
+            height: 50px;
+            background-color: red;
+        }
+        #div2{
+            width: 20em;
+            height: 10em;
+            background-color: hsl(0, 0%, 2%);
+        }
+
+        /* 子类相对于父类的高度和宽度都只有20% */
+        #div1>div{
+            width: 20%;
+            height: 20%;
+            background-color: coral;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <div>
+
+        </div>
+    </div>
+
+    <div id="div2">
+
+    </div>
+</body>
+</html>

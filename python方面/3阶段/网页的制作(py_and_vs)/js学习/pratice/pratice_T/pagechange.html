@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tables{
+            width: 416px;
+            height: 218px;
+            border: solid 1px red ;
+        }
+
+        #tables>.nav{
+            overflow: hidden;
+        }
+
+        #tables>.nav>div{
+            padding: 5px 0;
+            text-align: center;
+            float: left;
+            width: 104px;
+        }
+
+
+        .hid{
+            display: none;
+        }
+
+        .show{
+            display: block;
+        }
+
+        .focus{
+            background-color: #005aa0;
+            color: white;
+        }
+
+        .bg{
+             background-color: #c5c5c5;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="tables">
+        <div class="nav">
+            <div class="bg" id="div1">热点新闻</div>
+            <div class="bg" id="div2">合作播报</div>
+            <div class="bg" id="div3">行业资讯</div>
+            <div id="div4" class="focus">运营攻略</div>
+        </div>
+
+        <div class="con">
+            <div id="div1_1" class="hid">1111</div>
+            <div id="div1_2" class="hid">2222</div>
+            <div id="div1_3" class="hid">3333</div>
+            <div id="div1_4" class="show">4444</div>
+        </div>
+    </div>
+
+    <script>
+       function $$(id){
+           return document.getElementById(id)
+
+       }
+       //焦点获取
+       $$("div1").onclick=function (){
+           $$("div1").className="focus"
+           $$("div2").className="bg"
+           $$("div3").className="bg"
+           $$("div4").className="bg"
+
+           //内容显示
+           $$("div1_1").className="show"
+           $$("div1_2").className="hid"
+           $$("div1_3").className="hid"
+           $$("div1_4").className="hid"
+       }
+
+       $$()
+        $$("div2").onclick=function (){
+           $$("div1").className="g"
+           $$("div2").className="focus"
+           $$("div3").className="bg"
+           $$("div4").className="bg"
+       }
+
+    </script>
+</body>
+</html>

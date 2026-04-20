@@ -1,0 +1,72 @@
+<!--type: text:文本框 radio:圆圈选择 checkbox:方框多选-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--核心作用：name属性用于标识表单提交时数据的键名。
+当用户提交包含<select>标签的表单时，选中的选项值会以name=value的键值对形式发送到服务器
+value 同理-->
+<!--<将for中的内容与input里面的输入相关联，点击姓名后就可以输入文本>-->
+<body>
+<div>
+    <label for="name">姓名：</label>
+    <input type="text" id="name" name="name" placeholder="请输入姓名">
+</div>
+
+<div>
+    <label for="pass">密码：</label>
+    <input type="text" id="pass" name="pass" placeholder="请输入密码">
+</div>
+<div>
+    <label for="xueli">学历</label>
+    <select name="xueli" id="xueli">
+        <option value="1">大学</option>
+        <option value="2">中学</option>
+        <option value="3">小学</option>
+    </select>
+</div>
+
+<div>
+<!--    id寻找，name相同只能单选-->
+    如果只disabled其中一个那么另外一个就可选,所以要两个都disabled
+    <label for="man">男</label>
+    <input type="radio"
+           id="man"
+           name="sex"
+           value="1"
+           disabled
+           checked />
+
+    <label for="women">女</label>
+    <input type="radio"
+           id="women"
+           name="sex"
+           value="1"
+           disabled
+           checked />
+</div>
+
+<div>
+    <label for="编程">爱好</label>
+    <input type="checkbox" id="编程" name="hobby">编程
+    <label for="游戏">爱好</label>
+    <input type="checkbox" id="游戏" name="hobby">游戏
+    <label for="阅读">爱好</label>
+    <input type="checkbox" id="阅读" name="hobby">游戏
+</div>
+
+<div>
+    <label for="demo"></label>
+    <textarea name="demo" id="demo" cols="30" rows="10"></textarea>
+</div>
+
+<div>
+    <label for="注册">注册</label>
+    <input type="submit" id="注册" value="注册">
+    <label for="重置">重置</label>
+    <input type="submit" id="重置" value="重置" disabled>
+</div>
+</body>
+</html>

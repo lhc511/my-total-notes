@@ -1,0 +1,243 @@
+ 纯javascript是可以的，但是如果是typescript检查较为严格，将arr2看错了number类型。使字符串无法添加
+ var arr1 = [1, 2, 3,''];
+    let arr2 = [1, 2, 3];
+    arr2.push('pink') #错误
+    arr1.push('pink')
+
+
+    
+原型链:#类似与python中类方法的继承，所以新对象也可以调用继承对象的方法
+每个构造函数默认拥有 prototype 属性，即使未显式定义。在 JavaScript 中，函数作为构造函数时会被自动赋予该属性
+
+prototype：
+例如：function Animal(name) {this.name = name;}引擎自动创建 Animal.prototype 对象
+给构造函数(类)中添加方法
+Animal.prototype.roar = function() {return `${this.name} roars!`;} #给Animal构造函数写一个方法
+执行结果:   console.log(new Animal("Tiger").roar()); // "Tiger roars!"
+
+Array.prototype自身的原型指向Object.prototype，构成完整原型链：
+arr → Array.prototype → Object.prototype → null23。
+这意味着数组可以访问Object.prototype的方法（如toString()），但数组方法优先于对象方法（属性遮蔽机制）5。
+
+该对象默认包含：
+    constructor 属性：指向 Animal 自身1
+    __proto__ 属性：指向 Object.prototype
+
+    let arr = [1, 2, 3];
+    console.log(arr.__proto__ === Array.prototype); // 输出: true
+
+    当访问一个对象的属性或方法时，JavaScript引擎首先在该对象自身查找；如果未找到，则沿着原型链向上搜索其原型对象、原型的原型，层层递进，直到找到该属性或到达链的末端（通常是Object.prototype，其原型为null）23。
+示例：假设对象obj的原型是protoA，protoA的原型是protoB。调用obj.someMethod()时，引擎会按顺序搜索obj → protoA → protoB。
+Object是原型链的终点，Object.prototype没有原型（其__proto__为null），避免无限循环
+
+    判断是否为数组的两个方法
+    object instanceof constructor  #object‌：待检测的对象实例  constructor‌：目标构造函数
+        console.log(arr instanceof Array); #是否属于数组  Array是一个内置的全局对象
+        console.log(obj instanceof 构造函数名称); #是否属于该类别
+        //(2)Array.isArray(参数);IH5新增的方法 ie9以上版本
+        console.log(Array.isArray(变量名));
+    typeof 对于数组返回 "object"，无法区分具体类型，而 instanceof 通过原型链精确识别构造函数关系，因此更适合判断引用类型（如 Array）
+        typeof []; // "object"
+        [] instanceof Array; // true
+
+        js,python字符串不可变指的是里面的值不可变,虽然看上去可以改变内容,但其实是地址变了,内存中新开辟了一个内存空间。
+
+        浅拷贝与深拷贝与赋值就是由于内存分配的值不同，普通的变量赋值是直接存数据，而列表，字典等复杂数据则是将指向实际数据的地址赋值给了新变量
+        所以在直接赋值后在修改会导致数据污染
+
+        接口:简单来说就是一个已经写好的函数功能或者文件，以便于其他人在使用该函数功能或者文件中的函数功能时可以直接调用而不必知道原理
+
+        伪数组（Array-like Object）是一种具有数组的索引访问方式和length属性，但不具备数组原生方法（如push、pop、forEach）的对象，本质上是普通对象而非真正的数组实例
+        例如dom中的获取标签方法就是返回一个伪数组(Tag)
+
+        innerHTML‌：获取或设置元素的 HTML 内容，包括标签、文本和注释，会解析 HTML 标签。‌‌即一并返回样式
+        innerText‌：获取或设置元素的纯文本内容，自动忽略 HTML 标签的样式   ，仅返回可见文本。‌‌包括标签空格等等一并返回为文本形式s
+
+        img中的alt属性，用于提供图像的替代文本。当图像因网络问题、文件损坏或用户禁用图像显示时，浏览器会显示该文本。
+
+        this指向当前对像，比如事件函数的调用者，可以是一个构造函数(类比python中的类)，也可以是一个变量(代表一个html中的元素比如按钮，文本框等)
+
+        background/background-repeat的属性
+            repeat	默认值，图像在水平方向和垂直方向都重复以填满容器
+            repeat-x	图像只在水平方向重复以填满容器
+            repeat-y	图像只在垂直方向重复以填满容器
+            space	图像向两端对齐重复以填满容器，多余空间用空白代替
+            round	图像向两端对齐重复以填满容器，多余空间通过图像拉伸来填充
+            no-repeat	不重复，图像只显示一次
+
+        精灵图的排列:一个大小相等规律分布的图片，通过像素来分割图片截取一部分
+        var lis = document.querySelectorAll('li');  //有多个li标签
+        for (var i = 0; i < lis.length; i++) {
+        //让索引号 乘以 44 就是每个li 的背景y坐标 index就是我们的y坐标，通过坐标来切割图片
+        var index = i * 44;
+        lis[i].style.backgroundPosition = '0 -' + index + 'px';}
+
+        可以通过在script标签中的js代码来给抱怨元素修改id，类等名称标识，从而快速切换另一个表示的css样式
+
+        // 3. 如果想要保留原先的类名，我们可以这么做 多类名选择器
+        // this.className = 'change';
+        this.className = 'first change'
+        多类名选择器是类选择器的延伸，可以让你一次性为拥有多个类名的元素应用样式。;
+
+        this.value.length  //可以得出文本框中数据的个数
+
+        此方法先选出类名时baidu的内容，在选出类名是baidu的标签中的所有img标签
+        var imgs = document.querySelector('.baidu').querySelectorAll('img');
+
+        onmouseover鼠标经过   onmouseout鼠标离开
+
+        在JavaScript中，<tr>（表格行）元素本身并没有直接的 background 属性，这是因为 HTML DOM 的属性和 CSS 属性是分开的。虽然在 CSS 中可以通过 background 或 background-image 等属性为 <tr> 设置背景样式，但在 JavaScript 中，样式需要通过 style 对象来访问或修改
+        其他元素也可能一样，
+        解决案例:trElement.style.background = 'red'  //加上style属性
+        2.在css的样式提前写好，然后在js中更改类名或id等
+
+        checkbox(选择方框)，选中状态回返回true，反之false  用this.checked取得当前目标返回值 checked是所有框框的返回值
+
+        已获得的元素节点.parentNode  //可以获取该元素的父节点(包括其中全部内容)   如果找不到父节点就返回为 null
+        div class="box"> <span class="erweima"> × </span> </div>
+        var erweima = document.querySelector('.erweima');-> erweima.parentNode
+
+        当 href='' 设置为空时，点击该链接不会跳转到其他页面，而是会刷新当前页面。
+
+        href="javascript:;" 表示在点击链接时，不会跳转到任何页面。
+        javascript:; 是一种 JavaScript 语法，表示执行一段 JavaScript 代码，但这里代码为空（;），所以什么都不执行。
+
+        在 JavaScript 中，外层 for 循环的变量无法直接在内层 for 循环中使用的原因，主要与变量的作用域和声明方式有关。
+        在 ES5 及之前，var 声明的变量具有函数作用域，而不是块级作用域。这意味着，var 声明的变量在整个函数中都可见，甚至在内层循环中也可以访问外层循环的变量。
+        在 ES6 中，引入了 let 和 const，它们具有块级作用域。这意味着，let 或 const 声明的变量只在其声明的代码块内有效。如果外层循环使用了 let 声明变量，内层循环无法直接访问它。
+
+        对象（字典）没有 length 属性：
+
+        对象是键值对的集合，键可以是字符串或符号，值可以是任意类型。
+        对象的键值对数量不会自动记录在一个类似 length 的属性中，因此直接访问 字典.length 会返回 undefined。
+        1：使用 Object.keys()
+        Object.keys() 会返回对象中所有可枚举的键组成的数组，数组的长度即为字典的长度。
+
+        复制代码
+        let dictionary = { name: "Alice", age: 25, city: "Kunshan" };
+        console.log(Object.keys(dictionary).length); // 输出 3
+        方法 2：使用 for...in 遍历
+        通过遍历对象的键并计数来获取长度：
+
+        td.innerHTML=datas[i][key]使用方括号语法，通过变量 key 的值来动态访问对象的属性。
+        适用场景: 当属性名是动态的（即存储在变量 key 中）时，必须使用这种方式。let key = "name";  let datas = [{ name: "Alice", age: 25 }];
+        td.innerHTML=datas[i].key使用点语法，直接访问对象的固定属性 key。
+        适用场景: 当属性名是固定的、明确的（即字面量）时，可以使用这种方式。   let datas = [{ key: "Alice", age: 25 }];
+
+        removeChild只能删除一个元素的子一代节点，但是可以通过 .children(子元素集合,类似列表)，parentNode(父节点)来逐级查找
+        appendChild再后面添加元素，insertBefore在前面添加
+        document.createElement要比 innerHTML+=元素 的浏览器页面加载速度快很多，因为 innerHTML+=元素在每次拼接赋值的时候都要开辟新内存(js特性)
+          var arr = [];   //添加到数组中然后再进行字符串拼接效率最高
+          for (var i = 0; i <= 100; i++) {arr.push('<a href="#">百度</a>');}
+          inner.innerHTML = arr.join('');
+
+                                                   true捕获阶段    false冒泡阶段
+        addEventListener(事件类型,函数名(需要传参)/或者直接写一个匿名函数,true/false)可以让元素被绑定的事件全部都实行   // 传统解绑：this.onclick=null
+        元素.removeEventListener(事件类型,函数名(需要传参)/或者直接写一个匿名函数) 例如div[1].removeEventListener('click',fn)
+        addEventListener 的第三个参数（useCapture 或 options）如果不设置，默认值是 false。
+
+        e.preventDefault()阻止事件的进行  e为传递进来的事件参数(可以随意命名，浏览器会自动找到对应事件) 如'click'等
+
+        当一个 DOM 元素触发事件时，事件会从目标元素开始，逐层向上传递到父元素，直到 document 或 window。
+        将事件处理程序绑定到父元素（如 ul 或 div），而不是绑定到每个子元素（如 li 或 a）。当子元素事件发生时，它会自动冒泡到父元素，父元素的事件处理程序可以捕获并处理该事件
+
+        e是事件触发对象(可以是鼠标事件也可以是键盘事件)
+        鼠标右键菜单：contextmenu      选中文字：selectstart  e.preventDefault()阻止事件
+        document.addEventListener('contextmenu',function (e){e.preventDefault()})
+        document.addEventListener('selectstart',function (e){e.preventDefault()})
+
+        document 是 JavaScript 中用于操作 HTML 文档的核心对象，它是 DOM（文档对象模型）的一部分，代表当前加载的网页内容。通过 document 对象，开发者可以访问和操作网页中的所有元素。(根节点)
+        keydown,keypress,keyon执行顺序keydown->keypress->keyon,按下键盘时功能键ctrl，shift不支持
+        keycode替代：key 属性返回按键的值（如 'Enter'、'a'、'1' 等），更直观且易于理解。
+                    code 属性返回按键的物理位置（如 'KeyA'、'Digit1' 等），与键盘布局无关。
+        元素.focus() 获取该元素焦点 例如input的标签
+
+        什么是回调函数：setTimeout() 这个调用函数我们也称为回调函数callback
+            普通函数是按照代码顺序直接调用。
+            而这个函数,需要等待时间,时间到了才去调用这个函数,因此称为回调函数。
+            简单理解:回调,就是回头调用的意思。上一件事干完,再回头再调用这个函数。
+            以前我们讲的 element.onclick=function(){}或者 element.addEventListener(“click",fn);里面的函数也是回调函数。
+
+        button里面的内容要用innerHTML来修改
+        timer=setInterval(() => a(lastTime),1000)  箭头函数传参数
+        location.href = 'http://www.itcast.cn';//给location.href属性重新赋值后会自动跳转到另一个页面
+
+        form表单中的action是指表单提交后跳转的页面(在原页面(同一页面)跳转)
+        substr('起始的位置'，截取几个字符);     //若第二个参数没有则默认截取到最后一个
+        location.search 得到url地址后面的(?后面)传递的参数(键值对)
+
+        document是根元素，一般添加页面标签要用body
+        在js创建了一个元素标签后一定要document.appendChild(div1)->body.appendChild(div1) 添加才能显示 父元素.appendChild(标签名)
+        value属性主要用于表单元素（如<input>、<button>、<option>等），用于设置或获取元素的初始值或当前值。innerHTML用于普通DOM元素，用于读写包含HTML标签的文本内容。
+        innerText属性用于获取或设置指定节点的渲染文本内容。这意味着它会考虑CSS样式，例如隐藏的元素不会被包括在内
+        ：textContent属性用于获取或设置指定节点的所有文本内容，包括隐藏的文本。与innerText不同，textContent不考虑CSS样式。
+
+        navigator.useragent属性会显示用户用pc端还是手机端打开的，还有使用哪个浏览器，还有浏览器，系统的版本号等
+        navigator对象包含有关浏览器的信息,它有很多属性,我们最常用的是userAgent,该属性可以返回由客
+        户机发送服务器的user-agent头部的值。
+        下面前端代码可以判断用户那个终端打开页面,实现跳转
+        if((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|
+
+        Mobile | BlackBerry| IEMobile|MQQBrowser|JUC| Fennec|wOSBrowser| BrowserNG| WebOS
+        | Symbian|Windows Phone)/i))) {
+            window. location.href = "";//手机
+            } else {
+                window. location.href = "手机端页面链接";//电脑
+        }
+
+        鼠标按下事件，mousedown
+        mouseover: 只要鼠标指针移入事件所绑定的元素或其子元素，都会触发该事件
+        mouseenter: 只有鼠标指针移入事件所绑定的元素时，才会触发该事件
+        mouseout: 只要鼠标指针移出事件所绑定的元素或其子元素，都会触发该事件
+        mouseleave: 只有鼠标指针移出事件所绑定的元素时，才会触发该事件
+        mouseover‌：基于事件冒泡机制，当鼠标指针进入目标元素或其子元素时立即触发，无需额外判断逻辑。
+        mousemove‌：需通过持续监听鼠标位置，手动判断坐标是否位于目标区域内部，适用于需要实时跟踪鼠标状态的场景。
+
+        在js中的style.方向一定要加'px'在末尾
+        // (function() {})() 或者 (function(){}());  两种写法为立即调用函数，自动执行
+        如果有多个立即执行函数要用分号隔开    //3. 立即执行函数最大的作用就是 独立创建了一个作用域,里面所有的变量都是局部变量 不会有命名冲突的情况
+        // dpr 物理像素比，如果浏览器有该属性则返回属性，没有则返回1  ，在不同的客户端(电脑，手机，各个品牌手机)有不同的
+        var dpr = window.devicePixelRatio || 1  得到像素比
+
+        rem是CSS中的相对长度单位，指相对于HTML根元素（即<html>标签）的字体大小。1rem等于HTML根元素的当前字体大小。
+        通过调整根元素的字体大小，可以实现页面元素尺寸的等比例缩放，常用于移动端屏幕适配。
+
+        // (function() {})() 或者 (function(形参，同理){}(传递的实参可以忽略)); 与正常函数一样，可以不传递形参实参  两种写法为立即调用函数，自动执行
+
+        pageshow是在页面显示的时候触发.
+        无论是否刷新刷新页面会触发load事件，但是火狐浏览器会及那个前一个页面缓存到内存，于是无法触发，所以用pageshow事件
+
+        页面被卷去的头部:可以通过window.pageYOffset获得 如果是被卷去的左侧 window.pageXOffset
+        与页面不同的是元素中的内容被卷去头部用scrollTop   padding是内边距
+
+        在 JavaScript 中，for...in 不适合用于遍历数组的值，原因如下：
+        for...in 是用来遍历对象的属性(比如字典，构造函数等)，而不是数组的元素 python可以
+
+        在html文件头部引入js时要注意顺序，位置靠下的js文件可引用位置考上的js文件的函数
+        在setAttribute中第一个属性名应该填写字符串，或者变量(不带引号的)，不过变量要先定义
+        倘若元素找不到可以是被别的元素覆盖住了
+
+     arrow_r.addEventListener('click',function (){}),这种的事件监听函数也可以直接作为一个函数使用
+     具体形式可以变为 事件出发对象.触发事件()  例如 arrow_r.click()
+
+     5.1 节流阀防止轮播图按钮连续点击造成播放过快。
+        节流阀目的:当上一个函数动画内容执行完毕,再去执行下一个函数动画,让事件无法连续触发。
+        核心实现思路:利用回调函数,添加一个变量来控制,锁住函数和解锁函数。
+        开始设置一个变量var flag=true;
+        if(flag) {flag = false; do something}  关闭水龙头
+        利用回调函数动画执行完毕,flag=true 打开冰龙头
+
+        position: absolute：元素相对于最近的非 static 定位的祖先元素进行定位。如果没有这样的祖先元素，则相对于初始包含块（通常是 <html> 元素）进行定位。
+        position: fixed：元素相对于浏览器视口进行定位，始终固定在视口中的特定位置，不随页面滚动而变化。
+        滚动行为：absolute：随着页面的滚动而移动，位置会随页面内容的滚动而变化。
+        fixed：始终保持在视口中的相同位置，即使页面滚动，元素的位置也不会改变
+        relative表示，相对于默认位置（即static时的位置）进行偏移，即定位基点是元素的默认位置。
+        它必须搭配top、bottom、left、right这四个属性一起使用，用来指定偏移的方向和距离。
+        ，static定位是元素的默认定位模式：
+        遵循正常文档流：元素按HTML结构顺序从上到下排列，不受额外定位属性的影响。这意味着元素的位置由其在HTML中的顺序决定，不会与其他定位类型（如absolute或relative）产生交互2。
+        不受定位属性影响：设置top、bottom、left、right属性对static定位的元素无效。例如，即使您指定left: 50px，元素也不会移动位置，因为这些属性只对非static定位（如relative、absolute）生效
+
+        window‌：代表浏览器窗口，是浏览器对象模型（BOM）的核心全局对象，包含导航、定时器等功能
+        document‌：代表当前加载的 HTML 文档（DOM 的入口），是 window 的子对象，用于操作页面元素和内容。
+        窗口滚动：通过window对象监听，当整个浏览器窗口的内容发生滚动时触发（如页面长度超过窗口可视区域）。
+        页面滚动：通过特定元素（如div）监听，当该元素内部的内容发生溢出滚动时触发（需设置overflow: auto/scroll

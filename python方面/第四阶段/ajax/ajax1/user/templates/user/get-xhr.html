@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="getXhr()">确定</button>
+<a href="/user/get-xhr-server">普通请求</a>
+{#点击上方按钮后填充到id=show的div里#}
+<div id="show"></div>
+
+
+<input type="text" id="uname">
+<button onclick="getXhrP()">确定2</button>
+{#点击上方按钮后填充到id=show的div里#}
+<div id="show_p"></div>
+
+<script src="/static/js/common.js"></script>
+<script>
+    function getXhrP() {
+        const xhr = createXhr();
+        const uname = document.getElementById('uname').value;
+        {# 此处是把文本中的内容 赋值给 路由中的查询键值对的 值 ，再通过后端视图函数get 请求 得到值#}
+        var url = '/user/get-xhr-server/?uname=' + uname;
+        xhr.open('get', url, true)
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById('show_p').innerHTML=xhr.responseText
+
+            }
+
+        }
+        xhr.send(null)
+    }
+
+
+    function getXhr() {
+        {# 创建xhr #}
+        const xhr = createXhr()
+        {#  创建请求  #}
+        xhr.open('get', '/user/get-xhr-server', true)
+        {#  设置回调  每一次xhr的readyState发生改变都激活函数，但是可以设置只在某些条件下才执行内容#}
+        xhr.onreadystatechange = function () {
+            {#  判断xhr状态和服务器状态  #}
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                document.getElementById('show').innerHTML = xhr.responseText;
+
+            }
+        }
+        {#发送请求#}
+        xhr.send(null)
+    }
+
+</script>
+</body>
+</html>

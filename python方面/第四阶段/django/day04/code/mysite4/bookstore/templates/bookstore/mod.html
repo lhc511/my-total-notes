@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/bookstore/mod/{{ abook.id }}" method="POST">
+
+    <p>title : <input disabled type="text" value="{{ abook.title }}"></p>
+    <p>pub : <input disabled type="text" value="{{ abook.pub }}"></p>
+    <p>price : <input disabled type="text" name="{{ abook.price }}"></p>
+    <p>market_price : <input type="text" name="m_price" value="{{ abook.market_price }}"></p>
+    <p><input type="submit" value="确认修改"></p>
+
+</form>
+</body>
+</html>

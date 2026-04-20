@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #nav{
+            width: 200px;
+            border: solid 1px red;
+            margin: 0 auto;
+
+        }
+
+        #nav>.title{
+            text-align: center;
+            border-bottom: solid 1px blue;
+            padding: 5px 0;
+            background-color: #666666;
+            /*将鼠标外形改为手掌*/
+            cursor: pointer;
+        }
+
+        #nav>.content{
+            padding: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav">
+        <div class="title" onclick="aa()">
+            程序员法则
+        </div>
+
+        <div class="content">
+            lalalalalalalalallala
+            lalalalalalalalallala
+            lalalalalalalalallala
+            lalalalalalalalallala
+            lalalalalalalalallala
+            lalalalalalalalallala
+        </div>
+    </div>
+        <script>
+
+            //编写代码块
+            function aa(){
+                 //获取标题和内容元素
+                var a=document.getElementsByClassName("title")[0];
+                var b=document.getElementsByClassName("content")[0];
+                // console.log(b.style.display==="")
+               if(b.style.display===""){
+                    b.style.display="none"
+               }else{
+                   b.style.display=""
+               }
+
+
+            }
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+ <style>
+        .bg {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+<!-- 此处是两个类名 -->
+    <div class="one two"></div>
+    <button> 开关灯 </button>
+    <script>
+        // classList 返回元素的类名
+        var div = document.querySelector('div');
+        // console.log(div.classList[1]);   //two
+        // 1. 添加类名  是在后面追加类名不会覆盖以前的类名 注意前面不需要加.
+        div.classList.add('three')  //classList作为一个伪数组返回一个标签的所有类名
+        console.log(div.classList)
+        div.classList.remove('three')//删除类名
+
+        let btn=document.querySelector('button')
+        //切换类
+        btn.addEventListener('click',function(){
+            //此处自动判断有没有b类，如果有则去掉bg，无则加上
+            document.body.classList.toggle('bg')
+
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提示弹出</title>
+<style>
+        .sliderbar {
+            position: fixed;
+            right: 0;
+            bottom: 100px;
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .con {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 40px;
+            background-color: purple;
+            z-index: -1;
+        }
+        span{color: #1ba1e6}
+    </style>
+    <script src="/pc端/js端/js/aminate.js"></script>
+</head>
+
+<body>
+    <div class="sliderbar">
+        <span>←</span>
+        <div class="con">问题反馈</div>
+    </div>
+    <script>
+        let sliderbar=document.querySelector('.sliderbar')
+        let con=document.querySelector('.con')
+        let span1=document.querySelector('span')
+        sliderbar.addEventListener('mouseover',function (){
+            // a(con,-con.offsetWidth,function (){
+            a(con,-160,function (){
+                span1.innerHTML='→'
+            })
+        })
+        sliderbar.addEventListener('mouseout',function (){
+            // a(con,-con.offsetWidth,function (){
+            a(con,0,function (){
+                span1.innerHTML='←'
+            })
+        })
+
+    </script>
+</body>
+</html>

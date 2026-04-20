@@ -1,0 +1,49 @@
+<!--1. 绝对定位的元素参照离他最近的已经定位的祖先元素进行偏移,如果没有,则参照窗口进行偏移-->
+<!--2. 绝对定位的元素会脱流,在文档中不占位,可以手动设置宽高-->
+
+
+<!--先设置relative 在设置absolute-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #parent{
+            margin: 0 auto;
+            width: 300px;
+            height: 300px;
+            border:1px solid black;
+            position: relative;
+        }
+        #parent>#child{
+            text-align: center;
+            width: 284px;
+            height: 35px;
+            background-color:rgba(0,0,255,0.5);
+            position: absolute;
+            left: 8px;
+            bottom: 0;
+            color:white;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="parent">
+        <img src="picture/轻音少女.jpg" alt="">
+        <div id="child">
+            轻音少女
+        </div>
+    </div>
+</body>
+</html>

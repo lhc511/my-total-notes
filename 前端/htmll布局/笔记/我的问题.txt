@@ -1,0 +1,179 @@
+表格不用来展示页面，而是用来展示数据的
+音频标签：audio
+属性：1、src：路径
+    2、controls：播放的控件
+    3、autoplay：自动播放（部分浏览器不支持）
+    4、loop：循环播放
+音频标签  <audio src="./music.mp3" controls autoplay loop></audio>
+
+视频标签：video
+属性：  1、src：路径 2、controls：播放的控件 3、autoplay：自动播放（部分浏览器不支持）——》在谷歌浏览器中写muted可以完成静音的自动播放
+       4、loop：循环播放
+<video src="./video.mp4" controls autoplay muted loop></video>
+
+text-align: center 用于将文本或内联元素在其父元素内水平居中对齐。它主要作用于块级元素内的文本内容。
+margin: 0 auto 用于将块级元素在其父容器内水平居中对齐。它通过设置左右外边距为自动来实现居中
+
+● 文字类的元素内不能使用块级元素
+●<p>标签主要用于存放文字,因此<p>里面不能放块级元素,特别是不能放<div>
+● 同理,<h1> ~< h6>等都是文字类块级标签,里面也不能放其他块级元素
+
+常见的行内元素有<a>、<strong>、<b>、<em>、<i>、<del>、<s>、<ins>、<u>、<span>等,其中
+<span>标签是最典型的行内元素。有的地方也将行内元素称为内联元素。
+行内元素的特点:
+1 相邻行内元素在一行上,一行可以显示多个。
+2 高、宽直接设置是无效的。
+3 默认宽度就是它本身内容的宽度。
+4 行内元素只能容纳文本或其他行内元素。
+● 链接里面不能再放链接
+● 特殊情况链接<a>里面可以放块级元素,但是给<a>转换一下块级模式最安全
+
+display:block 可以将行内元素转化为块级元素使其具有块级元素的特质
+display:inline,使其具有行内元素的特质，同时失去块级元素的特质
+display:inline-block   行内块元素:同时具有行内元素和块元素的部分特性:一行可以放多个，并且可以设置长高
+css本身并无文字垂直居中，但是line-height设置为与盒子的高度相等就能使文字居中
+一般情况下元素背景颜色默认值是transparent(透明)
+行高的继承:
+font: 12px/24px 'Microsoft YaHei';     //字体大小12px，行高24px
+font: 12px/1.5 'Microsoft YaHei';      //这个1.5 就是当前元素文字大小 font-size 的1.5倍。子元素同样会继承
+body {font:12px/1.5 Microsoft YaHei;}
+● 行高可以跟单位也可以不跟单位
+● 如果子元素没有设置行高,则会继承父元素的行高为1.5
+● 此时子元素的行高是:当前子元素的文字大小*1.5
+● body行高1.5 这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高
+
+权重叠加:子代选择器/* ul Li 权重 0,0,0,1+0,0,0,1= 0,0,0,2*/
+       普通选择器 /* Li 的权重是 0,0,0,1
+       类选择器+普通选择器 .nav Li 权重 0,0,1,0 + 0,0,0,1 = 0,0,1,1
+
+合并表格边框:border-collapse:collapse
+padding的简写遵循上右下左的方向  并且padding只会对有width或height的元素本身起作用
+width和height只决定了内容距离 盒子大小  总宽度 = 内容宽度 + 左右内边距 + 左右边框 + 左右外边距
+对于两个嵌套关系(父子关系)的块元素,父元素有上外边距同时子元素也有上外边距,此时父元素会塌陷较大的外边距值。(大的·1外边距覆盖小的外边距)
+0 在拥有了定位之后也不会有塌陷问题
+1 可以为父元素定义上边框。
+2 可以为父元素定义上内边距。
+3 可以为父元素添加 overflow:hidden。（推荐）
+
+box-sizing 是一个 CSS 属性，用于定义元素的宽度和高度是否包含内边距（padding）和边框（border）。它可以帮助开发者更直观地控制元素的尺寸。
+在 content-box 模式下，元素的总宽度为 200px + padding + border，
+而在 border-box 模式下，总宽度固定为 200px，包含了内边距和边框。
+list-style:none;      //取消列表装饰
+
+浮动可以清除元素之间的默认间距，同时也会使元素脱离文档流，在父元素未写死时导致父元素塌陷
+选择器{clear:属性值;}
+属性值   描述
+left    不允许左侧有浮动元素(清除左侧浮动的影响)
+right   不允许右侧有浮动元素(清除右侧浮动的影响)
+both    同时清除左右两侧浮动的影响
+我们实际工作中,几乎只用clear:both;  清除浮动的策略是:闭合浮动.
+
+3.3 清除浮动方法
+1. 额外标签法也称为隔墙法,是W3C推荐的做法。(了解)
+    额外标签法会在浮动元素末尾添加一个空的标签(必须块级元素)。例如<div style="clear:both"></div>,或者其他标签
+    (如<br/>等)。
+2. 父级添加overflow 属性
+    可以给父级添加overflow 属性,将其属性值设置为hidden、auto或scroll。
+3. 父级添加after伪元素
+:after方式是额外标签法的升级版。也是给父元素添加
+clearfix:after {
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+4. 父级添加双伪元素
+.clearfix:before, .clearfix:after {
+    content:"";
+    display:table;}
+.clearfix:after {clear:both;}
+
+建议遵循以下顺序:
+1.布局定位属性:display/position/float/clear/visibility/overflow(建议display第一个写,毕竟关系到模式)
+2.自身属性:width/height/margin/padding/border/background
+3.文本属性:color/font/text-decoration/text-align/vertical-align/white-space/break-word
+4.其他属性(CSS3):content/cursor/border-radius/box-shadow/text-shadow/background:linear-gradient ...
+
+行内块元素有默认间隙  所以在用的时候要用浮动清除默认间隙
+浮动的盒子不会有外边距合并问题
+dl>dt>dd
+dt>术语一</dt>   用于放概括
+<dd>术语一的定义或解释</dd> dd用于放解释
+
+*************************************************************************
+浮动的元素会压住其他盒子，并只对在浮动元素之后的盒子生效，具体效果是后面的盒子向前占位(占浮动元素之前的位置)
+并且浮动的元素会压住这个未浮动的盒子，若二者都浮动，则无间隙的按顺序排列，并且浮动的元素会具有行内块元素的特性.
+设置浮动后，后面的元素会占据浮动元素的位置，导致浮动的元素会遮挡住后面的元素，但是内容不会被遮挡，如图片、文字。
+浮动的元素脱离文档流后不再占据位置,要像让已经脱离文档流浮动的元素再次占据原先位置就需要在父元素清除浮动
+
+在相对定位和绝对定位中，由于相对定位未脱离文档流，所以会保留一些元素原本的特性，比如块元素div仍然独自占据一行,同时根据盒子内元素的大小来撑开盒子
+同时相对定位在原位置 会遮盖住脱离文档流的元素和标准流
+而绝对定位已经脱离文档流，会使 ——>比如div根据盒子内的元素的大小撑开相应的大小，包括宽度，即不再肚子占据一行
+同时若绝对定位的元素再一个普通文档流元素下方，则会先按照正常排列，但是在实际写样式的过程中并无影响
+***************************************************************************************
+
+display:none 会让元素消失，因此在用伪类hover使无法经过已经消失的元素，因此无法触发相应样式
+
+2.多行文本溢出显示省略号 (直接复制粘贴就好不用管原理)
+多行文本溢出显示省略号,有较大兼容性问题,适合于webKit浏览器或移动端(移动端大部分是webkit内核)
+overflow: hidden;
+text-overflow: ellipsis;
+/*弹性伸缩盒子模型显示 */
+display: -webkit-box;
+/*限制在一个块元泰显示的文本的行数 */
+-webkit-line-clamp: 2;
+/*设置或检索伸缩盒对象的子元素的排列方式 */
+-webkit-box-orient: vertical;
+
+由于页面在渲染每一个元素都是独立渲染的，所以可以用margin:-像素大小  来处理边框的叠加问题
+
+div:hover::before/after
+我们了解到:hover是CSS中的一个伪类，用于选择鼠标悬停在一个元素上时的样式；而:before是CSS中的一个伪元素，用于在选中的元素前/后插入一个新的元素。
+.box:hover .load-bar
+当鼠标悬停在.box上 触发.load-bar的变换
+
+1. transform（变换）
+定义：transform 是一个CSS属性，用于直接改变元素的几何形态（如位置、大小、角度），但它本身不产生动画效果。它支持多种函数，包括translate、rotate、scale等。
+用途：
+    移动元素位置（通过translate函数）。
+    旋转元素（如rotate(90deg)）。
+    缩放元素大小（如scale(1.2)）。
+    这些改变会立即生效，不会自动添加过渡效果。
+示例：transform: translate(50px, 100px); 会将元素向右移动50px，向下移动100px。
+特点：
+    实际改变元素的视觉效果。
+    不是动画控制器，只是定义最终状态。
+    常用于布局调整或静态变换。
+引用中提到：transform 用于“实际改变元素形状、位置等”，但“不会自动产生动画”1。
+2. translate（平移）
+定义：translate 不是独立的CSS属性，而是transform属性的一个具体函数。它专门用于移动元素的位置。
+用途：
+    在水平或垂直方向上平移元素（移动距离基于坐标系）。
+    通常作为transform的一部分使用，例如transform: translate(20px, 0);。
+    示例：transform: translateX(30px); 使元素沿X轴移动30px。
+特点：
+    是transform的子集，不能单独存在。
+    只负责位置移动，不涉及旋转或缩放。
+    与其他变换函数（如rotate）组合使用更高效。
+    引用中提到：translate常用于“定义元素的变换操作”，但需配合transition实现动画3。
+3. transition（过渡
+定义：transition 是一个CSS属性，用于控制CSS属性（如transform）变化时的动画过渡效果。它是一个简写属性，包含持续时间（transition-duration）、延迟（transition-delay）等参数。
+用途：
+    平滑过渡属性变化（如颜色渐变、位置移动）。
+    定义动画的速度曲线（如ease-in）。
+    需要属性值变化（如hover或JS事件）才能触发。
+示例：transition: transform 0.5s ease; 表示当transform变化时，用0.5秒平滑过渡。
+特点：
+    是动画控制器，自身不改变元素，只管理变换过程。
+    常用于transform、opacity、color等属性。
+    能增强用户体验，避免突变效果。
+    引用中提到：transition 是“动画属性”，决定“变换过程是否平滑”
+
+当行内元素设置成绝对定位(position:absolute/fixed)、左浮动float:left;、右浮动float:right;中的任意一种时候，就具有了行内块元素的特性(一行显示多个内容+可以设置宽高)。
+根据CSS规范，position: relative 不会将行内元素变成行内块元素
+
+backface-visibility: hidden; 用于控制元素的背面在旋转到不可见时是否可见。当对一个元素应用 3D 变换（如旋转）时，元素会有正面和背面。默认情况下，元素的背面是可见的。使用 backface-visibility: hidden; 可以让元素的背面在旋转到不可见时隐藏起来，增强 3D 效果的真实感。
+
+transform: translateY(17.5px) rotateX(-90deg);  //必须先写translate移动，再写旋转否则translate不起作用

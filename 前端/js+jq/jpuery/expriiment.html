@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script>
+        let arr1=['red','blue','green']
+        $(function(){
+            // 此处遍历得到的是dom对象   写法一
+            // $('div').each(function (index,domEle){
+            //     $(domEle).css('color',arr1[index])
+            // })
+
+
+            //写法二
+            // $.each($('div'),function(i,domEle){
+            //     $(domEle).css('color',arr1[i])
+            // })
+
+            $.each({aa:'p',bb:77},function(i,value){
+                console.log(i)
+                console.log(value)
+            })
+
+        })
+
+    </script>
+</body>
+</html>

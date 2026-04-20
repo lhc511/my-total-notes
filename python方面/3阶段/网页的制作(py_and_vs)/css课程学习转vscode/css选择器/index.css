@@ -1,0 +1,6 @@
+/*通过#来查找p1*/
+/*通过样式文件可以在一个文件当中声明并在多个文件当中使用*/
+#p1{color:blue;}
+#div1{ color: yellow;background-color: #7ECFC9}
+#p2{color:grey;}
+#div2{color:green;}

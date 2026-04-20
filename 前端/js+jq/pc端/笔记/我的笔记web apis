@@ -1,0 +1,126 @@
+1.API是为我们程序员提供的一个接口,帮助我们实现某种功能,我们会使用就可以了,不必纠结内部如何实现
+
+文档对象模型(Document Object Model,简称DOM),是W3C组织推荐的处理可扩展标记语言(HTML或者XML)的标准编程接口。
+dom作为一个接口可以帮助我们自动生成网页而不用在意内部原理(通过标签元素等)
+
+dom树
+● 文档:一个页面就是一个文档,DOM中使用document表示
+● 元素:页面中的所有标签都是元素,DOM中使用element表示  html body a p h1...
+● 节点:网页中的所有内容都是节点(标签、属性、文本、注释等),DOM中使用node表示
+
+
+// 1. 因为我们文档页面从上往下加载,所以先得有标签 所以我们script写到标签的下面
+//2. get 获得 element 元素 by 通过 驼峰命名法
+// 3. 参数 id是大小写敏感的字符串
+//4. 返回的是一个元素对象
+var timer = document.getElementById('time');     //
+console.log(timer);     返回一整个元素标签   //  <div id="timer">2019-9-9</div>
+console.log(typeof timer);        是一个对象  //  object
+console.dir(timer)                //打印元素的返回对象，可以在浏览器中查看里面的属性和方法
+
+获取标签返回的是一个集合，可以用for来遍历，以伪数组形式存储
+
+2. document.querySelector('选择器');   //根据指定选择器返回第一个元素对象
+2. document.querySelectorAll('选择器');   //根据指定选择器返回所有对象   返回一个伪数组
+//2. querySelector 返回指定选择器的第一个元素对象 切记 里面的选择器需要加符号 .box #nav
+var firstBox = document.querySelector('.box');    //拿到类
+console.log(firstBox);
+var nav = document.querySelector('#nav');         //拿到id
+console.log(nav);
+var li = document.querySelector('li');            //拿到标签
+console.log(li);
+
+获取body元素: document.body
+获取html标签元素:document.documentElement
+innerHTML时表标签中网页上显示的文字
+
+title属性，鼠标经过目标内容区域显示的信息
+disabled:使某个元素失效  比如点击按钮后js代码里写 'id'.disabled=true
+this指向当前对像，可以是一个构造函数，也可以是一个变量(代表一个html中的元素比如按钮，文本框等)
+
+获得焦点onfocus 失去焦点 onblur
+// 3. 如果想要保留原先的类名，我们可以这么做 多类名选择器
+    // this.className = 'change';
+    this.className = 'first change'
+    多类名选择器是类选择器的延伸，可以让你一次性为拥有多个类名的元素应用样式。;
+
+<tr>标签定义表格中的一行（table row）。每一行由多个单元格组成。
+<td>标签定义标准单元格，用于在表格中显示数据。
+<th>标签定义表头单元格，通常用于显示列标题。<th>元素内的文本通常会加粗并居中显示。
+
+<div id="demo" index="1" class="nav"></div>
+ element.getAttribute('属性')  get得到获取 attribute 属性的意思 我们程序员自己添加的属性我们称为自定义属性 index
+ 自定义属性只能通过getAttribute('属性')获取，不能通过 标签.自定义属性 直接获取
+ element.setAttribute('属性', '值');  主要针对于自定义属性
+3 移除属性 removeAttribute(属性)    div.removeAttribute('index');
+
+自定义属性获取是通过getAttribute(‘属性’)获取。
+但是有些自定义属性很容易引起歧义,不容易判断是元素的内置属性还是自定义属性。
+H5给我们新增了自定义属性:
+1.设置H5自定义属性
+H5规定自定义属性data-开头做为属性名并且赋值。
+比如<div data-index="1"></div>
+
+<div getTime="20" data-index="2" data-list-name="andy"></div>  //相当于自动去掉data前缀，正常访问里面的值
+    console.log(div.dataset);       //DOMStringMapindex: "2"listName: "andy"time: "20"[[Prototype]]: DOMStringMap
+    两种访问方式
+    console.log(div.dataset.index); //2
+    console.log(div.dataset['index']); //2
+
+    一般地,节点至少拥有nodeType(节点类型)、nodeName(节点名称)和nodeValue(节点值)这三个基本属性。
+    ● 元素节点 nodeType 为1
+    ● 属性节点 nodeType 为2
+    ● 文本节点 nodeType 为3(文本节点包含文字、空格、换行等)
+    我们在实际开发中,节点操作主要操作的是元素节点
+
+    已获得的元素节点.parentNode  //可以获取该元素的父节点(包括其中全部内容)   如果找不到父节点就返回为 null
+    children 获取所有的子元素节点(只获得子一代) 也是我们实际开发常用的(不包括子代的子代等)
+        console.log(ul.children);   HTMLCollection(4)[li, li, li, li]
+        ul.children.length的长度
+
+    2. 删除元素  node.removeChild(node) //node可以是父节点也可以是子节点
+        // ul.removeChild(ul.children[0]);
+        // ul.removeChild(node.parentNode);
+
+    <li>1111</li>
+    // 1. node.cloneNode(); 括号为空或者里面是false 浅拷贝 只复制标签不复制里面的内容 如：<li></li>
+    // 2. node.cloneNode(true); 括号为true 深拷贝 复制标签复制里面的内容   <li>::marker '1111'</li>
+
+    创建节点元素节点：var li = document.createElement('li');每一次都会创建一个新节点
+    例如：tbody.children[4].removeChild(this.parentNode)
+
+    document.write() 创建元素  如果页面文档流加载完毕，再调用这句话会导致页面重绘(丢失原先页面内容)，例如：document.write('<div>123</div>')
+    传统注册方式：● 利用on开头的事件onclick
+            . <button onclick= "alert('hi~')" ></button>
+            . btn.onclick = function( 0
+            ● 特点:注册事件的唯一性
+            ● 同一个元素同一个事件只能设置一个处理函数,最
+            后注册的处理函数将会覆盖前面注册的处理函数
+
+    eventTarget.addEventListener (type, listener [, useCapture] )
+    eventTarget.addEventListener()方法将指定的监听器注册到eventTarget(目标对象)上,当该对
+    象触发指定的事件时,就会执行事件处理函数。
+    该方法接收三个参数:
+        ● type:事件类型字符串,比如click、mouseover,注意这里不要带on
+        ● listener:事件处理函数,事件发生时,会调用该监听函数
+        ● useCapture:可选参数,是一个布尔值,默认是false。学完DOM事件流后,我们再进一步学习
+
+    1. JS 代码中只能执行捕获或者冒泡其中的一个阶段。
+    2. onclick和 attachEvent 只能得到冒泡阶段。
+    3. addEventListener(type,listener[,useCapture])第三个参数如果是true,表示在事件捕
+    获阶段调用事件处理程序;如果是false(不写默认就是false),表示在事件冒泡阶段调用事件处理程序。
+    4.实际开发中我们很少使用事件捕获,我们更关注事件冒泡。
+    5. 有些事件是没有冒泡的,比如 onblur、onfocus、onmouseenter、onmouseleave
+
+    div.addEventListener('mouseout', fn);  function fn(e) {console.log(e.type);}//mouseout   返回事件类型
+    e本身是该对象所有属性的集合(有浏览器系统自动处理),要取得对象应该用e.target来获取对象
+
+    事件委托
+        事件委托也称为事件代理,在jQuery里面称为事件委派。
+    事件委托的原理
+        不是每个子节点单独设置事件监听器,而是事件监听器设置在其父节点上,然后利用冒泡原理影响设置每个子节点。
+        将事件处理程序绑定到父元素（如 ul 或 div），而不是绑定到每个子元素（如 li 或 a）。当子元素事件发生时，它会自动冒泡到父元素，父元素的事件处理程序可以捕获并处理该事件
+        以上案例:给ul注册点击事件,然后利用事件对象的target来找到当前点击的li,因为点击li,事件会冒泡到ul上,也就是click事件会传递给ul上(ul触发click事件)
+        ul 有注册事件,就会触发事件监听器。
+    事件委托的作用
+        我们只操作了一次DOM,提高了程序的性能。

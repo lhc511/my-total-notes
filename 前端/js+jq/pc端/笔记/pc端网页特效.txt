@@ -1,0 +1,38 @@
+offset翻译过来就是偏移量,我们使用offset系列相关属性可以动态的得到该元素的位置(偏移)、大小等。
+● 获得元素距离带有定位父元素的位置
+· 获得元素自身的大小(宽度高度)
+●注意:返回的数值都不带单位
+offset系列属性                    作用
+element.offsetParent            返回带有定位(即带有position属性)的父元素 如果父级都没有定位则返回body  即返回带有position属性的父级元素
+element.offsetTop               返回相对于父元素(父元素拥有position属性) 上方的距离(距离上方多少像素)  若无该属性则返回相对body的像素距离
+element.offsetLeft              返回元素相对父元素(父元素拥有position属性) 左边 的距离(距离左方多少像素)  若无该属性则返回相对body的像素距离
+element.offsetWidth             返回自身包括padding、边框、内容区的宽度,返回数值不带单位
+element.offsetHeight            返回自身包括padding、边框、内容区的高度,返回数值不带单位
+
+
+offset                                     style
+行内样式是直接在HTML标签中定义的样式，使用 style 属性。 例如，<div style="width:200px"> 元素 内嵌样式表是定义在HTML文档的 <head> 标签中的 <style> 标签内。
+● offset 可以得到任意样式表中的样式值(内嵌和行内均能得到)            ● style只能得到行内样式表中的样式值
+● offset 系列获得的数值是没有单位的                              ● style.width获得的是带有单位的字符串
+● offsetWidth包含padding+border+width                       ● style.width获得不包含padding和border的值
+● offsetWidth等属性是只读属性,只能获取不能赋值                    ● style.width是可读写属性,可以获取也可以赋值
+● 所以,我们想要获取元素大小位置,用offset更合适                     ● 所以,我们想要给元素更改值,则需要用style改变
+
+4.4缓动效果原理
+缓动动画就是让元素运动速度有所变化,最常见的是让速度慢慢停下来
+思路:1. 让盒子每次移动的距离慢慢变小,速度就会慢慢落下来。
+    2. 核心算法:(目标值-现在的位置)/10 做为每次移动的距离步长
+    3. 停止的条件是:让当前盒子位置等于目标位置就停止定时器
+
+window.scroll(0,0)距离 页面 左，上部的距离
+
+
+
+
+
+
+
+
+
+
+

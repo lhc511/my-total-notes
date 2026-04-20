@@ -1,0 +1,30 @@
+下载仓库方法：1.直接下载文件
+            2.命令行：git clone 目标地址（从别人的库里面复制）
+
+用remote连接远程仓库
+添加远程仓库：git remote add 远程主机名字 自己的库地址(去github里面复制)    #将项目和某个远程主机进行关联
+例如：git remote add origin https://github.com/lhc511/AID1906.git    #在这里origin代表的就是那台远程主机(名字) 在此种情况就是github服务器
+        ####注意：远程主机名称不能一样
+
+查看远程主机：git remote
+删除远程主机，即断开连接：git remote rm 远程主机名字
+上传：git push -u origin main  将main分支上传到origin远程主机上  -u:表示上传到那一个远程主机，并且只有第一次用后面去掉就可以
+
+用户名：邮箱或者账号名字
+密码：生成的令牌里面的密令，注意保存
+
+git branch -a 可以查看分支在远程主机上的关联
+
+在修改了本地git项目中的数据后可以用    git push   上传到github
+
+上传标签:git push origin --tags   #上传所有标签
+在github库中删除上传的分支:git push origin :Joy_dev/git push origin --delete Joy_dev   #删除远程分支
+删除远程的标签：git push origin --delete tag v1.0
+git push --force origin#本地版本比远程版本旧时强行推送本地版本
+
+从远程获取代码
+    git pull#直接改变
+
+    #将远程分支main拉取到本地，作为tmp分支，需要自行合并
+    git fetch origin 分支名:tmp   本地的分支此时不改变
+    git merge tmp      #若想修改则要在上传一次

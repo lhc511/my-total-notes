@@ -1,0 +1,107 @@
+1.查看已有库
+    show databases;
+2.创建库(指定字符集)
+    create database 库名 [character set utf8];
+    e.g. 创建stu数据库，编码为utf8
+
+    create database stu character set utf8;
+    create database stu charset=utf8;
+3.查看创建库的语句(字符集)
+    show create database 库名;
+    e.g. 查看stu创建方法
+    show create database stu;
+4.查看当前所在库
+    select database();
+5.切换库
+    use 库名;
+6.删除库
+    drop database 库名;
+    e.g. 删除test数据库
+    drop database test;
+
+
+创建表(指定字符集)
+create table 表名(字段名 数据类型,字段名 数据类型,...字段名 数据类型);
+如果你想设置数字为无符号则加上 unsigned
+
+Mysql
+如果你不想字段为 NULL 可以设置字段的属性为 NOT NULL， 在操作数据库时如果输
+入该字段的数据为NULL ，就会报错。
+DEFAULT 表示设置一个字段的默认值
+AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。
+PRIMARY KEY关键字用于定义列为主键。主键的值不能重复
+
+e.g. 创建班级表
+create table mytable (id int primary key auto_increment,name varchar(32) not null,age int unsigned not null,sex enum('m','w'),score float default 0.0);
+
+create table student (id int primary key auto_increment,name varchar(32),age int,hobby set('football','computer','running','basketball'),score float default 0.0,comment text);
+
+e.g. 创建兴趣班表
+create table interest (id int primary key auto_increment,name varchar(32) not null,hobby set('sing','dance','draw'),level char not null,price decimal(6,2),comment text);
+
+插入方法:insert into interest values (1,'Tom','sing,dance','B',16800.00,'表现良 ，进步较快');
+
+
+查看数据表
+    show tables；
+查看已有表的字符集
+    show create table 表名;
+查看表结构
+    desc 表名;
+删除表
+    drop table 表名;
+
+
+插入(insert)
+    insert into 表名 values(值1),(值2),...;
+        insert into class_1 values (2,'Baron',10,'m',91),(3,'Jame',9,'m',90);
+    insert into 表名(字段1,...) values(值1),...;
+    e.g.
+    插入数据时一般必须要完全对应创时的参数，但是也可以像这样取出一定的参数并分别赋值
+    例：insert into class (name,score) values ('levi',90) 注意必须要给原来表中设置为不为空的参数赋值
+    # sql="insert into class_1 (name,age,score) values (%s,%s,%s)"
+    # cur.execute(sql,[name,age,score])#列表只能给value传值
+查询(select)
+    select * from 表名 [where 条件];
+    select 字段1,字段名2 from 表名 [where 条件];  select name,score from class提取部分数据
+Mysql
+    e.g.
+    select * from class_1;
+    select name,age from class_1;
+
+
+
+    where子句在sql语句中扮演了重要角色，主要通过一定的运算条件进行数据的筛选
+    适用:+-x/%
+    e.g.  select * from class_1 where age % 2 = 0;
+
+更新表记录(update)    where
+    update 表名 set 字段1=值1,字段2=值2,... where 条件;
+    e.g.
+    update class_1 set age=11 where name='Abby';
+
+    ***在默认情况下会全部修改
+    例：update class set age=19 where age=18 把年龄等于十八的地方全部换成19
+
+删除表记录（delete）
+    delete from 表名 where 条件;
+    注意:delete语句后如果不加where条件,所有记录全部清空
+    e.g.
+    delete from class_1 where name='Abby';
+
+表字段的操作(alter)
+语法 ：alter table 表名 执行动作;
+* 添加字段(add)
+    alter table 表名 add 字段名 数据类型;
+    alter table 表名 add 字段名 数据类型 first;
+    alter table 表名 add 字段名 数据类型 after 字段名;
+* 删除字段(drop)
+    alter table 表名 drop 字段名;
+* 修改数据类型(modify)  现有的数据类型
+    alter table 表名 modify 字段名 新数据类型;
+* 修改字段名(change)   字段名字和数据类型 如：例中的name，score
+    alter table 表名 change 旧字段名 新字段名 新数据类型;
+* 表重命名(rename)
+    alter table 表名 rename 新表名;
+    e.g.
+    alter table interest add tel char(11) after name;

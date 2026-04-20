@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div>label{
+            display:inline-block;
+            width:80px;
+        }
+
+        div>span{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <form action="/user/reg" method="POST">
+        {% csrf_token %}
+        <div>
+            <label>用户名</label>
+            <input type="text" name="username" value="{{ username }}">
+            <span> {{ username_error }} </span>
+        </div>
+
+        <div>
+            <label>密码</label>
+            <input type="text" name="password" value="{{ password1 }}">
+            <span> {{ password_error }} </span>
+        </div>
+
+        <div>
+            <label>密码(重复)</label>
+            <input type="text" name="password2" value="{{ password2 }}">
+            <span> {{ password2_error }}</span>
+        </div>
+        <div><input type="submit"></div>
+    </form>
+</body>
+</html>

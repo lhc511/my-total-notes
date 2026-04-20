@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/static/js/jquery-3.7.1.min.js"></script>
+    <style>
+        td{
+            border: black 2px solid;
+        }
+        tr{
+            border: black 2px solid;
+        }
+
+    </style>
+</head>
+<body>
+    <button id="btn">显示</button>
+    <div id="show"></div>
+
+    <script>
+        $(function (){
+            $('#btn').click(function(){
+                const x={
+                    name:'aa',
+                    age:13
+                }
+
+
+                $.ajax(
+                    {url:'/ajax/practice_server/',
+                     type:'get',
+                     dataType:'json',
+                     async:true,
+                     data:x,
+                     success:function (re_data){
+                         html='<tr>'
+                         html+='<td>'+re_data.name+'</td>'
+                         html+='<td>'+re_data.age+'</td>'
+                         html+='</tr>'
+                         $('#show').html(html)
+                     },
+                     error:function (){
+
+
+                     },
+                     beforeSend:function (){
+                     }
+                })
+            })
+        })
+
+
+    </script>
+
+</body>
+</html>

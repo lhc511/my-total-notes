@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #frame{
+            position: relative;
+            margin: 0 auto;
+            width: 1920px;
+            height: 1080px;
+        }
+        #frame>#changeLeft{
+            font-size: 80px;
+            width: 80px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 50%;
+        }
+        #frame>#changeRight{
+            position: absolute;
+            right: 0;
+            background-color: yellow;
+            top: 50%;
+            font-size: 80px;
+            width: 80px;
+            height: 100px;
+        }
+        #changeLeft:hover{
+            color: red;
+        }
+        #changeRight:hover{
+            color: red;
+        }
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <img src="picture/img1.jpg" alt="" id="img1">
+        <div id="changeLeft"><</div>
+        <div id="changeRight">></div>
+    </div>
+
+    <script>
+        function getId(id){
+            return document.getElementById(id)
+        }
+        let img1=getId("img1")
+        let changeLeft=getId("changeLeft")
+        let changeRight=getId("changeRight")
+        listImg=["picture/img1.jpg","picture/img2.jpg","picture/img3.jpg","picture/img4.png"]
+        let i=0
+
+
+        changeLeft.onclick=function (){
+            i=i-1
+            if(i<0){
+                i=listImg.length-1
+            }
+            img1.setAttribute("src",listImg[i])
+            console.log(i)
+        };
+
+        changeRight.onclick=function (){
+            i=i+1
+            if(i>listImg.length-1){
+                i=0
+            }
+            img1.setAttribute("src",listImg[i])
+            console.log(i)
+        };
+        
+    </script>
+</body>
+</html>

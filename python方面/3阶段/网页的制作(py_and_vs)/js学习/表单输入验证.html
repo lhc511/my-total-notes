@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    #tip{
+        color: red;
+        display: none;
+    }
+</style>
+<body>
+<!--在submit事件中如果返回值为false则提交，true则可以提交-->
+
+<!--    action 表示提交到服务器的路径-->
+    <form action="" onsubmit="return sub();">
+<!--        表单中元素name用于获取数据的名称-->
+<!--        id用于js/css定位这个元素-->
+        <input type="text" name=aa" id="aa">
+<!--        submit本身并无作用只是一个按钮，在点击后触发form表单的onsubmit事件-->
+        <input type="submit" value="提交">
+        <div id="tip">内容不能为空</div>
+    </form>
+<script>
+    //提交事件执行的函数
+    function sub(){
+        let tip=document.getElementById("tip")
+        let aa=document.getElementById("aa")
+        if (aa.value===""){
+            tip.style.display="block"
+            //文本框元素获取焦点
+            aa.focus()
+            return false
+        }
+        return true;
+
+    }
+</script>
+</body>
+</html>

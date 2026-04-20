@@ -1,0 +1,39 @@
+<!-- 子代选择器与该后代选择其差不多 把空格换成 > 就行了 -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         div,p,h3{
+            color: rgb(0, 255, 30);
+            margin: 0;
+            padding: 0;
+        }
+        /* 在父类元素div通过空格下找到子类元素p ,并且设置为蓝色为*/
+        div p{
+            color: #1828dc;
+        }
+        /* 与上同理 */
+        div p span{
+            color: #0bcee7;
+        }
+    </style>
+</head>
+<body>
+    <div>今天</div>
+    <p>明天</p>
+    <h3>后天2</h3>
+
+    <div>
+        <p>
+            我是一个子类元素
+            <span>
+                我是一个孙类元素
+            </span>
+        </p>
+    </div>
+</body>
+</html>

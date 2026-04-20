@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /*  */
+        .box{
+            width: 260px;
+            background-color: blue;
+            /* 设置字体为白色 */
+            color: #f8f8f8;
+            text-align: center
+        }
+        /* 伪类只能选择不能自己选，并且不能单独存在 */
+        /* 该hover伪类结合上面原本备景色是蓝色，设置后鼠标移动去是青色 */
+        /* 选择id为name的元素，并使用伪类focus让文本框被选择时变色 */
+        .box:hover{
+            background-color: aqua;
+        }
+
+
+        /* 按下后变成红色 */
+        #name:focus{
+            background-color: red;
+        }
+        /* 链接要有顺序，第一个link,第二个visited，3：hover，4：active */
+
+
+        /* 在按下前变成绿色 */
+        a:link{
+            color: #1dcd1d;
+        }
+        /* 访问后的状态 */
+        a:visited{
+            color: coral;
+        }
+        /* 鼠标移上去 */
+        a:hover{
+            color: darkviolet;
+        }
+        /* 鼠标按住不抬起的状态 */
+        a:active{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- 有一个div元素，默认一个背景色，移动上去后变成另外一个颜色 -->
+     <div class="box">
+        我会变背景色
+     </div>
+
+
+     <form action="#">
+        <label for="name">姓名</label>
+        <input type="text" id="name" name="name">
+     </form>
+
+
+     <a href="https://www.google.com/search?sca_esv=601b0517c7361365&rlz=1C1GCEU_en__1160__1160&q=%E8%A1%97%E8%A7%92%E9%AD%94%E6%97%8F&udm=2&fbs=ABzOT_AGBMogrnfXHu6GxeqSvos9XSASLdCNmBvs6Xj8xORx7OLI8Qw2o0eaitm-Nl0CS9Y9Vk2YNWDYrSp0kjCBYw-cr_Z2gg5Tl30z9kk4iEklYLIVKQXzfZqJo4uQQHZCPTa2HFP__AL1u37xqy1GB-uRSCQ50UN8SVx4La6cxt7s0ot0UbWDg3Qj1f6fW-F4YZ_I8tHI9Py9ikDGVosMeEkhByJFOA&sa=X&ved=2ahUKEwi-v8Her4uNAxUSrlYBHbDUHXgQtKgLegQICBAB&biw=798&bih=573&dpr=1.5">
+        街角魔族图片
+     </a>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #pics{
+            width: 793px;
+            height: 410px;
+            border:solid 1px red;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        #pics>.lleft{
+            position: absolute;
+            transform: translateY(-50%);
+            top:50%;
+            left: 0;
+            cursor: pointer;
+        }
+
+        img{
+            width: 100%;
+        }
+        #pics>.rright{
+            transform: translateY(-50%);
+            top: 50%;
+            right: 0;
+            /*想上移动自身长度的50%*/
+            /*transform: translateY(-50%);*/
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="pics">
+
+        <a href="https://www.talentsays.com/database/group/6a8aa6d496a27993.html">
+            <img src="picture/按钮图片切换/灵梦.jpg" alt="">
+        </a>
+
+        <div class="lleft">
+            <img src="picture/按钮图片切换/left.png" alt="">
+        </div>
+        <div class="rright">
+            <img src="picture/按钮图片切换/right.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        let imgArr=["picture/按钮图片切换/灵梦.jpg","picture/按钮图片切换/img2.jpg","picture/按钮图片切换/img3.jpg","picture/按钮图片切换/img4.png"];
+        let rright=document.getElementsByClassName("rright")[0];
+        let lleft=document.getElementsByClassName("lleft")[0]
+        let img1=document.getElementsByTagName("img")[0]
+        console.log(img1);
+        let i=0;
+        rright.onclick=function (){
+            i++;
+            if(i>imgArr.length-1)
+                i=0;
+            img1.src=imgArr[i];
+            // img1.setAttribute("src",imgArr[i])
+
+        };
+        lleft.onclick=function (){
+            i--;
+            if(i<0)
+                i=imgArr.length-1;
+            img1.src=imgArr[i];
+            // img1.setAttribute("src",imgArr[i])
+        };
+
+
+    </script>
+
+</body>
+</html>
